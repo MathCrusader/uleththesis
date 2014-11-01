@@ -1,0 +1,100 @@
+\documentclass[math,msc]{uleththesis}
+
+% This is a file that contains all of your \usepackage's and \newcommands
+\input{preamble}
+
+% Put your information here.
+%  -- If your title is longer than 41 characters, it may be abbreviated.
+\title{Biangular Vectors}
+\author{Darcy Best}
+
+% This is the year you are getting this degree
+\degreeyear{2013}
+
+% Put all of your previous degrees in this format:
+\prevdegrees{Bachelor of Science, University of Lethbridge, 2011}
+
+% Put everyone on your Thesis Examination Committee
+%  Normally, it will include the following:
+%   - Your supervisor(s)
+%   - Your committee members
+%   - External examiner (maybe)
+%   - A chair for your examination
+\addsignatureline{Dr. Hadi Kharaghani}{Supervisor}
+\addsignatureline{Dr. Howard Cheng}{Committee Member}
+\addsignatureline{Dr. Wolfgang Holzmann}{Committee Member}
+\addsignatureline{Dr. Mark Walton}{Committee Member}
+\addsignatureline{Dr. Amir Akbary-Majdabadno}{Chair, Thesis Examination Committee}
+
+\begin{document}
+
+\frontmatter
+ 
+\ulethtitle
+\ulethapproval
+
+\dedication{
+  To all those who pretended to\\know what I was talking about.\\ And to the few that actually understood.
+} % End of dedication
+
+\begin{abstract}
+This thesis introduces {\it unit weighing matrices}, a generalization of Hadamard matrices. When dealing with unit weighing matrices, a lot of the structure that is held by Hadamard matrices is lost, but this loss of rigidity allows these matrices to be used in the construction of certain combinatorial objects. We are able to fully classify these matrices for many small values by defining equivalence classes analogous to those found with Hadamard matrices. We then proceed to introduce an extension to mutually unbiased bases, called {\it mutually unbiased weighing matrices}, by allowing for different subsets of vectors to be orthogonal. The bounds on the size of these sets of matrices, both lower and upper, are examined. In many situations, we are able to show that these bounds are sharp. Finally, we show how these sets of matrices can be used to generate combinatorial objects such as strongly regular graphs and association schemes.
+\end{abstract}
+
+\acknowledgments{
+ \noindent This journey started nearly five years ago when a professor was handing out our calculus final exams. As he handed me the exam, he spoke to me for the first time and said ``You're working with me this summer.'' I can never thank Dr. Hadi~Kharaghani enough for taking a chance on me and teaching me what I know today, so I will leave it at {\it Thank~you}.
+
+\vskip10pt
+
+ \noindent I also wish to thank another professor at the University of Lethbridge, Dr. Howard~Cheng, for teaching me almost everything that I know about computer programming -- all of the good habits, and the bad.
+
+\vskip10pt
+
+ \noindent A lot of the ground work in this thesis was laid out while I was working with Hugh~Ramp. I need to thank him for keeping me in line and for the many great insights. You are a great friend.
+
+\vskip10pt
+
+ \noindent There are way too many people to thank, so I will use their initials and leave it to the reader as an exercise to figure out exactly who they are. \Smiley
+
+\vskip10pt
+
+ \noindent As always, my family drives me forward:
+
+\begin{center}BB, KB, TB, BS and MS.\end{center}
+
+\vskip10pt
+
+ \noindent There are many people inside and outside the university that have guided my way through this process. I will list some here -- I'm sure that I will miss someone, and for that, I am sorry.
+ 
+ \begin{center} AA, JB, ATF, BF, wG, KG,  BH, TH, WH, AL, SL, TT, MW, VW and SY.\end{center}
+
+\vskip5pt
+
+ Thank you.
+} % End of acknowledgments
+
+\tableofcontents
+\listoftables
+% \listoffigures
+
+\mainmatter
+
+\input{ch1}
+\input{ch2}
+\input{ch3}
+\input{ch4}
+\input{ch5}
+
+\bibliography{thesis-refs} % References come BEFORE appendices.
+
+\appendix \appendixarray
+
+\input{app-ch3-cases}
+\input{app-ch4-cases}
+\input{app-unit-wm}
+\input{app-sets}
+\input{app-comb-objects}
+
+
+
+\end{document}

@@ -1,0 +1,1183 @@
+\chapter[Detailed Proofs from Chapter 3]{Detailed Proofs from Chapter 3}
+\chaptermark{Detailed Proofs}
+\label{app:ch3-cases}
+
+\section[Standardized \texorpdfstring{$UW(n,3)$}{UW(n,3)}]{Standardized \texorpdfstring{$UW(n,3)$}{UW(n,3)}}
+\sectionmark{Standardized $UW(n,3)$}
+\label{app:uw-n3}
+
+(This is a proof of Lemma~\ref{lem:uw-n3}.)
+
+\begin{lemma} \label{lem-proof:uw-n3}
+ Every $UW(n,3)$ is equivalent to a weighing matrix whose top leftmost submatrix is either a $UW(3,3)$ or a $UW(4,3)$.
+
+\begin{proof}
+ By Theorem~\ref{th:weigh-standard}, we alter $W$ so that it is in standard form. This means that the second row has three possibilities, listed below as Case 1, 2 and 3, after further appropriate column permutations (Note that these permutations should leave the shape of the first row intact). When we say that a row is not orthogonal with another row with no further context, it is because it would imply that the set of elements in the two rows would have 1-orthogonality.
+
+   \begin{enumerate}
+    \item $
+      \left(
+       \begin{array}{cccccccc}
+         1 & a  & b &0 &0&0 &\dotsb &0
+       \end{array}
+      \right)
+      $
+    \item $
+      \left(
+       \begin{array}{cccccccc}
+         1 & a  & 0 &1 &0 &0 &\dotsb &0
+       \end{array}
+      \right)
+      $
+    \item $
+      \left(
+       \begin{array}{cccccccc}
+         1 & 0  & 0 &1 &1 &0&\dotsb &0
+       \end{array}
+      \right)
+      $, 1-orthogonality with row 1, so not possible.
+   \end{enumerate}
+
+\begin{myind}{1cm}
+
+   For case 1, 3-orthogonality implies $b = \overline{a}$, where $a \in \BR$, and four further subcases arise for the third row:
+
+    \begin{enumerate}[(a)]
+     \item  $
+      \left(
+       \begin{array}{cccccccc}
+         1 & c  & d &0 &0&0 &\dotsb &0
+       \end{array}
+      \right)
+      $
+    \item $
+      \left(
+       \begin{array}{cccccccc}
+         1 & c  & 0 &1 &0 &0 &\dotsb &0
+       \end{array}
+      \right)
+      $
+    \item $
+      \left(
+       \begin{array}{cccccccc}
+         1 & 0  & c &1 &0 &0&\dotsb &0
+       \end{array}
+      \right)
+      $
+    \item $
+      \left(
+       \begin{array}{cccccccc}
+         1 & 0  & 0 &1 &1 &0&\dotsb &0
+       \end{array}
+      \right)
+      $, 1-orthogonality with row 1, so not possible.
+    \end{enumerate}
+  
+    For case (b), we have $c = -1$ by orthogonality with the first row and $c = -a$ by orthogonality with the second row. Similarly, in case (c), we have $c = -1$ and $c = -\overline{a}$. Both of these are not possible. However, case (a) produces a viable option when $c=\overline{d}=\overline{a}$, finishing case 1 and implying that the top $3\times3$ submatrix is a $UW(3,3)$ of the following form:
+
+$$
+\left(
+\begin{array}{ccc}
+ 1 & 1       &1 \\
+ 1 & a       &\overline{a} \\
+ 1 & \overline{a} &a       
+\end{array}
+\right)
+$$
+
+Note that if $a=e^{-\frac{2\pi i}{3}}$, then swap rows 2 and 3, so we assume $a=e^{{2\pi i}/{3}}$.
+
+\end{myind}
+
+    For case 2, $a=-1$ and we have six subcases for the third row:
+
+\begin{myind}{1cm}
+     \begin{enumerate}[(a)]
+     \item $
+      \left(
+       \begin{array}{cccccccc}
+         1 & b  & c & 0 &0&0 &\dotsb &0
+       \end{array}
+      \right)
+      $, with $-1 \prec b$.
+     \item $
+      \left(
+       \begin{array}{cccccccc}
+         1 & b  & 0 &c &0&0 &\dotsb &0
+       \end{array}
+      \right)
+      $
+    \item $
+      \left(
+       \begin{array}{cccccccc}
+         1 & b  & 0 &0 &1 &0 &\dotsb &0
+       \end{array}
+      \right)
+      $
+    \item $
+      \left(
+       \begin{array}{cccccccc}
+         1 & 0  & b &c &0 &0&\dotsb &0
+       \end{array}
+      \right)
+      $
+    \item $
+      \left(
+       \begin{array}{cccccccc}
+         1 & 0  & b &0 &1 &0&\dotsb &0
+       \end{array}
+      \right)
+      $, 1-orthogonality with row 2, so not possible.
+     \item $
+      \left(
+       \begin{array}{cccccccc}
+         1 & 0  & 0 &b &1 &0&\dotsb &0
+       \end{array}
+      \right)
+      $, 1-orthogonality with row 1, so not possible.
+     \item $
+      \left(
+       \begin{array}{ccccccccc}
+         1 & 0  & 0 &0 &1 &1 & 0&\dotsb &0
+       \end{array}
+      \right)
+      $, 1-orthogonality with row 1, so not possible.
+
+    \end{enumerate}
+
+    In subcase (a), $b=1$ by orthogonality with row 2 and $b\in\BR$ by orthogonality with row 1. In case (b), $b=-1$ by orthogonality with row 1 and $-b \in \BR$ by orthogonality with row 2. In case (c), $b=-1$ by orthogonality with row 1, which implies row 2 is not orthogonal with row 3. In case (d), we have a valid configuration by setting $b=c=-1$. We now construct the next row, which gives four more subcases:
+
+\end{myind}
+\begin{myind}{1.5cm}
+      \begin{enumerate}[(i)]
+     \item $
+      \left(
+       \begin{array}{cccccccc}
+         0 & 1  & d &f &0&0 &\dotsb &0
+       \end{array}
+      \right)
+      $
+    \item $
+      \left(
+       \begin{array}{cccccccc}
+         0 & 1  & d &0 &1 &0 &\dotsb &0
+       \end{array}
+      \right)
+      $, 1-orthogonality with row 3, so not possible.
+    \item $
+      \left(
+       \begin{array}{cccccccc}
+         0 & 1  & 0 &d &1 &0&\dotsb &0
+       \end{array}
+      \right)
+      $, 1-orthogonality with row 3, so not possible.
+    \item $
+      \left(
+       \begin{array}{ccccccccc}
+         0 & 1  & 0 &0 &1 &1 & 0&\dotsb &0
+       \end{array}
+      \right)
+      $, 1-orthogonality with row 3, so not possible.\end{enumerate}
+
+    In case (i), we have a valid row if $d=-f=-1$, finishing all of the cases above, and giving a $UW(4,3)$ in the upper left $4\times4$ submatrix of the form:
+\end{myind}
+$$
+\left(
+\begin{array}{cccc}
+ 1 & 1 &1 &0 \\
+ 1 & - &0 &1 \\
+ 1 & 0 &- &- \\
+ 0 & 1 &- &1
+\end{array}
+\right)
+$$
+\end{proof}
+
+\end{lemma}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section[Standardized \texorpdfstring{$UW(n,4)$}{UW(n,4)}]{Standardized \texorpdfstring{$UW(n,4)$}{UW(n,4)}}
+\sectionmark{Standardized $UW(n,4)$}
+\label{app:uw-n4}
+
+(This is a proof of Lemma~\ref{lem:w4-upper}.)
+
+\begin{lemma}\label{lem-proof:w4-upper}
+ 
+All $UW(n,4)$ are equivalent to a $UW(n,4)$ with diagonal blocks consisting of the following matrices: $W_5$, $W_6$, $W_7$, $W_8$ and $E_{2m}(x)$ where $2 \leq m \leq \frac{n}{2}$ and $x$ is any unimodular number.
+
+$$
+W_5=\left(
+\begin{array}{rrrrr}
+ 1 & 1 &1 &1 &0 \\
+ 1 &  \omega &\overline{\omega} &0 &1\\
+ 1 & \overline{\omega} &0 &\omega &\overline{\omega} \\
+ 1 & 0 &\omega &\overline{\omega} & \omega \\
+ 0 & 1 & \overline{\omega} &\omega &\omega 
+\end{array}
+\right),\quad
+W_6=\left(
+\begin{array}{rrrrrr}
+ 1 & 1 &1 &1 &0 &0\\
+ 1 & \omega &\overline{\omega} &0 &1 &0\\
+ 1 & \overline{\omega} &\omega &0 &0 &1\\
+ 1 & 0 & 0 & - & - & - \\
+ 0 & 1 & 0 & - & -\overline{\omega} &-\omega \\
+ 0 & 0 & 1 & - & -\omega &-\overline{\omega}
+\end{array}
+\right)
+\text{ for } \omega = e^{\frac{2\pi i}{3}},
+$$
+
+ $$W_7=\left(\begin{array}{c}
+\Zp\Zp\Zp\Zp\Zz\Zz\Zz\\
+\Zp\Zm\Zz\Zz\Zp\Zp\Zz\\
+\Zp\Zz\Zm\Zz\Zm\Zz\Zp\\
+\Zp\Zz\Zz\Zm\Zz\Zm\Zm\\
+\Zz\Zp\Zm\Zz\Zz\Zp\Zm\\
+\Zz\Zp\Zz\Zm\Zp\Zz\Zp\\
+\Zz\Zz\Zp\Zm\Zm\Zp\Zz
+\end{array}\right), \quad
+W_8=\left(\begin{array}{c}
+\Zp\Zp\Zp\Zp\Zz\Zz\Zz\Zz\\
+\Zp\Zm\Zz\Zz\Zp\Zp\Zz\Zz\\
+\Zp\Zz\Zm\Zz\Zm\Zz\Zp\Zz\\
+\Zp\Zz\Zz\Zm\Zz\Zm\Zm\Zz\\
+\Zz\Zp\Zm\Zz\Zp\Zz\Zz\Zp\\
+\Zz\Zp\Zz\Zm\Zz\Zp\Zz\Zm\\
+\Zz\Zz\Zp\Zm\Zz\Zz\Zp\Zp\\
+\Zz\Zz\Zz\Zz\Zp\Zm\Zp\Zm
+\end{array}\right),$$
+
+
+$$E_{2m}(x) = \left(\begin{array}{rrrrrrrrrrrrrrr} 
+1&1&1&1\\1&1&-&-\\1&-&0&0&1&1\\1&-&0&0&-&-\\~&~&1&-&0&0&1&1\\~&~&1&-&0&0&-&-\\~&~&~&~&1&-&0&0\\~&~&~&~&1&-&0&0 \\ ~&~&~&~&~&~&~&~&\ddots \\~&~&~&~&~&~&~&~&~&0&0&1&1 \\ ~&~&~&~&~&~&~&~&~&0&0&-&- \\ ~&~&~&~&~&~&~&~&~&1&-&0&0&1&1 \\ ~&~&~&~&~&~&~&~&~&1&-&0&0&-&- \\~&~&~&~&~&~&~&~&~&~&~&1&-&x&-x \\ ~&~&~&~&~&~&~&~&~&~&~&1&-&-x&x \end{array}\right),$$
+
+where $x$ is any unimodular number.
+
+\begin{proof}
+ To classify all unit weighing matrices of weight four, we apply a brute force depth first search on the rows of our weighing matrices. At each step, we will provide an $m \times n$ matrix which will give $m$ mutually orthogonal rows consisting solely of four unimodular numbers per row (and zeroes otherwise). For convenience, we will only show the columns of the vectors that contain at least one nonzero entry. For example,
+   $$\left(\begin{array}{cccccc}
+     1 & 1 & 1 & 1 & 0 & 0 \\
+     1 & - & 0 & 0 & 1 & 1
+    \end{array}\right)$$
+  represents two rows of a unit weighing matrix of order $n$ for some $n \geq 6$.
+
+ We begin our case analysis by starting with four sequential ones:
+ $$\left(\begin{array}{cccc}
+     1 & 1 & 1 & 1
+    \end{array}\right)$$
+
+ For the second row, we place a 1 in the first column and then only be concerned with the how many nonzero entries there are in the next three columns. Obviously, if there are no nonzero entries, then the first two rows cannot be orthogonal. Thus, we have three cases.
+
+ {\bf Case 1:} Four nonzero entries in the first four columns. \\
+  By four orthogonality, we know that one of those entries is $-1$. We permute the columns to place that negative in the second column and make the other columns negations of one another.
+
+ $$\left(\begin{array}{cccc}
+     1 & 1 & 1 & 1 \\
+     1 & - & x & -x
+    \end{array}\right)$$
+
+  For the third row, we will list all candidates that are orthogonal with the first row. These rows can easily be listed by $m$-orthogonality (see Table~\ref{table:cw_w_4_1}). Note that we swap the third and fourth columns and relabel $x$ by $-x$ and arrive at a similar weighing matrix, so those duplicates will be left out of Table~\ref{table:cw_w_4_1}. In each case, $a$ is a primitive third root of unity and $b \in \T$. We use $\mu_3$ to denote the set of third roots of unity.
+  
+  \begin{table}[H]
+\caption{Case analysis part 1 for Lemma~\ref*{lem:w4-upper}}
+\centering
+\begin{tabular}{@{}ccccc@{}}
+\hline
+\toprule
+\multicolumn{1}{@{}c@{}}{Row} & & \multicolumn{1}{@{}c@{}}{Inner product with row two implies} && Subcase\\
+\cmidrule{1-1} \cmidrule{3-3} \cmidrule{5-5}
+\vecseven{1}{-}{b}{-b}{0}{0}{0} & & $b = -x = -1$ && 1A\\
+\vecseven{1}{b}{-}{-b}{0}{0}{0} & & $x = 1$ && 1B \\
+\vecseven{1}{a}{\bar{a}}{0}{1}{0}{0} & & Contradiction since $-a \not\in \mu_3$ \\
+\vecseven{1}{0}{a}{\bar{a}}{1}{0}{0} & & Contradiction since $a\cdot (-\bar{a}) = -1 \not\in \mu_3$ \\
+\vecseven{1}{-}{0}{0}{1}{1}{0} & & Contradiction since $2 \neq 0$ \\
+\vecseven{1}{0}{-}{0}{1}{1}{0} & & $x = 1$ && 1C\\
+\bottomrule
+ \end{tabular}
+\label{table:cw_w_4_1}\end{table}
+
+So we are left with three subcases.
+
+\emph{Case 1A:}\\
+In the first subcase, we have a $3 \times 4$ matrix to which we append one more row. Since columns of a weighing matrix must also be orthogonal, we can fully fill in the final row of the matrix uniquely.
+
+ $$\left(\begin{array}{cccc}
+     1 & 1 & 1 & 1 \\
+     1 & - & 1 & - \\
+     1 & - & - & 1 \\
+     1 & 1 & - & -
+    \end{array}\right)$$
+
+\emph{Case 1B:}\\
+We use a similar process as Case 1A in this subcase.
+
+ $$\left(\begin{array}{cccc}
+     1 & 1 & 1 & 1 \\
+     1 & - & 1 & - \\
+     1 & b & - & -b \\
+     1 & -b & - & b
+    \end{array}\right)$$
+
+By rearranging the second matrix above, we arrive at
+$$E_4(x) =  \left(\begin{array}{cccc}
+     1 & 1 & 1 & 1 \\
+     1 & 1 & - & - \\
+     1 & - & x & x \\
+     1 & - & x & -x
+    \end{array}\right).$$
+
+\emph{Case 1C:}\\
+We have the following submatrix:
+ $$\left(\begin{array}{cccccc}
+     1 & 1 & 1 & 1 & 0 & 0\\
+     1 & - & 1 & - & 0 & 0\\
+     1 & 0 & - & 0 & 1 & 1
+    \end{array}\right)$$
+\noindent which can be extended in the same was as above:
+
+ $$\left(\begin{array}{cccccc}
+     1 & 1 & 1 & 1 & 0 & 0\\
+     1 & - & 1 & - & 0 & 0\\
+     1 & 0 & - & 0 & 1 & 1 \\
+     1 & 0 & - & 0 & - & -
+    \end{array}\right)$$
+
+We will swap the second and third column since the third column is now filled. When we insert the next two rows, we will have a one in the third column. This will force the entries in the fourth column.
+
+ $$E_6(x)=\left(\begin{array}{cccccc}
+     1 & 1 & 1 & 1 & 0 & 0 \\
+     1 & 1 & - & - & 0 & 0 \\
+     1 & - & 0 & 0 & 1 & 1 \\
+     1 & - & 0 & 0 & - & - \\
+     0 & 0 & 1 & - & x & -x \\
+     0 & 0 & 1 & - & -x & x
+    \end{array}\right)$$
+
+For the block in the bottom right corner, we have two options: we can either have $x = 0$ or a unimodular number. If we take the latter choice, then we have completed our weighing matrix. If we take the second choice, then we are in a similar situation as before.
+
+ $$E_8(x)=\left(\begin{array}{cccccccc}
+     1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 \\
+     1 & 1 & - & - & 0 & 0 & 0 & 0 \\
+     1 & - & 0 & 0 & 1 & 1 & 0 & 0 \\
+     1 & - & 0 & 0 & - & - & 0 & 0 \\
+     0 & 0 & 1 & - & 0 & 0 & 1 & 1 \\
+     0 & 0 & 1 & - & 0 & 0 & - & - \\
+     0 & 0 & 0 & 0 & 1 & - & x & -x \\
+     0 & 0 & 0 & 0 & 1 & - & -x & x
+    \end{array}\right)$$
+
+ This process can be continued inductively for any value of $2m$, $m \geq 2$. The matrix that is generated will be called $E_{2m}(x)$.
+
+\vskip0.2cm
+{\bf Case 2:} Three nonzero entries in the first four columns. \\
+  By three orthogonality, we know that the two nonzero entries are distinct primitive third roots of unity. We consider all rows that can be appended to the following submatrix:
+
+ $$\left(\begin{array}{ccccc}
+     1 & 1 & 1 & 1 & 0\\
+     1 & \omega & \bar{\omega} & 0 & 1
+    \end{array}\right)$$
+
+ Note that we ignore any case where there are two rows with the exact same zero placement, since it would have been taken care of in the first case. All cases listed in Table~\ref{table:cw_w_4_2} are from orthogonality with the first row.
+
+ \begin{table}[H]
+\caption{Case analysis part 2 for Lemma~\ref*{lem:w4-upper}}
+\centering
+\begin{tabular}{@{}ccccc@{}}
+\hline
+\toprule
+\multicolumn{1}{@{}c@{}}{Row} & & \multicolumn{1}{@{}c@{}}{Inner product with row two implies} && Subcase\\
+\cmidrule{1-1} \cmidrule{3-3} \cmidrule{5-5}
+\vecseven{1}{a}{\bar{a}}{0}{0}{1}{0} & & $a = \bar\omega$ && 2A\\
+\vecseven{1}{a}{0}{\bar{a}}{b}{0}{0} & & $a = \bar\omega$ and $b = \omega$ && 2B\\
+\vecseven{1}{a}{0}{\bar{a}}{0}{1}{0} & & Contradiction since $ a\bar\omega \neq -1$ \\
+\vecseven{1}{-}{0}{0}{b}{1}{0} & & Contradiction since $-\bar\omega \not\in \mu_3$ \\
+\vecseven{1}{-}{0}{0}{0}{1}{1} & & Contradiction since $1-\omega \neq 0$ \\
+\vecseven{1}{0}{a}{\bar{a}}{b}{0}{0} & &  $a = \omega$ and $b = \bar\omega$ && 2C\\
+\vecseven{1}{0}{a}{\bar{a}}{0}{1}{0} & & Contradiction since $a\bar\omega \neq -1$ \\
+\vecseven{1}{0}{-}{0}{b}{1}{0} & & Contradiction since $-\omega \not\in\mu_3$ \\
+\vecseven{1}{0}{-}{0}{0}{1}{1} & & Contradiction since $-\omega \neq -1$ \\
+\vecseven{1}{0}{0}{-}{b}{1}{0} & & $b = -1$ && 2D\\
+\vecseven{1}{0}{0}{-}{0}{1}{1} & & Contradiction since $1 \neq 0$ \\
+\bottomrule
+ \end{tabular}
+\label{table:cw_w_4_2}\end{table}
+  
+ We will now work through the four subcases. In each of the subcases to follow, the submatrix on the left is the matrix which we obtained from our analysis above. We then append subsequent rows to each of these by placing a one in the left most column that is not full (i.e., does not already have four nonzeroes). In all of the subcases, placing a one into the appropriate column will make that column full. Since the column is full, we will be able to fill in each entry in the rest of the row by orthogonality with that full column.
+
+ \emph{Case 2A:}
+ $$\left(\begin{array}{cccccc}
+     1 & 1 & 1 & 1 & 0 & 0 \\
+     1 & \omega & \bar\omega & 0 & 1 & 0\\
+     1 & \bar\omega & \omega & 0 & 0 & 1 \\
+    \end{array}\right)
+ \longrightarrow
+ W_6 = \left(\begin{array}{cccccc}
+     1 & 1 & 1 & 1 & 0 & 0\\
+     1 & \omega & \bar\omega & 0 & 1 & 0\\
+     1 & \bar\omega & \omega & 0 & 0 & 1 \\
+     1 & 0 & 0 & - & - & -\\
+     0 & 1 & 0 & - & -\bar\omega & -\omega\\
+     0 & 0 & 1 & - & -\omega & -\bar\omega
+    \end{array}\right)$$
+
+\emph{Case 2B:}
+ $$\left(\begin{array}{cccccc}
+     1 & 1 & 1 & 1 & 0 \\
+     1 & \omega & \bar\omega & 0 & 1 \\
+     1 & \bar\omega & 0 & \omega & \bar\omega \\
+    \end{array}\right)
+ \longrightarrow
+ W_5=\left(\begin{array}{cccccc}
+     1 & 1 & 1 & 1 & 0 \\
+     1 & \omega & \bar\omega & 0 & 1 \\
+     1 & \bar\omega & 0 & \omega & \bar\omega \\
+     1 & 0 & \omega & \bar\omega & \omega \\
+     0 & 1 & \bar\omega & \omega & \omega
+    \end{array}\right)$$
+
+\emph{Case 2C:}
+ $$\left(\begin{array}{cccccc}
+     1 & 1 & 1 & 1 & 0 \\
+     1 & \omega & \bar\omega & 0 & 1 \\
+     1 & 0 & \omega & \bar\omega & \omega \\
+  \end{array}\right)
+  \longrightarrow
+  \left(\begin{array}{cccccc}
+     1 & 1 & 1 & 1 & 0 \\
+     1 & \omega & \bar\omega & 0 & 1 \\
+     1 & 0 & \omega & \bar\omega & \omega \\
+     1 & \bar\omega & 0 & \omega & \bar\omega \\
+     0 & 1 & \bar\omega & \omega & \omega \\
+  \end{array}\right)$$
+
+By swapping the third and fourth row, we get $W_5$.
+
+ \emph{Case 2D:}
+ $$\left(\begin{array}{cccccc}
+     1 & 1 & 1 & 1 & 0 & 0 \\
+     1 & \omega & \bar\omega & 0 & 1 & 0\\
+     1 & 0 & 0 & - & - & 1 \\
+    \end{array}\right)
+ \longrightarrow
+   \left(\begin{array}{cccccc}
+     1 & 1 & 1 & 1 & 0 & 0\\
+     1 & \omega & \bar\omega & 0 & 1 & 0\\
+     1 & 0 & 0 & - & - & 1 \\
+     1 & \bar\omega & \omega & 0 & 0 & -\\
+     0 & 1 & 0 & - & -\bar\omega & \omega\\
+     0 & 0 & 1 & - & -\omega & \bar\omega
+    \end{array}\right)$$
+
+By swapping rows 3 and 4, followed by negating the sixth column, we arrive back at $W_6$.
+
+This takes care of all subcases of Case 2.
+
+\vskip0.2cm
+{\bf Case 3:} Two nonzero entry in the first four columns of the second row. \\
+  By two orthogonality, we know that this entry must be $-1$. We will look at all rows that may be appended to the following submatrix:
+
+ $$\left(\begin{array}{cccccc}
+     1 & 1 & 1 & 1 & 0 & 0\\
+     1 & - & 0 & 0 & 1 & 1
+    \end{array}\right)$$
+
+ Similar to before, we will only look at rows that are orthogonal with the first row, as well as intersect the first two rows in exactly two places (note that 4-intersection was taken care of in Case 1, while 3-intersection was taken care of in Case 2 and 1-intersection implies $1$-orthogonality). Moreover, we may swap either columns 3 and 4 or columns 5 and 6 freely. These rows can be found in Table~\ref{table:cw_w_4_3}.
+
+ \begin{table}[H]
+\caption{Case analysis part 3 for Lemma~\ref*{lem:w4-upper}}
+\centering
+\begin{tabular}{@{}ccccc@{}}
+\hline
+\toprule
+\multicolumn{1}{@{}c@{}}{Row} & & \multicolumn{1}{@{}c@{}}{Inner product with row two implies} && Subcase\\
+\cmidrule{1-1} \cmidrule{3-3} \cmidrule{5-5}
+\veceight{1}{-}{0}{0}{0}{0}{1}{1} & & Contradiction since $2 \neq 0$ \\
+\veceight{1}{0}{-}{0}{b}{0}{1}{0} & & $b = -1$ && 3A\\
+\bottomrule
+ \end{tabular}
+\label{table:cw_w_4_3}\end{table}
+
+\emph{Case 3A:}
+
+ $$\left(\begin{array}{ccccccc}
+     1 & 1 & 1 & 1 & 0 & 0 & 0\\
+     1 & - & 0 & 0 & 1 & 1 & 0\\
+     1 & 0 & - & 0 & - & 0 & 1\\
+    \end{array}\right)$$
+
+From here, we will append one more row and fill out the next row via orthogonality with the first column.
+
+ $$\left(\begin{array}{ccccccc}
+     1 & 1 & 1 & 1 & 0 & 0 & 0\\
+     1 & - & 0 & 0 & 1 & 1 & 0\\
+     1 & 0 & - & 0 & - & 0 & 1\\
+     1 & 0 & 0 & - & 0 & - & -
+    \end{array}\right)$$
+
+ When filling in the next row, there are only a few choices. We are still looking for rows that intersect with each of the first few rows in at most 2 locations (possibly zero) and the first nonzero should be in the second column. A quick search can tell you that there are only four rows that satisfy these conditions (in terms of zero placement). These can be found in Table~\ref{table:cw_w_4_4}.
+
+\begin{table}[H]
+\caption{Case analysis part 4 for Lemma~\ref*{lem:w4-upper}}
+\centering
+\begin{tabular}{@{}ccccccc@{}}
+\hline
+\toprule
+\multicolumn{1}{@{}c@{}}{Row} & & \multicolumn{3}{@{}c@{}}{Row in the partial matrix that implies} \\
+ & & $a \in \left\{\pm 1\right\}$ & $b \in \left\{\pm 1\right\}$ & $c \in \left\{\pm 1\right\}$ && Subcase\\ 
+\cmidrule{1-1} \cmidrule{3-5} \cmidrule{7-7}
+\veceight{0}{1}{a}{0}{0}{b}{c}{0} & & 1 & 2 & 3   && 3AA\\
+\veceight{0}{1}{a}{0}{b}{0}{0}{c} & & 1 & 2 & N/A && 3AB\\
+\veceight{0}{1}{0}{a}{0}{b}{0}{c} & & 1 & 2 & N/A && 3AC\\
+\veceight{0}{1}{0}{a}{b}{0}{c}{0} & & 1 & 2 & 3   && 3AD\\
+\bottomrule
+ \end{tabular}
+\label{table:cw_w_4_4}\end{table}
+ 
+Note that when we append either of the second or third rows into our matrix, $c$ will be the first nonzero entry in the eighth column, so this implies that $c=1$ in both cases. We will append this row, and in a manner similar to that of Case 2, we will be able to force the rest of the entries in each matrix by orthogonality with the first few full columns.
+
+\emph{Case 3AA:} 
+ $$\left(\begin{array}{ccccccc}
+     1 & 1 & 1 & 1 & 0 & 0 & 0\\
+     1 & - & 0 & 0 & 1 & 1 & 0\\
+     1 & 0 & - & 0 & - & 0 & 1\\
+     1 & 0 & 0 & - & 0 & - & -\\
+     0 & 1 & - & 0 & 0 & 1 & -
+    \end{array}\right)
+   \longrightarrow
+    W_7=\left(\begin{array}{ccccccc}
+     1 & 1 & 1 & 1 & 0 & 0 & 0\\
+     1 & - & 0 & 0 & 1 & 1 & 0\\
+     1 & 0 & - & 0 & - & 0 & 1\\
+     1 & 0 & 0 & - & 0 & - & -\\
+     0 & 1 & - & 0 & 0 & 1 & -\\
+     0 & 1 & 0 & - & 1 & 0 & 1\\
+     0 & 0 & 1 & - & - & 1 & 0
+    \end{array}\right)$$
+
+\emph{Case 3AB:}
+ $$\left(\begin{array}{cccccccc}
+     1 & 1 & 1 & 1 & 0 & 0 & 0 & 0\\
+     1 & - & 0 & 0 & 1 & 1 & 0 & 0\\
+     1 & 0 & - & 0 & - & 0 & 1 & 0\\
+     1 & 0 & 0 & - & 0 & - & - & 0\\
+     0 & 1 & - & 0 & 1 & 0 & 0 & 1
+    \end{array}\right)
+   \longrightarrow
+    W_8 = \left(\begin{array}{cccccccc}
+     1 & 1 & 1 & 1 & 0 & 0 & 0 & 0\\
+     1 & - & 0 & 0 & 1 & 1 & 0 & 0\\
+     1 & 0 & - & 0 & - & 0 & 1 & 0\\
+     1 & 0 & 0 & - & 0 & - & - & 0\\
+     0 & 1 & - & 0 & 1 & 0 & 0 & 1\\
+     0 & 1 & 0 & - & 0 & 1 & 0 & -\\
+     0 & 0 & 1 & - & 0 & 0 & 1 & 1\\
+     0 & 0 & 0 & 0 & 1 & - & 1 & -
+    \end{array}\right)$$
+
+\emph{Case 3AC:}
+ $$\left(\begin{array}{cccccccc}
+     1 & 1 & 1 & 1 & 0 & 0 & 0 & 0\\
+     1 & - & 0 & 0 & 1 & 1 & 0 & 0\\
+     1 & 0 & - & 0 & - & 0 & 1 & 0\\
+     1 & 0 & 0 & - & 0 & - & - & 0\\
+     0 & 1 & 0 & - & 0 & 1 & 0 & 1
+    \end{array}\right)
+   \longrightarrow
+    \left(\begin{array}{cccccccc}
+     1 & 1 & 1 & 1 & 0 & 0 & 0 & 0\\
+     1 & - & 0 & 0 & 1 & 1 & 0 & 0\\
+     1 & 0 & - & 0 & - & 0 & 1 & 0\\
+     1 & 0 & 0 & - & 0 & - & - & 0\\
+     0 & 1 & 0 & - & 0 & 1 & 0 & 1\\
+     0 & 1 & - & 0 & 1 & 0 & 0 & -\\
+     0 & 0 & 1 & - & 0 & 1 & 1 & -\\
+     0 & 0 & 0 & 0 & 1 & - & 1 & 1
+    \end{array}\right)$$
+
+If we swap rows 5 and 6, and negate the eighth row, we get $W_8$.
+
+\emph{Case 3AD:} 
+ $$\left(\begin{array}{ccccccc}
+     1 & 1 & 1 & 1 & 0 & 0 & 0\\
+     1 & - & 0 & 0 & 1 & 1 & 0\\
+     1 & 0 & - & 0 & - & 0 & 1\\
+     1 & 0 & 0 & - & 0 & - & -\\
+     0 & 1 & 0 & - & 1 & 0 & 1
+    \end{array}\right)
+   \longrightarrow
+    \left(\begin{array}{ccccccc}
+     1 & 1 & 1 & 1 & 0 & 0 & 0\\
+     1 & - & 0 & 0 & 1 & 1 & 0\\
+     1 & 0 & - & 0 & - & 0 & 1\\
+     1 & 0 & 0 & - & 0 & - & -\\
+     0 & 1 & 0 & - & 1 & 0 & 1\\
+     0 & 1 & - & 0 & 0 & 1 & -\\
+     0 & 0 & 1 & - & - & 1 & 0
+    \end{array}\right)$$
+
+By swapping rows 5 and 6, we arrive at $W_7$.
+
+\end{proof}
+
+\end{lemma}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section[Standardized \texorpdfstring{$UW(6,5)$}{UW(6,5)}]{Standardized \texorpdfstring{$UW(6,5)$}{UW(6,5)}}
+\sectionmark{Standardized $UW(6,5)$}
+\label{app:uw65}
+
+This section is, by far, the most tedious portion of the thesis. The case analysis that follows will lead to a full classification of $UW(6,5)$. Enough detail will be provided so that, with a pen and paper, the reader can follow along verifying each step.
+
+
+\newcommand{\ipr}[2]{$\langle r_{#1} , r_{#2} \rangle$}
+\newcommand{\ipc}[2]{$\langle c_{#1} , c_{#2} \rangle$}
+\newcommand{\iprz}[2]{$\langle r_{#1} , r_{#2} \rangle = 0$}
+\newcommand{\ipcz}[2]{$\langle c_{#1} , c_{#2} \rangle = 0$}
+
+(This is the proof of Lemma~\ref{lem:uw65-upper}.)
+
+\begin{lemma}\label{lem:uw65-cases}
+ There are at most 7 inequivalent $UW(6,5)$.
+
+ \begin{proof}
+  By Lemma~\ref{lem:uw65-norm}, every $UW(6,5)$ is equivalent to
+$$\left(\begin{array}{rrrrrr}
+ 1 &  1 & 1 & 1 & 1 & 0 \\
+ 1 &  - & x & -x & 0 & 1 \\
+ 1 &  y & a & 0 & b & c \\
+ 1 &  -y & 0 & d & f & g \\
+ 1 &  0 & h & j & k & l \\
+ 0 &  1 & m & n & p & q
+\end{array}\right)$$
+
+We will systematically place constraints on the variables given based on the fact that the rows and columns on the matrix must be orthogonal. Lemma~\ref{lem:uw65-norm} has given the structure for the first two rows and columns. The cases will be processed in a depth-first manner by first placing constraints on the third row, simplifying the expressions, then repeating the same process on the fourth row. When we append the fifth row, we will use the orthogonality of the first column with the $i^{th}$ column to give a simplified possibility for each entry ($h$,$j$,$k$ and $l$). Similarly, when adding the final row, we will use orthogonality of the second column and the $i^{th}$ column to determine $m$,$n$,$p$ and $q$.
+
+When appending the third and fourth row, there will be three cases. We know that the first row must be orthogonal to these rows, so we know that by 4-orthogonality that one of the entries in the first five columns must be a $-1$ and the other two nonzero entries must be the negation of one another.
+
+To make the proof easier to follow, the variables $a$,$b$,$c$,$d$,$f$,$g$,$h$,$j$,$k$,$l$,$m$,$n$,$p$ and $q$ will only be used as placeholders. Once one of these variables has a relationship to another variable, a different variable will be introduced into the matrix. Only $x$,$y$ and $z$ will be needed to complete the analysis. You may assume that a variable name given in one case is the same as in all children cases (but not sibling cases). A horizontal line will be drawn to signify the current depth 
+of the analysis. $r_i$ will denote the $i^{th}$ row of the current matrix.
+
+{\bf Case 1:} $y = -1$. This immediately implies that $a = -b$ (we will relabel $a$ to be $z$).
+
+\begin{equation} \label{mat:1-1}
+\left(\begin{array}{rrrrrr}
+ 1 &  1 & 1 & 1 & 1 & 0 \\
+ 1 &  - & x & -x & 0 & 1 \\
+ 1 &  - & z & 0 & -z & c \\ \hline
+ 1 &  1 & 0 & d & f & g \\
+ 1 &  0 & h & j & k & l \\
+ 0 &  1 & m & n & p & q
+\end{array}\right)
+\end{equation}
+
+Since \iprz23, we have that $z=-x$ and $c=-1$.
+
+\begin{equation} \label{mat:1-2}
+\left(\begin{array}{rrrrrr}
+ 1 &  1 & 1 & 1 & 1 & 0 \\
+ 1 &  - & x & -x & 0 & 1 \\
+ 1 &  - & -x & 0 & x & - \\ \hline
+ 1 &  1 & 0 & d & f & g \\
+ 1 &  0 & h & j & k & l \\
+ 0 &  1 & m & n & p & q
+\end{array}\right)
+\end{equation}
+
+At this point, since \iprz14, we have that $d = f = -1$.
+
+\begin{equation} \label{mat:1-3}
+\left(\begin{array}{rrrrrr}
+ 1 &  1 & 1 & 1 & 1 & 0 \\
+ 1 &  - & x & -x & 0 & 1 \\
+ 1 &  - & -x & 0 & x & - \\
+ 1 &  1 & 0 & - & - & g \\ \hline
+ 1 &  0 & h & j & k & l \\
+ 0 &  1 & m & n & p & q
+\end{array}\right)
+\end{equation}
+
+Next, \iprz34 implies that $g = -\overline{x}$.
+
+\begin{equation}  \label{mat:1-4}
+\left(\begin{array}{rrrrrr}
+ 1 &  1 & 1 & 1 & 1 & 0 \\
+ 1 &  - & x & -x & 0 & 1 \\
+ 1 &  - & -x & 0 & x & - \\
+ 1 &  1 & 0 & - & - & -\overline{x} \\ \hline
+ 1 &  0 & h & j & k & l \\
+ 0 &  1 & m & n & p & q
+\end{array}\right)
+\end{equation}
+
+We will fill in the fifth row and sixth row uniquely from orthogonality with columns 1 and 2 and temporarily name this matrix $T_1(x)$.
+
+\begin{equation}  \label{mat:T_1}
+T_1(x) := \left(\begin{array}{rrrrrr}
+         1 & 1 & 1 &  1 &  1 & 0 \\
+         1 & - & x & -x &  0 & 1 \\
+         1 & - & -x &  0 & x & - \\
+         1 & 1 &  0 & -  & - & -\overline{x} \\
+         1 & 0 & -  & x  & -x  & \overline{x} \\
+         0 & 1 & -  & -x  & x  & \overline{x}
+        \end{array}\right)
+\end{equation}
+
+{\bf Case 2:} $a = -1$. This immediately implies that $b = -y$.
+
+\begin{equation}  \label{mat:2-1}
+\left(\begin{array}{rrrrrr}
+ 1 &  1 & 1 & 1 & 1 & 0 \\
+ 1 &  - & x & -x & 0 & 1 \\
+ 1 &  y & - & 0 & -y & c \\ \hline
+ 1 &  -y & 0 & d & f & g \\
+ 1 &  0 & h & j & k & l \\
+ 0 &  1 & m & n & p & q
+\end{array}\right)
+\end{equation}
+
+We must now branch into three distinct subcases. The three cases represent all of the possibilities for where the negative appears in the fourth row.
+
+{\bf Case 2a:} $y = 1$. This implies that $d = -f$ (and we will relabel $d$ to $z$).
+
+\begin{equation} \label{mat:2a-1}
+\left(\begin{array}{rrrrrr}
+ 1 &  1 & 1 & 1 & 1 & 0 \\
+ 1 &  - & x & -x & 0 & 1 \\
+ 1 &  1 & - & 0 & - & c \\
+ 1 &  - & 0 & z & -z & g \\ \hline
+ 1 &  0 & h & j & k & l \\
+ 0 &  1 & m & n & p & q
+\end{array}\right)
+\end{equation}
+
+At this point, we swap rows 3 and 4 followed by columns 3 and 4 and after appropriate relabelling, arrive at the matrix given in (\ref{mat:1-4}) so we arrive at $T_1(x)$ from this branch.
+
+{\bf Case 2b:} $d = -1$. This implies that $f = y$.
+
+\begin{equation}  \label{mat:2b-1}
+\left(\begin{array}{rrrrrr}
+ 1 &  1 & 1 & 1 & 1 & 0 \\
+ 1 &  - & x & -x & 0 & 1 \\
+ 1 &  y & - & 0 & -y & c \\
+ 1 &  -y & 0 & - & y & g \\ \hline
+ 1 &  0 & h & j & k & l \\
+ 0 &  1 & m & n & p & q
+\end{array}\right)
+\end{equation}
+
+Since \iprz23 and \iprz24, then \ipr23 - \ipr24 = 0. We deduce that $y = -\overline{x}$. From here, \iprz23 implies that $c = -1$ and then \iprz34 gives $c=g$.
+
+\begin{equation}  \label{mat:2b-2}
+\left(\begin{array}{rrrrrr}
+ 1 &  1 & 1 &  1 &  1 & 0 \\
+ 1 &  - & x & -x &  0 & 1 \\
+ 1 &  -\overline{x} & - &  0 & \overline{x} & - \\
+ 1 & \overline{x} & 0 &  - &  -\overline{x} & - \\ \hline
+ 1 &  0 & h & j & k & l \\
+ 0 &  1 & m & n & p & q
+\end{array}\right)
+\end{equation}
+
+We fill in the final two rows to arrive at the following matrix which we label as $T_3(x)$.
+
+\begin{equation} \label{mat:T_3}
+T_3(x) := \left(\begin{array}{rrrrrr}
+             1 &  1       & 1 &  1 &         1 & 0 \\
+             1 &  -       & x & -x &         0 & 1 \\
+             1 & -\overline{x} & - &  0 &   \overline{x} & - \\
+             1 & \overline{x}  & 0 &  - &  -\overline{x} & - \\
+             1 &        0 & -x & x &         - & 1 \\
+             0 &        1 &  - & - &         1 & 1
+            \end{array}\right)
+\end{equation}
+
+{\bf Case 2c:} $f = -1$, which implies that $d = y$.
+
+\begin{equation}  \label{mat:2c-1}
+\left(\begin{array}{rrrrrr}
+ 1 &  1 & 1 & 1 & 1 & 0 \\
+ 1 &  - & x & -x & 0 & 1 \\
+ 1 &  y & - & 0 & -y & c \\
+ 1 &  -y & 0 & y & - & g \\ \hline
+ 1 &  0 & h & j & k & l \\
+ 0 &  1 & m & n & p & q
+\end{array}\right)
+\end{equation}
+
+We will simplify $c$ and $g$ by noting that \iprz34 gives $g = -\overline{y}c$. We will relabel $c$ to be $z$.
+
+\begin{equation}  \label{mat:2c-2}
+\left(\begin{array}{rrrrrr}
+ 1 &  1 & 1 & 1 & 1 & 0 \\
+ 1 &  - & x & -x & 0 & 1 \\
+ 1 &  y & - & 0 & -y & z \\
+ 1 &  -y & 0 & y & - & -\overline{y}z \\ \hline
+ 1 &  0 & h & j & k & l \\
+ 0 &  1 & m & n & p & q
+\end{array}\right)
+\end{equation}
+
+We now append the fifth row to our search, which only resolves the value of $h$ and $k$,
+
+\begin{equation}  \label{mat:2c-3}
+\left(\begin{array}{rrrrrr}
+ 1 &  1 & 1 & 1 & 1 & 0 \\
+ 1 &  - & x & -x & 0 & 1 \\
+ 1 &  y & - & 0 & -y & z \\
+ 1 &  -y & 0 & y & - & -\overline{y}z \\
+ 1 &  0 & -x & j & y & l \\ \hline
+ 0 &  1 & m & n & p & q
+\end{array}\right)
+\end{equation}
+
+Some simplification is possibly from \iprz35 giving $l = -xz$ and then \iprz25 gives $j = x^2z$.
+
+\begin{equation}  \label{mat:2c-4}
+\left(\begin{array}{rrrrrr}
+ 1 &  1 & 1 & 1 & 1 & 0 \\
+ 1 &  - & x & -x & 0 & 1 \\
+ 1 &  y & - & 0 & -y & z \\
+ 1 &  -y & 0 & y & - & -\overline{y}z \\
+ 1 &  0 & -x & x^2z & y & -xz \\ \hline
+ 0 &  1 & m & n & p & q
+\end{array}\right)
+\end{equation}
+
+Append the final row to give
+
+\begin{equation}  \label{mat:2c-5}
+\left(\begin{array}{rrrrrr}
+ 1 &  1 & 1 & 1 & 1 & 0 \\
+ 1 &  - & x & -x & 0 & 1 \\
+ 1 &  y & - & 0 & -y & z \\
+ 1 &  -y & 0 & y & - & -\overline{y}z \\
+ 1 &  0 & -x & x^2z & y & -xz \\
+ 0 &  1 & m & -x & -\overline{y} & q \\ \hline
+\end{array}\right)
+\end{equation}
+
+We reduce this to two variables by using \ipcz34, \ipcz36 and \ipcz46 (in that order) to give $m = \overline{z}$, $q = -\overline{xz}$ and $z = \pm\overline{x}y$, respectively.
+
+\begin{equation}  \label{mat:2c-6}
+\left(\begin{array}{rrrrrr}
+          1 &  1 & 1  &  1 &  1 & 0 \\
+          1 &  - & x  & -x &  0 & 1 \\
+          1 &  y & -  &  0 & -y & \pm \overline{x}y \\
+          1 & -y & 0  &  y &  - & \mp\overline{x} \\
+          1 &  0 & -x &  \mp xy &  y & \mp y \\
+          0 &  1 & \pm x\overline{y}  & -x & -\overline{y} & \mp \overline{y} \\ \hline
+         \end{array}\right)
+\end{equation}
+
+Using the fact that \ipr45 $= 0 =$ \ipr36, we have that $-\overline{y} + \overline{xy} = y-\overline{x}y\implies y+\overline{y} =\overline{x}(y+\overline{y})$. Thus, we have two possibilities: $\overline{x}=1$ or $y+\overline{y}=0$. We further branch into subcases (2ca will deal with the $\overline{x}=1$ and 2cb will deal with $y+\overline{y}=0$).
+
+{\bf Case 2ca:} $\overline{x} = 1 \implies x = 1$. Thus, we have the following.
+
+\begin{equation}  \label{mat:2ca-1}
+\left(\begin{array}{rrrrrr}
+                1 &  1 & 1  &  1 &  1 & 0 \\
+                1 &  - & 1  & - &  0 & 1 \\
+                1 &  y & -  &  0 & -y & \pm y \\
+                1 & -y & 0  &  y &  - & \mp1 \\
+                1 &  0 & - &  \mp y &  y & \mp y \\
+                0 &  1 & \pm \overline{y}  & - & -\overline{y} & \mp \overline{y} \\ \hline
+               \end{array}\right)
+\end{equation}
+
+With $x$ out of the picture, we can now see that the lower signs on the $\pm$ and $\mp$ is invalid (see, for example, \ipr15). So we arrive at a $UW(6,5)$ which we will label as $T_4(y)$.
+
+\begin{equation}  \label{mat:T_4}
+T_4(y) := \left(\begin{array}{rrrrrr}
+                1 &  1 & 1  &  1 &  1 & 0 \\
+                1 &  - & 1  & - &  0 & 1 \\
+                1 &  y & -  &  0 & -y & y \\
+                1 & -y & 0  &  y &  - & - \\
+                1 &  0 & - &  -y &  y & -y \\
+                0 &  1 & \overline{y}  & - & -\overline{y} & -\overline{y}
+               \end{array}\right)
+\end{equation}
+
+{\bf Case 2cb:} $y+\overline{y}=0 \implies y = \pm i$. As to not confuse the different $\pm$s, we will split this into two cases again, the first where $y=i$ (case 2cba) and the second where $y=-i$ (case 2cbb).
+
+{\bf Case 2cba:}
+
+\begin{equation} \label{mat:2cba-1}
+ \left(\begin{array}{rrrrrr}
+                1 &  1 & 1  &  1 &  1 & 0 \\
+                1 &  - & x  & -x &  0 & 1 \\
+                1 &  i & -  &  0 & -i & \pm i\overline{x} \\
+                1 & -i & 0  &  i &  - & \mp\overline{x} \\
+                1 &  0 & -x &  \mp ix &  i & \mp i \\
+                0 &  1 & \mp ix  & -x & i & \pm i \\ \hline
+              \end{array}\right)
+\end{equation}
+
+Since \iprz23, then $\langle r_2 , r_3 \rangle - \overline{\langle r_2 , r_3 \rangle} = 0$. Thus, we have the following
+
+\begin{equation}
+\begin{array}{rl}
+\langle r_2 , r_3 \rangle - \overline{\langle r_2 , r_3 \rangle} = 0
+&\implies 2i-(x-\overline{x})\mp i (x+\overline{x})=0 \\
+&\implies 2i-2i\Im(x)\mp2i\Re(x)=0\\
+&\implies \pm \Re(x) + \Im(x) = 1 \\
+&\implies \Re(x)^2+\Im(x)^2\pm2\Re(x)\Im(x)=1 \\
+&\implies \Re(x)\Im(x)=0 \\
+&\implies x \in \left\{\pm 1,\pm i\right\}
+\end{array}
+\end{equation}
+The fifth implication comes from the fact that $x$ is unimodular. When $x = -1$ or $x = -i$, then \ipr23 $\neq 0$. When $x=1$, then the lower signs of the $\pm$ does not work ($\langle r_2 , r_3 \rangle \neq 0$), and using the upper sign gives $T_4(i)$. When we plug in $x=i$, the upper sign does not work ($\langle r_2 , r_3 \rangle \neq 0$), and using the lower sign gives the following matrix, which we will denote $T_6$.
+
+\begin{equation} \label{mat:t6}
+T_6 := \left(\begin{array}{rrrrrr}
+                1 &  1 & 1  &  1 &  1 & 0 \\
+                1 &  - & i  & -i &  0 & 1 \\
+                1 &  i & -  &  0 & -i & - \\
+                1 & -i & 0  &  i &  - & -i \\
+                1 &  0 & -i &  - &  i & i \\
+                0 &  1 & -  & -i & i & -i
+              \end{array}\right)
+\end{equation}
+
+{\bf Case 2cbb:}
+
+\begin{equation} \label{mat:2cbb-1}
+\left(\begin{array}{rrrrrr}
+               1 &  1 & 1  &  1 &  1 & 0 \\
+               1 &  - & x  & -x &  0 & 1 \\
+               1 &  -i & -  &  0 & i & \mp i\overline{x} \\
+               1 & i & 0  &  -i &  - & \mp\overline{x} \\
+               1 &  0 & -x &  \pm ix &  -i & \pm i \\
+               0 &  1 & \pm ix  & -x & -i & \mp i \\ \hline
+             \end{array}\right)
+\end{equation}
+
+The case analysis for this section is nearly identical to Case 2cba. We use the same pairs of rows' inner products to allow us to find the same contradictions as above. Moreover, $x \in \left\{\pm 1,\pm i\right\}$ and when $x = 1$, we get $T_4(-i)$ and when $x = -i$, we get a new matrix which we denote $T_7$ (note that $T_6^T = T_7$).
+
+\begin{equation} \label{mat:t7}
+T_7 := \left(\begin{array}{rrrrrr}
+               1 &  1 & 1  &  1 &  1 & 0 \\
+               1 &  - & -i & i &  0 & 1 \\
+               1 &  -i & -  &  0 & i & - \\
+               1 & i & 0  &  -i &  - & i \\
+               1 &  0 & i &  - &  -i & -i \\
+               0 &  1 & -  & i & -i & i
+             \end{array}\right)
+\end{equation}
+
+
+{\bf Case 3:} $b = -1$. This implies that $a = -y$.
+
+\begin{equation} \label{mat:3-1}
+\left(\begin{array}{rrrrrr}
+ 1 &  1 & 1 & 1 & 1 & 0 \\
+ 1 &  - & x & -x & 0 & 1 \\ 
+ 1 &  y & -y & 0 & - & c \\ \hline
+ 1 &  -y & 0 & d & f & g \\
+ 1 &  0 & h & j & k & l \\
+ 0 &  1 & m & n & p & q
+\end{array}\right)
+\end{equation}
+
+In the next row, we have three possibilities for the location of the negative.
+
+{\bf Case 3a:} $y = 1$, which implies that $d = -f$. We then relabel $d$ to be $z$.
+
+\begin{equation} \label{mat:3a-2}
+\left(\begin{array}{rrrrrr}
+ 1 &  1 & 1 & 1 & 1 & 0 \\
+ 1 &  - & x & -x & 0 & 1 \\ 
+ 1 &  1 & - & 0 & - & c \\
+ 1 &  - & 0 & z & -z & g \\ \hline
+ 1 &  0 & h & j & k & l \\
+ 0 &  1 & m & n & p & q
+\end{array}\right)
+\end{equation}
+
+The orthogonality of rows 2 and 4 give $g = -1$ and $x = z$. Then, the orthogonality of rows 3 and 4 gives $c = \overline{x}$.
+
+\begin{equation} \label{mat:3a-3}
+\left(\begin{array}{rrrrrr}
+ 1 &  1 & 1 & 1 & 1 & 0 \\
+ 1 &  - & x & -x & 0 & 1 \\ 
+ 1 &  1 & - & 0 & - & \overline{x} \\
+ 1 &  - & 0 & x & -x & - \\ \hline
+ 1 &  0 & h & j & k & l \\
+ 0 &  1 & m & n & p & q
+\end{array}\right)
+\end{equation}
+
+The next row can be filled in accordingly.
+
+\begin{equation} \label{mat:3a-4}
+\left(\begin{array}{rrrrrr}
+ 1 &  1 & 1 & 1 & 1 & 0 \\
+ 1 &  - & x & -x & 0 & 1 \\ 
+ 1 &  1 & - & 0 & - & \overline{x} \\
+ 1 &  - & 0 & x & -x & - \\
+ 1 &  0 & -x & - & x & -\overline{x} \\ \hline
+ 0 &  1 & m & n & p & q
+\end{array}\right)
+\end{equation}
+
+And finally, the last row.
+
+\begin{equation} \label{mat:3a-5}
+\left(\begin{array}{rrrrrr}
+ 1 &  1 & 1 & 1 & 1 & 0 \\
+ 1 &  - & x & -x & 0 & 1 \\ 
+ 1 &  1 & - & 0 & - & \overline{x} \\
+ 1 &  - & 0 & x & -x & - \\
+ 1 &  0 & -x & - & x & -\overline{x} \\
+ 0 &  1 & x & - & -x & -\overline{x} \\ \hline
+\end{array}\right)
+\end{equation}
+
+When we swap rows 3 and 4 as well as columns 3 and 4, we get $T_1(-x)$.
+
+{\bf Case 3b:} $d = -1$. This implies that $f = y$. The fact that \iprz34 gives $g = yc$. We will relabel $c$ to be $z$.
+
+\begin{equation} \label{mat:3b-1}
+\left(\begin{array}{rrrrrr}
+ 1 &  1 & 1 & 1 & 1 & 0 \\
+ 1 &  - & x & -x & 0 & 1 \\ 
+ 1 &  y & -y & 0 & - & z \\
+ 1 &  -y & 0 & - & y & yz \\ \hline
+ 1 &  0 & h & j & k & l \\
+ 0 &  1 & m & n & p & q
+\end{array}\right)
+\end{equation}
+
+We now fill in the fifth row to arrive at the following.
+
+\begin{equation} \label{mat:3b-2}
+\left(\begin{array}{rrrrrr}
+               1 & 1 & 1 &  1 &  1 & 0 \\
+               1 & - & x & -x &  0 & 1 \\
+               1 & y & -y &  0 & - & z \\
+               1 & -y & 0 & - & y & yz \\
+               1 & 0 & h & x & -y & l \\ \hline
+               0 &  1 & m & n & p & q
+             \end{array}\right)
+\end{equation}
+
+From \iprz25, we have that $h = -xl$. And then since \iprz45, $l = xyz$.
+
+\begin{equation} \label{mat:3b-3}
+\left(\begin{array}{rrrrrr}
+               1 & 1 & 1 &  1 &  1 & 0 \\
+               1 & - & x & -x &  0 & 1 \\
+               1 & y & -y &  0 & - & z \\
+               1 & -y & 0 & - & y & yz \\
+               1 & 0 & -x^2yz & x & -y & xyz \\ \hline
+               0 &  1 & m & n & p & q
+             \end{array}\right)
+\end{equation}
+
+We can fill in the final row in the following way.
+
+\begin{equation} \label{mat:3b-4}
+\left(\begin{array}{rrrrrr}
+               1 & 1 & 1 &  1 &  1 & 0 \\
+               1 & - & x & -x &  0 & 1 \\
+               1 & y & -y &  0 & - & z \\
+               1 & -y & 0 & - & y & yz \\
+               1 & 0 & -x^2yz & x & -y & xyz \\
+               0 &  1 & x & n & \overline{y} & q \\ \hline
+             \end{array}\right)
+\end{equation}
+
+Based on the fact that \ipcz34, $n = \overline{yz}$. Then \ipcz56 gives $q=x\overline{y}z$. Finally, \iprz26 reveals that $z = \pm \overline{x}$. Putting these three facts together, we arrive at
+
+\begin{equation} \label{mat:3b-5}
+\left(\begin{array}{rrrrrr}
+               1 & 1 & 1 &  1 &  1 & 0 \\
+               1 & - & x & -x &  0 & 1 \\
+               1 & y & -y &  0 & - & \pm\overline{x} \\
+               1 & -y & 0 & - & y & \pm\overline{x}y \\
+               1 & 0 & \mp xy & x & -y & \pm y \\
+               0 & 1 & x & \pm x\overline{y} & \overline{y} & \pm\overline{y} \\\hline
+             \end{array}\right)
+\end{equation}
+
+Let's look at the upper and lower signs on the $\pm$s separately. First, let us examine the upper signs. $\langle r_3 , r_5 \rangle + \langle c_2 , c_6 \rangle = 0 \implies x = \pm 1$ and \ipc26 $\implies x \neq 1$, so $x = -1$. We then have the following matrix, which we will denote $T_2(y)$.
+
+\begin{equation} \label{mat:3b-6}
+T_2(y) = \left(\begin{array}{rrrrrr}
+               1 & 1 & 1 &  1 &  1 & 0 \\
+               1 & - & - & 1 &  0 & 1 \\
+               1 & y & -y &  0 & - & - \\
+               1 & -y & 0 & - & y & -y \\
+               1 & 0 & y & - & -y & y \\
+               0 & 1 & - & -\overline{y} & \overline{y} & \overline{y}
+             \end{array}\right)
+\end{equation}
+
+When we look at the lower signs of the $\pm$ in (\ref{mat:3b-5}), we note that $\langle r_1 , r_5 \rangle - \langle c_2 , c_6 \rangle = 0 \implies x = y$, and $\langle r_1 , r_6 \rangle - \langle c_1 , c_6 \rangle = 0 \implies x = \pm i$. Thus, we have the following matrix:
+
+\begin{equation} \label{mat:3b-7}
+\left(\begin{array}{rrrrrr}
+               1 & 1 & 1 &  1 &  1 & 0 \\
+               1 & - & \pm i & \mp i &  0 & 1 \\
+               1 & \pm i & \mp i &  0 & - & \pm i \\
+               1 & \mp i & 0 & - & \pm i & - \\
+               1 & 0 & - & \pm i & \mp i & \mp i \\
+               0 & 1 & \pm i & - & \mp i & \pm i \\ \hline
+             \end{array}\right)
+\end{equation}
+
+But if we look carefully, the top of the $\pm$s is equivalent to $T_7$ and the bottom is equivalent to $T_6$ (one must simply swap rows 3 and 4 as well as columns 3 and 4).
+
+{\bf Case 3c:} $f = -1$. This implies that $d = y$. The fact that \iprz34 gives $g = -c$. We will relabel $c$ to be $z$.
+
+\begin{equation} \label{mat:3c-1}
+\left(\begin{array}{rrrrrr}
+ 1 &  1 & 1 & 1 & 1 & 0 \\
+ 1 &  - & x & -x & 0 & 1 \\ 
+ 1 &  y & -y & 0 & - & z \\
+ 1 &  -y & 0 & y & - & -z \\ \hline
+ 1 &  0 & h & j & k & l \\
+ 0 &  1 & m & n & p & q
+\end{array}\right)
+\end{equation}
+
+We adjoin in the fifth row, which will introduce many simplifications.
+
+\begin{equation} \label{mat:3c-2}
+\left(\begin{array}{rrrrrr}
+               1 & 1 & 1 &  1 &  1 & 0 \\
+               1 & - & x & -x &  0 & 1 \\
+               1 & y & -y &  0 & - & z \\
+               1 & -y & 0 & y & - & -z \\
+               1 & 0 & h & j & 1 & - \\ \hline
+               0 &  1 & m & n & p & q
+             \end{array}\right)
+\end{equation}
+
+First, \iprz15 gives $h = j = -1$, then \ipcz13 gives $x = y$ and finally, \iprz23 gives $z = x$. We will then append the sixth and final row to arrive at the unique matrix, which we will denote $T_5(x)$.
+
+\begin{equation} \label{mat:t5}
+T_5(x) := \left(\begin{array}{rrrrrr}
+               1 & 1  & 1  &  1 &  1 & 0 \\
+               1 & -  & x  & -x &  0 & 1 \\
+               1 & x  & -x &  0 &  - & x \\
+               1 & -x & 0  &  x &  - & -x \\
+               1 & 0  & -  &  - &  1 & - \\
+	       0 & 1  & x  & -x &  - & -
+             \end{array}\right)
+\end{equation}
+
+ \end{proof}
+
+\end{lemma}

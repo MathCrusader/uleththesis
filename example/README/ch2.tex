@@ -1,0 +1,206 @@
+\chapter[Important Comments and Tips]{Important Comments and Tips}
+\chaptermark{Important Comments and Tips}
+\label{ch:comments}
+
+\section[Tables]{Tables}
+\sectionmark{Tables}
+\label{sec:tables}
+
+When making a table, you should not use the default table look. You should format it nicely.
+Table \ref{table:bounds} is an example of a table.
+\definecolor{Gray}{gray}{0.9}
+\begin{singlespace}
+\begin{table}[H]
+\caption{A nice looking table}
+\centering
+\begin{tabular}{@{}cccllccc@{}}
+ \toprule\label{table:bounds}
+ Type & & \multicolumn{2}{@{}c@{}}{Upper Bounds} & & \multicolumn{2}{@{}c@{}}{Examples Found} \\
+\cmidrule{2-4} \cmidrule{6-7}
+ & & Calderbank & \multicolumn{1}{@{}c@{}}{Smallest} & & Largest Set & Root of Unity \\
+ \midrule
+ UW(3,2)       && 5              & 0  && 0  & --  \\
+ UW(3,3)       && 3              & 3  && 3  &  3  \\
+ UW(4,2)       && 9              & 2  && 2  &  4  \\
+ UW(4,3)       && 9              & 9  && 9  &  6  \\
+ UW(4,4)       && 4              & 4  && 4  &  4  \\
+ UW(5,2)       && 14             & 0  && 0  & -- \\
+ UW(5,3)       && 14             & 0  && 0  & -- \\
+ UW(5,4)       && 8              & 5  && 5  &  6  \\
+ UW(5,5)       && 5              & 5  && 5  &  5  \\
+ UW(6,2)       && 20             & 2  && 2  &  4  \\
+ UW(6,3)       && 20             & 3  && 3  &  3  \\
+ UW(6,4)       && 20             & 20 && 20 &  6  \\
+ \rowcolor{Gray}
+ UW(6,5)       && $\frac{25}{3}$ & 8  && 2  & 12  \\
+ \rowcolor{Gray}
+ UW(6,6)       && 6              & 6  && 2  & 12  \\
+ UW(7,2)       && 27             & 0  && 0  & -- \\
+ UW(7,3)       && 27             & 3  && 3  &  6  \\
+ UW(7,4)       && 27             & 8  && 8  &  2  \\
+ UW(7,5)       && 15             & 0  && 0  & -- \\
+ \rowcolor{Gray}
+ UW(7,6)       && 9              & 9  && 0  &  --   \\
+ UW(7,7)       && 7              & 7  && 7  &  7  \\
+ \bottomrule
+\end{tabular}
+\end{table}
+\end{singlespace}
+
+\pagebreak
+Here is the \LaTeX code for Table \ref{table:bounds}:
+
+\begin{singlespace}
+\begin{lstlisting}
+\definecolor{Gray}{gray}{0.9}
+
+\begin{table}[ht]
+\caption{A nice looking table}
+\centering
+\begin{tabular}[h]{@{}cccllccc@{}}
+ \toprule\label{table:bounds}
+ Type & & \multicolumn{2}{@{}c@{}}{Upper Bounds} & & \multicolumn{2}{@{}c@{}}{Examples Found} \\
+\cmidrule{2-4} \cmidrule{6-7}
+ & & Calderbank & \multicolumn{1}{@{}c@{}}{Smallest} & & Largest Set & Root of Unity \\
+ \midrule
+ UW(3,2)       && 5              & 0  && 0  & --  \\
+ UW(3,3)       && 3              & 3  && 3  &  3  \\
+ UW(4,2)       && 9              & 2  && 2  &  4  \\
+ UW(4,3)       && 9              & 9  && 9  &  6  \\
+ UW(4,4)       && 4              & 4  && 4  &  4  \\
+ UW(5,2)       && 14             & 0  && 0  & --  \\
+ UW(5,3)       && 14             & 0  && 0  & --  \\
+ UW(5,4)       && 8              & 5  && 5  &  6  \\
+ UW(5,5)       && 5              & 5  && 5  &  5  \\
+ UW(6,2)       && 20             & 2  && 2  &  4  \\
+ UW(6,3)       && 20             & 3  && 3  &  3  \\
+ UW(6,4)       && 20             & 20 && 20 &  6  \\
+ \rowcolor{Gray}
+ UW(6,5)       && $\frac{25}{3}$ & 8  && 2  & 12  \\
+ \rowcolor{Gray}
+ UW(6,6)       && 6              & 6  && 2  & 12  \\
+ UW(7,2)       && 27             & 0  && 0  & --  \\
+ UW(7,3)       && 27             & 3  && 3  &  6  \\
+ UW(7,4)       && 27             & 8  && 8  &  2  \\
+ UW(7,5)       && 15             & 0  && 0  & --  \\
+ \rowcolor{Gray}
+ UW(7,6)       && 9              & 9  && 0  &  -- \\
+ UW(7,7)       && 7              & 7  && 7  &  7  \\
+ \bottomrule
+\end{tabular}
+\end{table}
+\end{lstlisting}
+\end{singlespace}
+
+\section[Quotes]{Quotes}
+\sectionmark{Quotes}
+\label{sec:quotes}
+
+If you have a long quotation, put it inside the \texttt{\textbackslash begin\{quote\}} and \texttt{\textbackslash end\{quote\}}. Here is an example of what it will look like:
+
+\begin{quote}
+ It is India that gave us the ingenious method of expressing all numbers by means of ten symbols, each symbol receiving a value of position as well as an absolute value; a profound and important idea which appears so simple to us now that we ignore its true merit. But its very simplicity and the great ease which it has lent to computations put our arithmetic in the first rank of useful inventions; and we shall appreciate the grandeur of the achievement the more when we remember that it escaped the genius of Archimedes and Apollonius, two of the greatest men produced by antiquity.
+\end{quote}
+\vskip-\baselineskip\hfill--Pierre-Simon Laplace
+
+\section[Referencing Theorems, Lemmas, etc.]{Referencing Theorems, Lemmas, etc.}
+\sectionmark{Referencing Theorems, Lemmas, etc.}
+\label{sec:references}
+
+\lstset{ literate={~} {$\sim$}{1} }
+
+A common error when you are referencing Theorems, Lemmas, etc. in \LaTeX is not using the ``$\sim$''.
+
+WRONG:
+\begin{lstlisting}[basicstyle=\ttfamily]
+From Theorem \ref{th:hadamard}, we know that Hadamard matrices cannot exist for any odd $n>1$.
+\end{lstlisting}
+
+CORRECT:
+\begin{lstlisting}[basicstyle=\ttfamily]
+From Theorem~\ref{th:hadamard}, we know that Hadamard matrices cannot exist for any odd $n>1$.
+\end{lstlisting}
+
+By placing the $\sim$ between Theorem and \textbackslash ref, it ensures that the number of the theorem will always be on the same line as the word ``Theorem'' (a newline will never happen in between these two words).
+
+\section[Overfull hbox Errors]{Overfull hbox Errors}
+\sectionmark{Overfull hbox Errors}
+\label{sec:hbox}
+
+The thesis committee is very picky about the layout of your thesis -- especially about margins. You need to make sure that all of your words fall within the correct margins. Thankfully, \LaTeX provides errors when it has placed words outside of the margins that you have set. The error that you will receive will look similar to this:
+\begin{verbatim}
+ Overfull \hbox (26.7289pt too wide) in paragraph
+\end{verbatim}
+You must play around with your wordings until this fits onto the page. Do NOT change the size of the margins
+in an attempt to fix this mistake.
+
+\section[How to Make a Bibliography]{How to Make a Bibliography}
+\sectionmark{How to Make a Bibliography}
+\label{sec:bib}
+
+The easiest way to make a bibliography is to make a BibTeX file. This way, it will 
+format each of your references properly and will also put them in the correct order.
+Note that if you selected \texttt{math} or \texttt{cs} as your discipline, then the
+references will be in alphabetical order. If you selected \texttt{physics}, then the
+references will appear in the same order as they appeared in the thesis.
+
+Here is a couple examples of BibTeX entries (both of these entries can also be found in \texttt{thesis-refs.bib}).
+
+\begin{singlespace}
+\begin{lstlisting}
+@ARTICLE{hadamard,
+  author = {Best, D. and Kharaghani, H.},
+  title = {Unbiased complex {H}adamard matrices and bases},
+  journal = {Cryptogr. Commun.},
+  year = {2010},
+  volume = {2},
+  pages = {199--209},
+  number = {2}
+}
+
+@ARTICLE{golay,
+  author = {Craigen, R. and Holzmann, W. and Kharaghani, H.},
+  title = {Complex {G}olay sequences: structure and applications},
+  journal = {Discrete Math.},
+  year = {2002},
+  volume = {252},
+  pages = {73--89},
+  number = {1-3}
+}
+\end{lstlisting}
+\end{singlespace}
+
+And now, I can reference them: Here is the Golay paper, \cite{golay}, and here is the Hadamard paper, \cite{hadamard}. If you are in \texttt{math} or \texttt{cs} mode, then Unbiased complex Hadamard matrices should be [1] (since it is first alphabetically). If you are in \texttt{physics} mode, then the Golay seqences should be [1] (since it was referenced first in your article). Note that the order of the references in the \texttt{thesis-refs.bib} file does not matter.
+
+I would recommend using a program such as JabRef to maintain your list of references.
+
+\section[Page Counts, Word Counts, etc.]{Page Counts, Word Counts, etc.}
+\sectionmark{Page Counts, Word Counts, etc.}
+\label{sec:word_count}
+
+\subsection[Page Count]{Page Count}
+\label{subsec:page}
+
+There is {\bf no official minimum or maximum} on the number of pages in your thesis.
+
+\subsection[Abstract Length]{Abstract Length}
+\label{subsec:abstract}
+
+Your abstract can be a {\bf maximum of 150 words}.
+
+\subsection[Title Length]{Title Length}
+\label{subsec:title}
+
+Your abstract can be a {\bf maximum of 41 characters (letters)}.
+
+\section[Compiling Your Code]{Compiling Your Code}
+\sectionmark{Compiling Your Code}
+\label{sec:compiling}
+
+To compile your code into PDF (or PS), you simply need to compile \texttt{thesis.tex}. All of the other files are included through the \texttt{\textbackslash input} lines that you added in the \texttt{thesis.tex} file.
+
+\section[Warnings]{Warnings}
+\sectionmark{Warnings}
+\label{sec:warnings}
+
+This thesis template was created to aid graduate students using \LaTeX. The template has been used in the past, and has been approved by the School of Graduate Studies. However, it is {\bf your responsibility} to ensure that all criteria for your thesis are met. This template was created for the 2013--2014 standards. In particular, please note that any time you include a new package into this thesis template, it has the potential to change formatting (fonts, margins, etc.). If you make changes to the thesis template that you feel should be made available to all graduate students, please email the Graduate Student Coordinator of the Mathematics and Computer Science Department.

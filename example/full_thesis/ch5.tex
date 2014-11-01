@@ -1,0 +1,264 @@
+\chapter[Applications]{Applications}
+\chaptermark{Applications}
+\label{ch:app}
+
+\hfill\begin{tabular}{r}\toprule
+ {\it Life is like a proof,} \\ {\it there is a little box at the end.}\\
+ -- K.~B.\\
+\bottomrule\end{tabular}\vskip55pt
+
+\section{Strongly Regular Graphs}
+
+In~\cite{calderbank97}, Calderbank \etal determined a way to construct strongly regular graphs from a full line set, namely, a set of vectors that meet the upper bounds in (\ref{eq:tub_vec_real}) or (\ref{eq:tub_vec_complex}). They used unit vectors that met the conditions and bounds of Theorem~\ref{th:tub_vec_real}. Before we can construct our objects, we will need a few definitions.
+
+\begin{definition} \label{def:srg}
+ A simple graph $G(V,E)$ on $v$ vertices is called {\it strongly regular} if for any vertex $w \in V$,
+ \begin{enumerate}
+  \item The degree of $w$ is $k$,
+  \item For each $u \in V$ such that $u$ is adjacent to $w$, $u$ and $w$ have exactly $\lambda$ common neighbours.
+  \item For each $x \in V$ such that $x$ is not adjacent to $w$, $x$ and $w$ have exactly $\mu$ common neighbours.
+ \end{enumerate}
+ Strongly regular graphs are denoted $SRG(v,k,\lambda,\mu)$.
+\end{definition}
+
+The following theorems can be found in most elementary graph theory textbooks.
+
+\begin{theorem} \label{th:srg-stuff} ~ Let $G$ be a strongly regular graph of type $SRG(v,k,\lambda,\mu)$. Then
+ \begin{itemize}
+  \item[(a)] $(v-k-1)\mu = k(k-\lambda - 1)$
+  \item[(b)] The adjacency matrix of $G$ has exactly 3 distinct eigenvalues:
+   \begin{itemize}
+    \item[(i)] $k$ with multiplicity 1 and
+    \item[(ii)] $\frac{1}{2}\left(\lambda - \mu \pm \sqrt{(\lambda-\mu)^2 + 4(k-\mu)}\right)$ with multiplicity $\frac12\left(v-1\mp\frac{2k+(v-1)(\lambda-\mu)}{\sqrt{(\lambda-\mu)^2+4(k-\mu)}}\right)$.
+   \end{itemize}
+  \item[(c)] The complement of a strongly regular graph is a strongly regular graph with parameters $(v,v-k-1,v-2-2k+\mu,v-2k+\lambda)$.
+ \end{itemize}
+\end{theorem}
+
+Next, we define a special type of strongly regular graph.
+
+\begin{definition} \label{def:pg}
+ A finite set of points, $P$, lines, $L$, and incidences, $I \subset P \times L$, is a {\it partial geometry}, denoted $pg(s,t,\alpha)$, if
+ \begin{itemize}
+  \item Each point is incident with $t+1$ lines.
+  \item Each line is incident with $s+1$ points.
+  \item For each pair of distinct points, there is at most one line incident with both of them.
+  \item If $p \in P$ and $\ell \in L$ are not incident, then there are exactly $\alpha$ pairs $(q,m) \in I$ such that $p$ is incident with $m$ and $q$ is incident with $\ell$.
+ \end{itemize}
+\end{definition}
+
+\begin{theorem} \label{th:pg-srg}
+ A $pg(s,t,\alpha)$ generates an $$SRG\left((s+1)(st+\alpha)/{\alpha}~,~s(t+1)~,~s-1+t(\alpha-1)~,~\alpha(t+1)\right).$$
+\end{theorem}
+
+For a good summary of strongly regular graphs and partial geometries, we refer the reader to \cite{hcd} and the references therein. Strongly regular graphs can be found in \cite[Section VII(11)]{hcd} and partial geometries can be found in \cite[Section VI(41)]{hcd}.
+
+A strongly regular graph that satisfies the conditions laid out in Definition~\ref{def:pg} is called {\it geometric graph}. If a strongly regular graph's parameters match Theorem~\ref{th:pg-srg}, but the graph does not satisfy the conditions laid out in Definition~\ref{def:pg}, then it is called a {\it pseudogeometric graph}.
+
+\begin{lemma}\label{lem:eigen-calderbank}
+ Let $V \subset \R^n$ be a spanning set whose cardinality matches the upper bound given in (\ref{eq:tub_vec_real}). Moreover, let $G = \Gram(V) = I + \alpha C$, where $C$ is a $\{0,\pm 1\}$ matrix and $0 < \alpha < 1$. Then $C$ has two distinct eigenvalues, $-\frac{1}{\alpha}$ and $\frac{|V|-n}{n\alpha}$ with multiplicities $|V|-n$ and $n$, respectively.
+
+ \begin{proof}
+  Since $V$ spans $\R^n$, we know that the nullity of $\Gram(V)$ is $|V| - n$, so 0 is an eigenvalue with that multiplicity. Therefore, $C$ has $|V| - n$ eigenvalues equal to $-\frac{1}{\alpha}$. For the remaining $n$ eigenvalues, we have that each eigenvalue, $\lambda$, of $G$ satisfies $0 \leq \lambda \leq \frac{(n+2)(1-\alpha^2)}{3-\alpha^2(n+2)}$ (through the proof of Theorem~\ref{th:tub_vec_real}). Since we have attained the upper bound, the last line in the proof of Theorem~\ref{th:tub_vec_real} tells us that each $\lambda = \frac{(n+2)(1-\alpha^2)}{3-\alpha^2(n+2)}$. Using the cardinality of our set, and simplifying the expression, we arrive at our result.
+ \end{proof}
+
+\end{lemma}
+
+\begin{theorem}[\mbox{\cite[Proposition 3.12]{calderbank97}}]\label{th:vecs_to_srg}
+ If equality holds in (\ref{eq:tub_vec_real}) and $V$ spans $\R^n$, then `perpendicularity' defines a strongly regular graph.
+
+ \begin{proof}
+  Let $V' = \{v \otimes v | v \in V\} \subset S^2(\R^n)$. Since $\aip{a \otimes a}{b \otimes b} = \aip{a}{b}^2$, $\Gram(V') = I + \alpha^2D$, where $D$ is a $\{0,1\}$ matrix. Since $V$ spans $\R^n$, we know that the nullity of $\Gram(V')$ is $|V| - \binom{n+1}{2}$, so 0 is an eigenvalue with that multiplicity. Therefore, $D$ has at least $|V| - \binom{n+1}{2}$ eigenvalues equal to $-\frac{1}{\alpha^2}$. Next, note that the diagonal entries of $C^2$ are the row sums of $D$. By the Cayley-Hamilton theorem, we have that $\left(C+\frac{1}{\alpha}I\right)\left(C-\frac{|V|-n}{n\alpha}I\right) = 0$. By expanding this out, and noting that $C$ has a zero diagonal, we have that each diagonal entry of $C^2$ is exactly $\frac{|V|-n}{n\alpha^2}$. Thus, since all row sums are identical, we have that $\frac{|V|-n}{n\alpha^2}$ is an eigenvalue of $C$. At this point, we are missing exactly $\binom{n+1}{2} - 1$ eigenvalues.
+
+  First, let us examine the trace of $A$ and $A^2$.
+
+   $$0 = \tr(A) = \frac{|V|-n}{n\alpha^2} + (|V| - \binom{n+1}{2})(-\frac{1}{\alpha^2}) + \sum\lambda.$$
+   $$\frac{|V|-n}{\alpha^2} = n\frac{|V|-n}{n\alpha^2} = \tr(A^2) = \frac{|V|-n}{n\alpha^2}^2 + (|V| - \binom{n+1}{2})(-\frac{1}{\alpha^4}) + \sum\lambda^2.$$
+  
+  For simplicity, let $K = \frac{(n+2)(n-1)}{2}$ and $\Delta = 3-(n+2)\alpha^2$. From these, we have
+
+  $$\sum_{j=1}^{K} \lambda = -K\frac{1-n\alpha^2}{\alpha^2\Delta}$$ and
+  $$\sum_{j=1}^{K} \lambda^2 = K\left(\frac{1-n\alpha^2}{\alpha^2\Delta}\right)^2.$$
+
+  Thus, by the Cauchy-Schwarz inequality, we have
+
+  $$\left(K\left(\frac{1-n\alpha^2}{\alpha^2\Delta}\right)\right)^2 = 
+  \left(-K\left(\frac{1-n\alpha^2}{\alpha^2\Delta}\right)\right)^2 = 
+  \left(\sum_{j=1}^{K} \lambda\right)^2 =
+  \left(\sum_{j=1}^{K} \lambda \cdot 1\right)^2 $$  $$ \leq
+  \left(\sum_{j=1}^{K} \lambda^2\right)\cdot\left(\sum_{j=1}^{K} 1^2 \right) =
+  \left(K\left(\frac{1-n\alpha^2}{\alpha^2\Delta}\right)^2\right)\left(K\right) =
+  \left(K\left(\frac{1-n\alpha^2}{\alpha^2\Delta}\right)\right)^2,$$
+ which implies that each $\lambda = \frac{1-n\alpha^2}{\alpha^2\Delta}$. Since this matrix has exactly three eigenvalues (one of which being the row sums), $A$ is the adjacency matrix of a strongly regular graph.
+
+ \end{proof}
+
+\end{theorem}
+
+\begin{theorem}[\mbox{\cite[Section 5]{calderbank97}}]\label{th:vecs_to_srg_complex}
+ If equality holds in (\ref{eq:tub_vec_complex}) and $V$ spans $\C^n$, then `perpendicularity' defines a strongly regular graph.
+
+ \begin{proof}
+  Similar to Theorem~\ref{th:vecs_to_srg}.
+ \end{proof}
+
+\end{theorem}
+
+When we use the term `perpendicularity', we refer to the graph where each node represents a row of a weighing matrix, and there is an adjacency between two vertices (say $i,j$) if $v_i$ is orthogonal with $v_j$. Of note, in Theorem~\ref{th:vecs_to_srg}, the proof gives the eigenvalues of the {\it complement} of the graph defined by `perpendicularity' (i.e., it gives the eigenvalues of the graph defined by `non-perpendicularity'). For the following theorems, we will be interested in `perpendicularity'.
+
+\begin{corollary}\label{cor:mat_to_srg}
+ Let $\mathcal{W}$ be a set of $m$ mutually unbiased unit (resp. real) weighing matrices of order $n$ and weight $w$. If $m$ matches the upper bound given in (\ref{eq:tub_mat_complex}) (resp. (\ref{eq:tub_mat_real})), then the `perpendicularity' of the rows of the matrices forms a strongly regular graph.
+
+ \begin{proof}
+  Since $\mathcal{W}$ is a set of mutually unbiased weighing matrices, the inner product between any two rows falls in $\{0,\frac{1}{\sqrt{w}}\}$, up to absolute value. So we may apply Theorem~\ref{th:vecs_to_srg} or Theorem~\ref{th:vecs_to_srg_complex}.
+ \end{proof}
+
+\end{corollary}
+
+
+\begin{theorem}\label{th:mat_to_pg}
+ Let $\mathcal{W}$ be a set of $m$ mutually unbiased unit (resp. real) weighing matrices of order $n$ and weight $w$. If $m$ matches the upper bound given in (\ref{eq:tub_mat_complex}) (resp. (\ref{eq:tub_mat_real})), then the strongly regular graph generated in Corollary~\ref{cor:mat_to_srg} has parameters corresponding to the following partial geometry: 
+
+$$pg\left(n-1,\frac{w(n-w)}{\Delta},n-w\right)$$
+
+where $\Delta = 2w - (n+1)$ (resp. $\Delta = 3w - (n+2)$).
+
+\begin{proof}
+ Using Theorem~\ref{th:vecs_to_srg}, we can construct a graph (say $G$) which is strongly regular. Theorem~\ref{th:vecs_to_srg_complex} gives us the three eigenvalues of our graph. We will be interested in the complement of this graph. We may then use each point in Theorem~\ref{th:srg-stuff} to arrive at the parameters of our strongly regular graph. Then, Theorem~\ref{th:pg-srg} can be used to give us our result.
+% Note that $\frac{w(n-w)}{\Delta}$ is the positive eigenvalue of the complement of $G$, and thus, is integral for $w \neq \frac{(n+1)(2n+1)}{3n+2}$ in the complex case and BLAH otherwise (which is never an integer anyways).
+\end{proof}
+
+\end{theorem}
+
+Thus, anytime we have a set of mutually unbiased weighing matrices which meet the bounds given in (\ref{eq:tub_vec_real}) or (\ref{eq:tub_vec_complex}), we are able to generate either a pseudogeometric graph or a geometric graph.
+
+\begin{corollary} \label{cor:srg_example}
+ The following SRGs exist:
+  \begin{enumerate}[(a)]
+   \item $SRG(40,12,2,4)$ which is geometric.
+   \item $SRG(45,12,3,3)$ which is pseudogeometric.
+   \item $SRG(63,30,13,15)$ which is geometric.
+   \item $SRG(120,63,30,36)$ which is geometric.
+   \item $SRG(126,45,12,18)$ which is pseudogeometric.
+  \end{enumerate}
+
+\begin{proof}
+ As seen in Table~\ref{table:bounds}, we have sets of $UW(4,3)$, $W(7,4)$, $W(8,4)$ and $UW(6,4)$ that attain the needed upper bound. By applying Corollary~\ref{cor:mat_to_srg}, we get the desired graphs (a),(c),(d) and (e). Each graph which is geometric was checked via computer computation.
+
+ Interestingly, even though Theorem~\ref{th:cw_5_4} limits the number of mutually unbiased weighing matrices, it does not put a restriction on the number of vectors whose pairwise inner products' absolute value are in $\{0,2\}$. In fact, we have found 40 vectors over the sixth root of unity (all having weight 4) such that the inner products' absolute value remain in $\{0,2\}$. These vectors are given in Appendix~\ref{app:vec-5-4}, and they form the strongly regular graph given in (b).
+
+\end{proof}
+\end{corollary}
+
+It is important to note that strongly regular graphs with all of these parameters have been previously found, but this is a new method for finding them. The first case where a full set of mutually unbiased weighing matrices will give a strongly regular graph with parameters that are currently unknown is $UW(8,5)$, which will generate an $SRG(288,175,110,100)$.
+
+\section[Association Schemes]{Association Schemes}
+\sectionmark{Association Schemes}
+\label{sec:ass-scheme}
+
+We will now examine sets of vectors that contain more than two angles between them ({\it multi-angular vectors}). The following definition gives a generalization of strongly regular graphs. General information about association schemes can be found in \cite[Section VI(1)]{hcd}.
+
+\begin{definition} \label{def:ass-scheme}
+ An $m-$association scheme is a set $\mathcal{A} = \left\{A_0, \dots , A_m\right\}$ of $(0,1)$--matrices of order $n$ that satisfy the following conditions:
+ \begin{enumerate}[(a)]
+  \item $A_0 = I$
+  \item $\sum_{i=0}^m A_i = J$
+  \item $A_i = A_i^T$
+  \item $A_iA_j = A_jA_i \in Span_{\Z}(\mathcal{A})$
+ \end{enumerate}
+\end{definition}
+
+Note that a 2-association scheme is equivalent to a strongly regular graph. We can utilize Hadamard matrices and mutually orthogonal Latin squares to construct association schemes with very large parameters.
+
+\begin{definition}\label{def:latin}
+ A {\it Latin square} is an $n \times n$ matrix defined on the alphabet $\left\{a_1,\dots,a_n\right\}$ if every row and every column contains exactly one $a_i$ for each $1 \leq i \leq n$.
+\end{definition}
+
+\begin{example}\label{ex:latin}
+ $$\left(\begin{array}{cccc}
+          a_1 & a_2 & a_3 & a_4 \\
+          a_4 & a_1 & a_2 & a_3 \\
+          a_3 & a_4 & a_1 & a_2 \\
+          a_2 & a_3 & a_4 & a_1 \\
+         \end{array}
+\right)$$ is a Latin square of order $4$.
+\end{example}
+
+Normally, the alphabet $\left\{1,2,\dots,n\right\}$ is used in Latin squares. However, for our constructions below, we will be using matrices as our alphabet to construct block matrices.
+
+\begin{definition}\label{def:msls}
+ Let $L_1$ and $L_2$ be two Latin squares of order $n$ defined over the same alphabet. Let $r_1$ and $r_2$ be arbitrary rows from $L_1$ and $L_2$, respectively. $L_1$ and $L_2$ are {\it suitable Latin squares} if exactly one entry is in common between $r_1$ and $r_2$ (for every choice of $r_1$ and $r_2$). A set of Latin squares that are pairwise suitable are called {\it mutually suitable Latin squares} (or {\it MSLS}).
+\end{definition}
+
+Mutually suitable Lain squares are very similar to the more common mutually orthogonal Latin squares (more commonly known as ``MOLS'').
+
+\begin{example}\label{ex:msls}
+ $$\left\{
+   \left(\begin{array}{ccc}
+2 & 0 & 1 \\
+1 & 2 & 0 \\
+0 & 1 & 2
+   \end{array}\right),
+   \left(\begin{array}{ccc}
+2 & 1 & 0 \\
+0 & 2 & 1 \\
+1 & 0 & 2
+   \end{array}\right)
+  \right\}$$ is a set of mutually suitable Latin squares over the alphabet $\{0,1,2\}$.
+\end{example}
+
+
+
+\begin{construction} \label{construct:ass-scheme-construction}
+ As input, we need a Hadamard matrix, $H$, of order $m$, $k \in \Z$, $\ell \in \Z$, $\mathcal{M}$, a set of mutually suitable Latin squares and $\mathcal{L}$, a Latin square of order $K$. The association scheme constructed is of order $mK^2$.
+
+  \begin{enumerate}[(a)]
+   \item Let $C_i = r^t_ir_i$ where $r_i$ is the $i^{th}$ row of $H$, $0 \leq i < m$.
+   \item Redefine $C_0 = kJ$.
+   \item Use $\left\{C_i\right\}$ as the alphabet of $\mathcal{M}$ of order $n$ (giving you $n-1$ matrices called $M_i$, $1 \leq i < n$).
+   \item Define $M_0$ to be $\ell J$.
+   \item Use $\left\{M_i\right\}$ as the alphabet of $\mathcal{L}$ and call this matrix $G$.
+   \item We will examine $G^2$, which is $mn^2 \times mn^2$. The different classes for our association scheme are the distinct values in this matrix.
+  \end{enumerate}
+
+\end{construction}
+
+Note that part $(f)$ in Construction~\ref{construct:ass-scheme-construction} is looking at the Gramian matrix of the vectors that are represented as the rows of $G$. The association schemes that are constructed have an immense amount of structure associated with them. The various objects used in this construction are included in Appendix~\ref{app:comb-objects}.
+
+\begin{table}[H]
+\caption{Association schemes created via Construction~\ref{construct:ass-scheme-construction}}
+\centering
+\label{table:ass-schemes}
+\begin{tabular}{@{}cccccc@{}}
+\hline
+\toprule
+$H$ &
+$\mathcal{M}$ &
+$\mathcal{L}$ &
+$k$ &
+$\ell$ &
+Order of Association Scheme\\
+\midrule
+$H_{4}$  & $\mathcal{M}_{3}$  & $\mathcal{L}_{3}$  & 2 & 2 & 5\\
+$H_{4}$  & $\mathcal{M}_{3}$  & $\mathcal{L}_{3}$  & 3 & 2 & 6\\
+\midrule
+$H_{4}$  & $\mathcal{M}_{4}$  & $\mathcal{L}_{4}$  & 1 & 1 & 2\\
+$H_{4}$  & $\mathcal{M}_{4}$  & $\mathcal{L}_{4}$  & 1 & 0 & 3\\
+$H_{4}$  & $\mathcal{M}_{4}$  & $\mathcal{L}_{4}$  & 0 & 0 & 4\\
+$H_{4}$  & $\mathcal{M}_{4}$  & $\mathcal{L}_{4}$  & 2 & 0 & 5\\
+\midrule
+$H_{8}$  & $\mathcal{M}_{7}$  & $\mathcal{L}_{7}$  & 2 & 2 & 5\\
+$H_{8}$  & $\mathcal{M}_{7}$  & $\mathcal{L}_{7}$  & 2 & 0 & 6\\
+\midrule
+$H_{12}$ & $\mathcal{M}_{11}$ & $\mathcal{L}_{11}$ & 2 & 2 & 5\\
+$H_{12}$ & $\mathcal{M}_{11}$ & $\mathcal{L}_{11}$ & 2 & 0 & 6\\
+\midrule
+$H_{20}$ & $\mathcal{M}_{19}$ & $\mathcal{L}_{19}$ & 2 & 2 & 5\\
+$H_{20}$ & $\mathcal{M}_{19}$ & $\mathcal{L}_{19}$ & 2 & 0 & 6\\
+\bottomrule
+ \end{tabular}
+\end{table}
+
+When deciding on values for $k$ and $\ell$, we do not believe that the value of $2$ and $3$ impact the fact that the matrices generate association schemes. Instead, we feel that one could use any combination of {\it sufficiently large} distinct values.
+
+This area of research was inspired by the many applications that can be found in physics, and has grown into a very interesting mathematical area. Knowledge from many areas of mathematics are required to fully explore this field. We have introduced these objects in hopes that we, and others, will utilize them to explore new and interesting areas of mathematics, draw connections to existing areas of mathematics and grasp a deeper understanding of the structure behind such combinatorial objects.

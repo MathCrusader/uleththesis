@@ -1,0 +1,181 @@
+\chapter[How To Use This Template]{How To Use This Template}
+\chaptermark{How To Use This Template}
+\label{ch:summary}
+
+This entire README file is written in the \texttt{uleththesis} template. This chapter is a very short summary of how to use this thesis template. Your thesis will be broken up into several files:
+
+\begin{itemize}
+ \item \texttt{uleththesis.cls} -- This is the actual template. Make sure it is in the current folder when compiling.
+ \item \texttt{thesis.tex} -- This is the wrapper file for your whole thesis.
+ \item \texttt{ch1.tex} -- This is where the source code for Chapter 1 belongs.
+ \item \texttt{ch2.tex} -- This is where the source code for Chapter 2 belongs.
+ \item \texttt{ch3.tex} -- This is where the source code for Chapter 3 belongs.
+ \item \texttt{appA.tex} -- This is where the source code for Appendix A belongs.
+ \item \texttt{appB.tex} -- This is where the source code for Appendix B belongs.
+ \item \texttt{appC.tex} -- This is where the source code for Appendix C belongs.
+ \item \texttt{preamble.tex} -- Place any {\it common} commands in this file.
+ \item \texttt{thesis-refs.bib} -- A BibTeX file of your references.
+\end{itemize}
+
+{\color{red} {\bf The \LaTeX code for an actual thesis which used this template and for this README is located in the \texttt{example/} directory.}}
+
+\section[\texttt{thesis.tex}]{\texttt{thesis.tex}}
+\sectionmark{\texttt{thesis.tex}}
+\label{sec:thesis_tex}
+
+This file is the wrapper file for the entire thesis. You will need to change a few things.
+
+\begin{enumerate}
+
+\item ~\\
+\begin{tikzpicture}
+ \draw (0,0) node {\verb!\documentclass[ math , phd , 12pt , final ]{uleththesis}!};
+ \draw[color=red]  (-1.65,-0.2) rectangle (-2.65,0.2) -- (-3,2) node[anchor=east,fill=yellow] {\verb!cs! or \verb!math! or \verb!physics!};
+ \draw[color=blue] (-0.4,0.2) rectangle (-1.1,-0.2) -- (-3,-2) node[anchor=east,fill=yellow] {\verb!phd! or \verb!msc!};
+ \draw[color=red]  (0.2,-0.2) rectangle (1.1,0.2) -- (2,2) node[anchor=west,fill=yellow] {\verb!10pt! or \verb!11pt! or \verb!12pt!};
+ \draw[color=blue] (1.7,0.2) rectangle (2.8,-0.2) -- (3,-2) node[anchor=north,fill=yellow] {\verb!final! or \verb!draft!};
+\end{tikzpicture}
+
+\item Fill in the following information:
+\texttt{\textbackslash title},
+\texttt{\textbackslash author},
+\texttt{\textbackslash degreeyear},
+\texttt{\textbackslash prevdegrees}.
+
+
+\item Add a signature line for every committee member, supervisor and thesis chair using \texttt{\textbackslash addsignatureline}.
+
+\item Write your dedication inside the \texttt{\textbackslash dedication\{\}} section.
+
+\item Write your abstract inside the \texttt{\textbackslash begin\{abstract\}} ~~~ \texttt{\textbackslash end\{abstract\}}.
+
+\item Write you acknowledgments inside the \texttt{\textbackslash acknowledgments\{\}} section.
+
+\item  ~ \\
+\begin{tikzpicture}
+ \draw (0,0) node[anchor=west] {\verb!\input{ch1}!};
+ \draw (0,-0.5) node[anchor=west] {\verb!\input{ch2}!};
+ \draw (0,-1) node[anchor=west] {\verb!\input{ch3}!};
+
+ \draw (0,-2) node[anchor=west] {\verb!\bibliography{thesis-refs}!};
+
+ \draw (0,-3) node[anchor=west] {\verb!\appendix!};
+
+ \draw (0,-4) node[anchor=west] {\verb!\input{appA}!};
+ \draw (0,-4.5) node[anchor=west] {\verb!\input{appB}!};
+ \draw (0,-5) node[anchor=west] {\verb!\input{appC}!};
+
+ \draw[color=red]  (2.7,-1.3) rectangle (0,0.3) -- (-3,1) node[anchor=east,fill=yellow,text width=4.2cm] {You need one \verb!\input{}! for each chapter of your thesis.};
+ \draw[color=blue] (6,-2.3) rectangle (0,-1.7) -- (-3,-1.5) node[anchor=east,fill=yellow,text width=4.2cm] {This will create the bibliography from the file \verb!thesis-refs.bib!};
+ \draw[color=red]  (2.8,-5.3) rectangle (0,-3.7) -- (-3,-4) node[anchor=east,fill=yellow,text width=4.2cm] {You need one \verb!\input{}! for each appendix of your thesis.};
+\end{tikzpicture}
+
+\end{enumerate}
+
+\section[\texttt{ch1.tex}, \texttt{ch2.tex}, \dots]{\texttt{ch1.tex}, \texttt{ch2.tex}, \dots}
+\sectionmark{\texttt{ch1.tex}, \texttt{ch2.tex}, \dots}
+\label{sec:ch_i_tex}
+
+In each of these files, you can write \LaTeX as normal. You do NOT put it inside of the usual \texttt{\textbackslash begin\{document\}} and \texttt{\textbackslash end\{document\}}, just start typing. Here is an example of \texttt{ch1.tex}:
+
+\vskip-10pt
+\definecolor{codebackground}{gray}{0.9}
+\lstset{numberstyle=\scriptsize\ttfamily, numbersep=10pt, captionpos=b}
+\lstset{basicstyle=\small\ttfamily}
+\lstset{framesep=2pt}
+\lstset{backgroundcolor=\color{codebackground}}
+\lstset{breaklines=true} 
+\begin{singlespace}
+\begin{lstlisting}
+\chapter[Introduction]{Introduction}
+\chaptermark{Introduction}
+\label{ch:introduction}
+
+This thesis is a combination of many novel ideas that have been studied in the past few years. The bulk of the study has been centred around the idea of biangular line-sets where we impose certain conditions in order to obtain specific combinatorial objects. The work found within is a combination of published work,~\cite{much10,unit-weigh13}, submitted work,~\cite{muwm13}, and forthcoming publications.
+
+\section[A Note on Notation]{A Note on Notation}
+\sectionmark{Notation}
+\label{sec:notation}
+
+Mathematicians are notorious for generating acronyms for subject matter. In this thesis, we will refrain from utilizing these acronyms as most of them will look too similar and are likely to cause headaches (e.g., MUBs, MUHM, MUCH, MUH, MOLS, MSLS, MUWM, MUCWM, MUUWM, etc.). With that being said, when these objects are introduced, we will specify the acronym for any reader who wishes to read other articles within the field where these acronyms are used heavily.
+\end{lstlisting}
+\end{singlespace}
+
+\subsection{When You Want A New Chapter}
+
+Start every chapter with three lines of code:
+
+\vskip5pt
+\begin{tikzpicture}
+ \draw (0,0) node[anchor=west] {\verb!\chapter[Introduction]{Introduction}!};
+ \draw (0,-0.5) node[anchor=west] {\verb!\chaptermark{Introduction}!};
+ \draw (0,-1) node[anchor=west] {\verb!\label{ch:introduction}!};
+
+ \draw[color=red]  (4.68,-0.2) rectangle (2.075,0.2) -- (2,0.75) node[anchor=south,fill=yellow,text width=4.2cm] {This is what goes in the Table of Contents};
+ \draw[color=blue] (5.09,-0.2) rectangle (7.7,0.2) -- (7.5,0.75) node[anchor=south,fill=yellow,text width=4.2cm] {This is the actual chapter title};
+ \draw[color=blue] (2.95,-0.3) rectangle (5.53,-0.7) -- (7.5,-1.75) node[anchor=north,fill=yellow,text width=4.2cm] {This is what goes in the page header};
+ \draw[color=red]  (4.9,-0.8) rectangle (1.65,-1.2) -- (2,-1.75) node[anchor=north,fill=yellow,text width=4.2cm] {Use this to reference your chapter later};
+\end{tikzpicture}
+
+
+\subsection{When You Want A New Section}
+
+Same as a new chapter, but use \texttt{\textbackslash section} and \texttt{\textbackslash sectionmark} instead of \texttt{\textbackslash chapter} and \texttt{\textbackslash chaptermark}. Example:
+\small\vskip-25pt
+\begin{singlespace}
+\begin{verbatim}
+\section[Table of Contents Name]{Actual Section Name}
+\sectionmark{This is what goes in the header}
+\label{sec:example}
+\end{verbatim}
+\end{singlespace}
+\normalsize
+
+\subsection{When You Want A New Subsection}
+
+Subsections {\bf should not} change the headers on the page, so there is no command called \st{\texttt{\textbackslash subsectionmark}}. To start a new subsection, use \texttt{\textbackslash subsection} and \texttt{\textbackslash label} (similar usage as \texttt{\textbackslash chapter}). Example:
+\small\vskip-25pt
+\begin{singlespace}
+\begin{verbatim}
+\subsection[Table of Contents Name]{Actual Subsection Name}
+\label{subsec:example}
+\end{verbatim}
+\end{singlespace}
+\normalsize
+
+\subsection{When You Want A New Subsubsection}
+
+Subsections {\bf should not} change the page header and {\bf should not} appear in the Table of Contents, so there is no command called \st{\texttt{\textbackslash subsubsectionmark}}. To start a new subsubsection, use \texttt{\textbackslash subsubsection} and \texttt{\textbackslash label}. Example:
+\small\vskip-25pt
+\begin{singlespace}
+\begin{verbatim}
+\subsubsection{Actual Subsubsection Name}
+\label{subsubsec:example}
+\end{verbatim}
+\end{singlespace}
+\normalsize
+
+\section[\texttt{appA.tex}, \texttt{appB.tex}, \dots]{\texttt{appA.tex}, \texttt{appB.tex}, \dots}
+\sectionmark{\texttt{appA.tex}, \texttt{appB.tex}, \dots}
+\label{sec:app_i_tex}
+
+When you are creating your appendices, you should use the same commands as in Section~\ref{sec:ch_i_tex}. The only difference will be in the output (different numbering style).
+
+\section[\texttt{preamble.tex}]{\texttt{preamble.tex}}
+\sectionmark{\texttt{preamble.tex}}
+\label{sec:preamble_tex}
+
+In this file, you should place all of your commands that will be used throughout all of your files. To make your code more readable, I recommend placing your \texttt{\textbackslash usepackage} commands in this file. Moreover, any commands which make life easier for you should appear here. Here are a few examples (I recommend that you try each of them, they are very useful when you are writing and editing your thesis).
+
+\begin{lstlisting}
+\newcommand{\etal}{\emph{et al.}\xspace}
+\newcommand{\CITE}{{\bf {\color{red} [CITE]}}\xspace}
+\newcommand{\REF}{{\bf {\color{red} [REF]}}\xspace}
+\newcommand{\FIGURE}{{\bf {\color{red} [FIG]}}}
+\end{lstlisting}
+
+\section[\texttt{thesis-refs.bib}]{\texttt{thesis-refs.bib}}
+\sectionmark{\texttt{thesis-refs.bib}}
+\label{sec:thesis_refs_bib}
+
+This is where you can store all of your references. I would recommend using BibTeX since it correctly formats and organizes your references.

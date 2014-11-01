@@ -1,0 +1,866 @@
+\chapter[Unbiasedness]{Unbiasedness}
+\chaptermark{Unbiasedness}
+\label{ch:unbiased}
+
+\hfill\begin{tabular}{r}\toprule
+ {\it Take chances,} \\ {\it make mistakes,} \\ {\it get messy!} \\
+ -- V. F. Frizzle\\
+\bottomrule\end{tabular}\vskip25pt
+
+(This chapter is based on published work, \cite{muwm13}.)
+
+In this chapter, we introduce the idea of mutually unbiased unit weighing matrices. This utilizes the matrices that we introduced in the previous chapter.
+
+Unbiasedness is a topic that has been studied in a variety of different settings. The roots of unbiasedness can be traced to physics,~\cite{ivanovic,mub-orig,space-time-block}.
+
+We start with the definition of unbiased bases.
+
+\begin{definition} \label{def:unbiased-bases}
+ Let $\BB_1$ and $\BB_2$ be two orthonormal bases in $\C^n$. $\BB_1$ and $\BB_2$ are called {\it unbiased} if $$\forall u \in \BB_1,v \in \BB_2, \aip{u}{v} = \frac{1}{\sqrt{n}}.$$
+\end{definition}
+
+When we put a number of these bases together, we have the following fundamental definition.
+
+\begin{definition} \label{def:mub}
+ Let $\BB = \left\{\BB_1,\dots,\BB_k\right\}$ be a set of orthonormal bases in $\C^n$. $\BB$ is called {\it mutually unbiased} if for all $1 \leq i,j \leq k$, $i \neq j$, $\BB_i$ is unbiased with $\BB_j$. These are often called ``MUBs''.
+\end{definition}
+
+To put mutually unbiased bases in different terminology, we are looking for orthonormal bases whose basis vectors from different bases meet at a specific angle. However, rather than looking at these objects as bases, we will instead focus on a slightly different set of objects.
+
+\begin{definition} \label{def:muhm}
+ Two unit Hadamard matrices, $H_1$ and $H_2$, are {\it unbiased} if $H_1H_2^* = \sqrt{n}H$, where $H$ is a unit Hadamard matrix. A set of unit Hadamard matrices is called {\it mutually unbiased} if every distinct pair of matrices is unbiased. This are often called ``MUHMs''.
+\end{definition}
+
+The reason we are able to work with mutually unbiased Hadamard matrices instead of mutually unbiased bases is due to the following theorem.
+
+\begin{theorem} \label{th:mub_muhm}
+ There exists $k$ mutually unbiased bases in $\C^n$ if and only if there exists $k-1$ mutually unbiased unit Hadamard matrices of order $n$.
+ \begin{proof}
+  First, let $\BB = \left\{\BB_1,\BB_2,\dots,\BB_k\right\}$ be orthonormal bases in $\C^n$. We may perform the same change of basis on the bases and arrive at another set of mutually unbiased bases, $\BB' = \left\{\BB'_1,\BB'_2,\dots,\BB'_k\right\}$ where $\BB'_1$ is the standard basis in $\C^n$. Since $\BB'_1$ is unbiased with each of the other bases, we know that each entry in every other basis vector must have the same absolute value ($\frac{1}{\sqrt{n}}$). We can now create $k$ square matrices, $B_1,B_2,\dots,B_k$, such that the rows of $B_i$ are the vectors in $\BB'_i$. We note that $B_1 = I_n$ and that $\sqrt{n}B_i$ is a unit Hadamard matrix for any $2 \leq i \leq k$. Multiplication gives that the magnitude of each entry in $L = \left(\sqrt{n}B_i\right)\left(\sqrt{n}B_j\right)^*$ is $\sqrt{n}$. Moreover, the fact that $$\left(\frac{1}{\sqrt{n}}L\right)\left(\frac{1}{\sqrt{n}}L\right)^* = \frac{1}{n} \left(\left(\sqrt{n}B_i\right)\left(\sqrt{n}B_j\right)^*\right)\left(\left(\sqrt{n}B_i\right)\left(\sqrt{n}B_j\right)^*\right)^* = \frac{1}{n}\left(n^2I\right) = nI$$ gives that $\frac{1}{\sqrt{n}}L$ is a Hadamard matrix. Thus, $\left\{\sqrt{n}B_2,\dots,\sqrt{n}B_k\right\}$ is a set of $k$ mutually unbiased unit Hadamard matrices.
+
+  Next, we let $\left\{H_1,\dots,H_{k-1}\right\}$ be a set of Hadamard matrices. It is easy to see that $$\left\{I_n,\frac{1}{\sqrt{n}}H_1,\dots,\frac{1}{\sqrt{n}}H_{k-1}\right\}$$ is a set of $k$ mutually unbiased bases (where the vectors of the bases are the rows of the matrices).
+ \end{proof}
+
+\end{theorem}
+
+For the remainder of the thesis, we will focus on matrices in lieu of bases. When studying mutually unbiased objects, there are two main goals: finding lower and upper bounds on the size of the set of mutually unbiased Hadamard matrices and finding examples that attain these bounds.
+
+\begin{lemma} \label{lem:rs_trace}
+ Let $r,s \in \T^n$ such that $\langle r,s \rangle = \alpha$ and define $R = r^*r - I_n$ and $S = s^*s - I_n$. Then $$\tr\left(RS^*\right) = |\alpha|^2 - n.$$
+ \begin{proof}
+  $$\begin{array}{r@{=}l}
+     \tr\left(RS^*\right) & \tr\left(RS^*\right) \\
+                          & \tr\left((r^*r)(s^*s)^*-r^*r-(s^*s)^*+I\right) \\
+                          & \tr\left((r^*r)(s^*s)^*\right) - \tr\left(r^*r\right) - \tr\left(s^*s\right) + \tr\left(I\right) \\
+                          & \tr\left((r^*r)(s^*s)^*\right) - n - n + n \\
+                          & \tr\left(r^*(rs^*)s\right) - n \\
+                          & \alpha\cdot\tr\left(r^*s\right) - n \\
+                          & \alpha\overline{\alpha} - n \\
+                          & |\alpha|^2 - n
+    \end{array}
+  $$
+ \end{proof}
+\end{lemma}
+
+\begin{lemma} \label{lem:muhm_lin_indep}
+ Let $\left\{H_1,\dots,H_k\right\}$ be a set of mutually unbiased Hadamard matrices of order $n$. Then $\left\{S_{ij} := r_{ij}^*r_{ij} - I | 1 \leq i \leq k,2 \leq j \leq n\right\}$ is linearly independent where $r_{ij}$ is the $j^{th}$ row of $H_{i}$.
+ \begin{proof}
+  Let $a_{12},a_{13},\dots,a_{k2},\dots,a_{kn} \in \C^n$. Select arbitrary $x,y$ such that $1 \leq x \leq k$ and $2 \leq y \leq n$. (The fifth implication below utilizes Lemma~\ref{lem:rs_trace} in three separate ways.)
+
+  $$\begin{array}{rcl}
+     \displaystyle\sum_{i=1}^{k}\sum_{j=2}^n a_{ij}S_{ij} = 0
+          &\implies& \left(\displaystyle\sum_{i=1}^{k}\sum_{j=2}^n a_{ij}S_{ij}\right)S_{xy}^* = 0\\
+          &\implies& \displaystyle\sum_{i=1}^{k}\sum_{j=2}^n a_{ij}S_{ij}S_{xy}^* = 0\\
+          &\implies& \tr\left(\displaystyle\sum_{i=1}^{k}\sum_{j=2}^n a_{ij}S_{ij}S_{xy}^*\right) = 0\\
+          &\implies& \left(\displaystyle\sum_{i \neq x}\sum_{j=2}^n a_{ij}\cdot\tr\left(S_{ij}S_{xy}^*\right)\right) + \left(\displaystyle\sum_{j \neq y}  a_{xj}\cdot\tr\left(S_{xj}S_{xy}^*\right)\right) \\ &&~~~+ \left(a_{xy}\cdot\tr\left(S_{xy}S_{xy}^*\right)\right) = 0 \\
+          &\implies& \left(\displaystyle\sum_{i \neq x}\sum_{j=2}^n a_{ij}\cdot\left(n-n\right)\right) + \left(\displaystyle\sum_{j \neq y}  a_{xj}\cdot\left(0-n\right)\right) \\&&~~~+ \left(a_{xy}\cdot\left(n^2-n\right)\right) = 0 \\
+          &\implies& n^2 \cdot a_{xy} - n\displaystyle\sum_{j=2}^n a_{xj} = 0
+    \end{array}
+  $$
+Since this must be true for any pair of $x$ and $y$, it suffices to show
+  $$D = I_{k} \otimes \left(\begin{array}{cccccc}
+     n^2 - n & -n & -n &        & -n \\
+     -n & n^2 - n & -n & \cdots & -n \\
+     -n & -n & n^2 - n &        & -n \\
+         & \vdots      & & \ddots & \vdots \\
+     -n & -n & -n & \cdots & n^2 - n
+   \end{array}\right)_{(n-1) \times (n-1)}$$
+is non-singular. For this, we need to show
+  $$\det\left(\begin{array}{cccccc}
+     n^2 - n & -n & -n &        & -n \\
+     -n & n^2 - n & -n & \cdots & -n \\
+     -n & -n & n^2 - n &        & -n \\
+      &  \vdots      & & \ddots & \vdots \\
+     -n & -n & -n & \cdots & n^2 - n
+   \end{array}\right) \neq 0.$$
+
+  By adding the negative of the first row of the matrix to each of the other rows, followed by subtracting each of the other columns from the first, we see that
+ $$\det\left(\begin{array}{cccccc}
+     n & -n & -n & \cdots & -n \\
+     0 & n^2  & 0 & \cdots & 0 \\
+     0 & 0 & n^2 &        & 0 \\
+     \vdots &        & & \ddots & \vdots \\
+     0 & 0 & 0 & \cdots & n^2
+   \end{array}\right) = (n\cdot(n^2)^{n-2}) = n^{2n-3} \neq 0.$$
+
+ \end{proof}
+
+\end{lemma}
+
+
+\begin{theorem} \label{th:muhm_unit_upper}
+ If $\left\{H_1,\dots,H_k\right\}$ be a set of mutually unbiased unit Hadamard matrices of order $n$, then $k \leq n$.
+ \begin{proof}
+  Let $\left\{H_1,\dots,H_k\right\}$ be a set of mutually unbiased unit Hadamard matrices of order $n$. Let $r_{ij}$ be the $j^{th}$ row of $H_i$. We define $S_{ij} = r_{ij}^*r_{ij} - I_n$. Noting that each $S_{ij}$ is Hermitian and has a zero diagonal gives that $\text{Span}(\{S_{ij}\})$ is a subspace of all Hermitian matrices with a zero diagonal. By Lemma~\ref{lem:muhm_lin_indep}, we have that $S_{ij}$ are linearly independent. Combining this with the fact that the set of Hermitian matrices with zero diagonal has dimension $2(0+1+2+\cdots+(n-1))$, we have
+  $$k(n-1) = |S_{ij}| \leq 2(0+1+2+\cdots+(n-1)) = n(n-1),$$
+  whence the result follows.
+ \end{proof}
+\end{theorem}
+
+\begin{theorem} \label{th:muhm_upper}
+ If $\left\{H_1,\dots,H_k\right\}$ be a set of mutually unbiased real Hadamard matrices of order $n$, then $k \leq \frac{n}{2}$.
+ \begin{proof}
+  We may utilize the same proof as Theorem~\ref{th:muhm_unit_upper} with one small change: since our matrices are real, we have that $\{S_{ij}\}$ is a subset of symmetric, zero diagonal matrices, which has a dimension of $(0+1+2+\cdots+(n-1))$.
+ \end{proof}
+
+\end{theorem}
+
+The next theorem will show that this bound is attained in some cases.
+
+\begin{lemma} \label{lem:p-prime-sum}
+ Let $p$ be an odd prime power.
+ $$\left|\sum_{k=0}^{p-1} e^{(ak^2 + bk)2\pi i/p}\right| = \begin{cases}
+                                                                    p & \text{ if } a \equiv 0 \hskip-10pt\pmod p \text{ and } b \equiv 0 \hskip-10pt\pmod p,\\
+                                                                    0 & \text{ if } a \equiv 0 \hskip-10pt\pmod p \text{ and } b \not\equiv 0 \hskip-10pt\pmod p,\\
+                                                             \sqrt{p} & \text{ otherwise.}
+                                                                   \end{cases}$$
+ \begin{proof}
+  We will only show the proof for odd prime numbers. The proof for prime powers follows similarly using finite fields.
+  We note that the first case is trivial. Now, if $a \equiv 0 \pmod p$ and $b \not\equiv 0 \pmod p$, then $$\sum_{k=0}^{p-1} e^{\frac{2\pi i}{p}(ak^2 + bk)} = \sum_{k=0}^{p-1} e^{\frac{2\pi i}{p}(bk)}.$$ Since $p$ is prime, $e^{\frac{2\pi i}{p}b}$ is a primitive $p^{th}$ root of unity. Since we are summing over all powers of $e^{\frac{2\pi i}{p}b}$, the second equality holds.
+
+  The third equality is trickier -- we will examine the absolute value squared. In the following steps, the fact that $p$ is an odd prime is only used in going from the third last equality to the second last (inside the curly braces, $\{\cdot\}$) to ensure that $2am$ is a primitive $p^{th}$ root of unity for any choice of $m$, $1 \leq m \leq p-1$. To conserve space, we will use ${\bf e}(x) := e^{\frac{2\pi i}{p}x}$.
+
+  $$\begin{array}{rl}
+      & \left|\sum_{k=0}^{p-1} {\bf e}(ak^2 + bk)\right|^2 \\
+    = & \left(\sum_{k=0}^{p-1} {\bf e}(ak^2 + bk)\right)\overline{\left(\sum_{\ell=0}^{p-1} {\bf e}(a\ell^2 + b\ell)\right)} \\
+    = & \left(\sum_{k=0}^{p-1} {\bf e}(ak^2 + bk)\right)\left(\sum_{\ell=0}^{p-1} {\bf e}(-(a\ell^2 + b\ell))\right)\\
+%     = & \sum_{k=0}^{p-1} \left[{\bf e}(ak^2 + bk) \cdot \sum_{\ell=0}^{p-1} {\bf e}\left(-(a\ell^2 + b\ell)\right)\right]\\
+    = & \sum_{k=0}^{p-1} \sum_{\ell=0}^{p-1} \left[{\bf e}\left(a(k^2-\ell^2) + b(k-\ell)\right)\right]\\
+%     = & \sum_{k=0}^{p-1} \sum_{\ell=0}^{p-1} \left[{\bf e}\left(a(k-\ell)(k+\ell) + b(k-\ell)\right)\right]\\
+    = & \sum_{k=0}^{p-1} \sum_{\ell=0}^{p-1} \left[{\bf e}\left((k-\ell)(a(k+\ell) + b\right)\right]\\
+    = & \sum_{m=0}^{p-1} \sum_{\ell=0}^{p-1} \left[{\bf e}\left(m(a(m+2\ell) + b\right)\right]\\
+%     = & \sum_{m=0}^{p-1} \sum_{\ell=0}^{p-1} \left[{\bf e}\left(m(am+2a\ell + b\right)\right]\\
+%     = & \sum_{m=0}^{p-1} \sum_{\ell=0}^{p-1} \left[{\bf e}\left(m(am+b) + 2am\ell\right)\right]\\
+    = & \sum_{m=0}^{p-1} \left[{\bf e}\left(m(am+b)\right)\sum_{\ell=0}^{p-1} {\bf e}\left(2am\ell\right)\right]\\
+    = & \left[{\bf e}\left(0\right)\sum_{\ell=0}^{p-1} {\bf e}\left(0\right)\right] + \sum_{m=1}^{p-1} \left[{\bf e}\left(m(am+b)\right)\left\{\sum_{\ell=0}^{p-1} {\bf e}\left(2am\ell\right)\right\}\right]\\
+    = & p + \sum_{m=1}^{p-1} \left[{\bf e}\left(m(am+b)\right)\left\{0\right\}\right]\\
+    = & p
+    \end{array}
+$$
+ \end{proof}
+
+\end{lemma}
+
+\begin{theorem}[\cite{ivanovic,mub-orig,wooters-mub}]\label{th:pr-pow}
+ If $n$ is an odd prime power, then there exists $n$ mutually unbiased unit Hadamard matrices of order $n$. They are $$\left\{H_1,H_2,\dots,H_n\right\},$$ where $(H_j)_{k\ell} = e^{(j\ell^2 + k\ell)2\pi i/n}$.
+ \begin{proof}
+  Note that the inner product of the $r^{th}$ row of the $H_{j}$ and the $s^{th}$ row of $H_{k}$ takes the following form
+   $$ \sum_{m=0}^{n-1} e^{(jm^2 + rm){2\pi i}/{n}}\overline{e^{(km^2 + sm){2\pi i}/{n}}} = \sum_{m=0}^{n-1} e^{((j-k)m^2 + (r-s)m){2\pi i}/{n}}.$$ We may then utilize the correct case from Lemma~\ref{lem:p-prime-sum} to give us the desired absolute value of the inner product.
+ \end{proof}
+
+\end{theorem}
+
+It is important to note that the size of the sets found in Theorem~\ref{th:pr-pow} are the same as the upper bound given by Theorem~\ref{th:muhm_unit_upper}, so our upper bound is sharp in some situations. However, if we look at any order of unit Hadamard matrices other than a prime power, we run into a problem. Mutually unbiased unit Hadamard matrices have been looked at quite extensively, and even in the first case that is not a prime power, $n = 6$, no example is known that attains the upper bound in Theorem~\ref{th:muhm_unit_upper}. In fact, it is generally believed that the maximal set of mutually unbiased unit Hadamard matrices of order $6$ is $2$ (see~\cite{mub-6}).
+
+\section[Mutually Unbiased Weighing Matrices]{Mutually Unbiased Weighing Matrices}
+\sectionmark{Mutually Unbiased Weighing Matrices}
+\label{sec:muwm}
+
+We now introduce a natural extension to mutually unbiased Hadamard matrices.
+
+\begin{definition}
+ Two unit weighing matrices, $W_1$ and $W_2$, of order $n$ and weight $w$ are {\it unbiased} if $W_1W_2^* = \sqrt{w}W$, where $W$ is a unit weighing matrix of order $n$ and weight $w$. A set of unit weighing matrices that are pairwise unbiased is called {\it mutually unbiased}. These are shortened to be called ``MUWM''.
+\end{definition}
+
+Except the case where $n = w$, a set of mutually unbiased unit weighing matrices are not equivalent to a set of mutually unbiased bases (as in Theorem~\ref{th:mub_muhm}). Instead, we are now dealing with a set of orthonormal bases whose vectors meet at two angles ($\pi/2$ and $\cos^{-1}(\frac{1}{\sqrt{w}})$) instead of just one ($\cos^{-1}(\frac{1}{\sqrt{n}})$). It is for this reason that these sets are termed {\it biangular}.
+
+When we deal with real weighing matrices, we have the following strong restriction on the weight of the matrices.
+
+\begin{lemma}\label{lem:perf-sqr}
+ Let $W_1$ and $W_2$ be real unbiased weighing matrices of order $n$ and weight $w$. Then $w$ must be a perfect square.
+ \begin{proof}
+  Since both $W_1$ and $W_2$ are integer matrices, $W_1W_2^T=\sqrt{w}L$ must be an integer matrix as well.
+ \end{proof}
+\end{lemma}
+
+Note that Lemma~\ref{lem:perf-sqr} is a special case of a proof for Hadamard matrices found in~\cite{real-mub}. However, when we are dealing with unit weighing matrices, we have no such restriction. In fact, we have the following.
+
+\subsection[Bounds and Assumptions]{Bounds and Assumptions}
+\subsectionmark{Bounds and Assumptions}
+\label{subsec:bounds-assumptions}
+
+In this section, we will describe the structure of mutually unbiased unit weighing matrices, as well as examine lower and upper bounds on the size of sets of mutually unbiased unit weighing matrices. We begin with a construction of mutually unbiased unit weighing matrices that is built off of other sets (similar to the Kronecker construction for Hadamard matrices in Lemma~\ref{lem:kronecker}).
+
+\begin{theorem}\label{th:direct-sum}
+ Let $\left\{\mathcal{W}_1,\dots,\mathcal{W}_k\right\}$ be a collection of sets of mutually unbiased unit weighing matrices of order $n_i$ and weight $w$. Then there are $$\min_{1 \leq i \leq k}\left(\left|\mathcal{W}_i\right|\right)$$ mutually unbiased unit weighing matrices of order $\sum_{i=1}^{k} n_i$ and weight $w$.
+ \begin{proof}
+  Let $\mathcal{W}_i = \left\{W_1^{(i)},W_2^{(i)},\dots,W_{\ell_i}^{(i)}\right\}$ for each $1 \leq i \leq k$ and let $$m = \min_{1 \leq i \leq k}\left(\left|\mathcal{W}_i\right|\right) = \min_{1 \leq i \leq k}\left(\ell_i\right).$$
+
+  Then the set $$\left\{\left(W_1^{(1)} \oplus \cdots \oplus W_1^{(k)}\right),
+                        \left(W_2^{(1)} \oplus \cdots \oplus W_2^{(k)}\right),
+                               \dots
+                       ,\left(W_m^{(1)} \oplus \cdots \oplus W_m^{(k)}\right)
+                 \right\}$$ gives the desired result by noting that $(A \oplus B)(A \oplus B)^* = AA^* \oplus BB^*$.
+ \end{proof}
+\end{theorem}
+
+% \begin{lemma}\label{lem:single-direct-sum}
+%  Let $\mathcal{W} = \left\{W_1,\dots,W_k\right\}$ be a set of mutually unbiased weighing matrices of order $m$ with weight $w$ and $\mathcal{X} = \left\{X_1,\dots,X_l\right\}$ be a set of mutually unbiased weighing matrices of order $n$ with weight $w$. Then there exist $p=\min(k,l)$ mutually unbiased weighing matrices of order $m+n$ and weight $w$.
+%  \begin{proof}
+%   The set $\left\{W_1 \oplus X_1, W_2 \oplus X_2, \dots, W_p \oplus X_p\right\}$ gives the desired result. This can be verified by noting that $\left(A \oplus B\right)\left(C \oplus D\right)^T = AC^T \oplus BD^T$.
+%  \end{proof}
+% \end{lemma}
+% 
+% \begin{theorem}\label{th:direct-sum}
+%  Let $\left\{\mathcal{W}_1,\dots,\mathcal{W}_k\right\}$ be a collection of sets of mutually unbiased weighing matrices of order $n_i$ and weight $w$. Then there are $$\min_{1 \leq i \leq k}\left(\left|\mathcal{W}_i\right|\right)$$ mutually unbiased weighing matrices of order $\sum_{i=1}^{k} n_i$ and weight $w$.
+%  \begin{proof}
+%  The case where $k=1$ is trivially true. Now assume the property holds for a collection of size $k-1 \geq 1$. Consider a collection with $k$ elements. By applying Lemma~\ref{lem:single-direct-sum} to $\mathcal{W}_1$ and $\mathcal{W}_2$, we know there exists a collection of mutually unbiased weighing matrices of order $n_1+n_2$ and weight $w$ with $min\left(\left|\mathcal{W}_1\right|,\left|\mathcal{W}_2\right|\right)$ elements (we shall call this collection $\mathcal{X}$). By applying the induction hypothesis to 
+% $\left\{\mathcal{X},\mathcal{W}_3,\dots,\mathcal{W}_{k}\right\}$, 
+% we have that there are 
+% $$\min\left(\left|\mathcal{X}\right|,\left|\mathcal{W}_3\right|, \dots, \left|\mathcal{W}_{k}\right|\right)
+% =\min\left(\min\left(\left|\mathcal{W}_1\right|,\left|\mathcal{W}_2\right|\right),\left|\mathcal{W}_{3}\right|, \dots, \left|\mathcal{W}_{k}\right|\right)
+% = \min_{1 \leq i \leq k}\left(\left|\mathcal{W}_i\right|\right)$$ mutually unbiased weighing matrices of order $(n_1+n_{2})+\sum_{i=3}^{k} n_i=\sum_{i=1}^{k} n_i$ and weight $w$.
+% 
+%  \end{proof}
+% \end{theorem}
+
+\begin{definition}
+ Let $W$ be a unit weighing matrix of order $n$ and weight $w$. If $W = W_1 \oplus W_2$ for some $W_1$ and $W_2$ of orders strictly less than $n$, then $W$ is said to be {\it decomposable}\footnote{The term {\it decomposable matrix} is sometimes used to describe a {\it reducible matrix}. The reader is warned not to confuse the two terms in this thesis.}. Note that since the rows of $W$ must be orthogonal, it follows that $W_1$ and $W_2$ are also weighing matrices. We may write $W$ in such a way that $W=W_1 \oplus W_2 \oplus \cdots \oplus W_k$ where each $W_i$ is indecomposable of order $n_i$. The {\it block structure} of $W$ is the $k$-tuple $(n_1,n_2, \dots ,n_k).$
+\end{definition}
+
+ When two unit weighing matrices have exactly the same block structure, we will be able to utilize the following proposition.
+
+ \begin{proposition} \label{prop:blocks}
+  If two weighing matrices, $W_1$ and $W_2$, of the same weight have the same block structure, then $W_1$ is unbiased with $W_2$ if and only if each indecomposable block of $W_1$ is unbiased with the corresponding indecomposable block of $W_2$.
+  \begin{proof}
+  This is easily seen by noting that $$(W_1^{(1)} \oplus \cdots \oplus W_1^{(m)})(W_2^{(1)} \oplus \cdots \oplus W_2^{(m)})^* = W_1^{(1)}W_2^{(1)*} \oplus \cdots \oplus W_1^{(m)}W_2^{(m)*}.$$
+  \end{proof}
+ \end{proposition}
+
+  The block structures of matrices is repeatedly used in our proofs throughout the thesis by applying the following proposition.
+
+ \begin{proposition} \label{prop:blocks_upper}
+  Let $\left\{W_1,\dots,W_k\right\}$ be a set of mutually unbiased unit weighing matrices of order $n$ and weight $w$ with the same block structure, say $(n_1,\dots,n_m)$. Then $k$ is bounded above by the maximal size of a set of mutually unbiased weighing matrices of order $n_i$ and weight $w$, for $1 \leq i \leq k$.
+  \begin{proof} This follows from Proposition~\ref{prop:blocks}.\end{proof}
+ \end{proposition}
+
+ When we examine an arbitrary set of mutually unbiased unit weighing matrices, they may not be in a form where Propositions~\ref{prop:blocks} and~\ref{prop:blocks_upper} may be used. However, we may be able to apply appropriate row and column permutations in such a way that we may utilize those propositions. For example,
+
+$$W_1=\left(\begin{array}{cccc}
+   1 & 0 & 1 & 0 \\
+   0 & 1 & 0 & 1 \\
+   1 & 0 & - & 0 \\
+   0 & 1 & 0 & - \\
+  \end{array}\right) \text{ and }
+W_2 = \left(\begin{array}{cccc}
+   0 & 1 & 0 & i\\
+   1 & 0 & i & 0\\
+   1 & 0 & -i & 0\\
+   0 & 1 & 0 & -i\\
+  \end{array}\right)$$
+are two indecomposable weighing matrices which are unbiased with one another. However, with appropriate row and column permutations\footnote{Note that the column permutations must be the same for both matrices to ensure they are still unbiased with one another.}, we may examine
+$$W_1'=\left(\begin{array}{cccc}
+   1 & 1 & 0 & 0 \\
+   1 & - & 0 & 0 \\
+   0 & 0 & 1 & 1 \\
+   0 & 0 & 1 & - \\
+  \end{array}\right) \text{ and }
+W_2' = \left(\begin{array}{cccc}
+   1 & i & 0 & 0\\
+   1 & -i & 0 & 0\\
+   0 & 0 & 1 & i\\
+   0 & 0 & 1 & -i\\
+  \end{array}\right),$$
+ which are also unbiased with one another, and where Propositions~\ref{prop:blocks} and~\ref{prop:blocks_upper} may be used. We will call the block structure found in $W_1'$ and $W_2'$ {\it suitable} and the block structure found in $W_1$ and $W_2$ {\it not suitable}. Throughout the article, we will only concern ourselves with matrices that have a suitable block structure. To this end, we pose an algorithm to determine a matrix's suitable block structure.
+
+%  When attempting to classify mutually unbiased weighing matrices, we will attempt to fix a certain weighing matrix within each set and find matrices that are equivalent to it. Determining if two weighing matrices are equivalent is a relatively complex problem, and as of today, there are no efficient algorithms to ascertain equivalence. Conversely, determining if two weighing matrices have the same block structure is a much simpler problem, by simply examining the nonzero entries
+
+\begin{lemma}\label{lem:block-complexity}
+ The suitable block structure of a unit weighing matrix of order $n$ can be determined in $O(n^3)$ steps.
+
+ \begin{proof}
+  Let $W$ be a weighing matrix of order $n$ and $W'$ be the equivalent weighing matrix that has a suitable block structure. We define $G_{W}$ be the graph on $n$ vertices with an edge between vertices $i$ and $j$ if and only if at least one nonzero entry in row $i$ is in the same column as a nonzero entry in row $j$ in $W$. Two rows of $W$ are in the same indecomposable block of $W'$ if and only if there is a path between the corresponding nodes in $G_W$. Thus, an indecomposable block of $W'$ can be found by taking the rows corresponding to all vertices in any connected component of $G_W$ and removing all columns that only have zeroes. The number of indecomposable blocks of $W'$ is the number of connected components of $G_W$.
+
+% By placing the number of vertices in each connected component into a list and sorting that list (say we now have $n_1,n_2,\cdots,n_k$), we have that the block structure of $W$ is $$J_{n_1} \oplus J_{n_2} \oplus \cdots \oplus J_{n_k}.$$
+
+  In total, this process involves two parts. First, to build the graph, we look at all pairs of rows and examining each column, for a time of $O(n^3)$. Then, we determine the number of connected components, which takes $O(n^2)$ via depth first search for an overall complexity of $O(n^3)$ steps.
+ \end{proof}
+\end{lemma}
+
+% Determining if two weighing matrices are equivalent is a relatively complex problem, and as of today, there are no efficient algorithms to determine equivalence. Determining if two weighing matrices have the same block structure, however, is a much simpler problem as we see in the next lemma.
+% 
+% \begin{lemma}\label{lem:block-complexity}
+%  The block structure of a weighing matrix can be determined in $O(n^3)$.
+%  \begin{proof}
+%   Given a weighing matrix $W$ of order $n$, let $G$ be the graph on $n$ vertices with an edge between $i$ and $j$ if and only if at least one nonzero entry in row $i$ is in the same column as a nonzero entry in row $j$. Two rows of $W$ are in the same non-decomposable block if and only if there is a path between the corresponding nodes in $G$. Thus, a non-decomposable block of $W$ can be found by taking the rows corresponding to all vertices in any connected component of $G$ and removing any columns that only have zeroes. The number of non-decomposable blocks of $W$ is the number of connected components of $G$. By placing the number of vertices in each non-decomposable block into a list and sorting that list (say we now have $n_1,n_2,\dots,n_k$), we have that the block structure of $W$ is $$J_{n_1} \oplus J_{n_2} \oplus \cdots \oplus J_{n_k}.$$
+% 
+%  This process has three steps: First, we must build the graph. This can be done in $O(n^3)$ by looking at all pairs of rows and examining each column. Then, we determine the number of connected components, which takes $O(n^2)$ via depth first search. Finally, we sort the list in $O(n\log n)$ for a total complexity of $O(n^3)$.
+%  \end{proof}
+% \end{lemma}
+% 
+% 
+%  It is noteworthy to point out that the asymptotic bound in Lemma~\ref{lem:block-complexity} is not tight. When constructing $G$ in the proof of Lemma~\ref{lem:block-complexity} can be done by multiplying $|W|$ by $|W|^T$, where $|W| = [|w_{ij}|]$. The nonzero entries in $|W||W|^T$ signify an edge in $G$. As of today, matrix multiplication can be done in $O(n^{2.3727})$~\cite{matrix-mult}.
+
+% \begin{proposition} \label{prop:blocks}
+%  If two weighing matrices (say $H$ and $K$) of the same weight have the same block structure, then $H$ is unbiased with $K$ if and only if each non-decomposable block of $H$ is unbiased with the corresponding non-decomposable block of $K$.
+%  \begin{proof}
+%   This is easily seen by noting that $$(H_1 \oplus \cdots \oplus H_m)(K_1 \oplus \cdots \oplus K_m)^* = (H_1K_1^* \oplus \cdots \oplus H_mK_m^*).$$
+%  \end{proof}
+% 
+% \end{proposition}
+% 
+% \begin{proposition} \label{prop:blocks_upper}
+%  If every matrix in a set of mutually unbiased weighing matrices has the same block structure, then that set's size is restricted by each individual non-decomposable block's upper bound.
+%  \begin{proof} This follows from Proposition~\ref{prop:blocks}.\end{proof}
+% \end{proposition}
+
+
+So far, the only upper bounds given are for mutually unbiased Hadamard matrices. In the following theorems, we will show that the number of mutually unbiased weighing matrices also has an upper bound. Each of the following theorems were given in \cite{calderbank97}, but we provide a more detailed proof here.
+
+For the following four theorems, we will utilize the concept of tensor products, which the reader only needs a vague understanding of to understand fully\footnote{Kronecker products are a special case of tensor products on matrices, so any reader that is not familiar with tensor products may wish to view them as Kronecker products (see Definition~\ref{def:kronecker-product}).}.
+
+\begin{definition} \label{def:n-tensor}
+ Let $V$ be a vector space and $T$ be a tensor. $T$ is a {\it symmetric $n$-tensor} if $$T(v_1,v_2,\dots,v_n)=T(v_{\sigma_1},v_{\sigma_2},\dots,v_{\sigma_n})$$ for all permutations $\sigma:\{1,\dots,n\}\rightarrow\{1,\dots,n\}$. Let $S^k(V)$ denote the space of symmetric $n$-tensors of $V$.
+\end{definition}
+
+\begin{lemma} \label{lem:dim_n-tensor}
+ Let $V$ be a vector space of dimension $n$. Then $\dim\left(S^k(V)\right) = \binom{n+k-1}{k}$.
+ \begin{proof}
+  Let $\left\{v_1,\dots,v_n\right\}$ be a basis of $V$. The basis elements of $S^k(V)$ are $\left\{v_{a_1} \otimes \cdots \otimes v_{a_k} \right\}$ where $(a_1,\dots,a_k)$ is any non-increasing sequence in $\{1,\dots,n\}$. It is well known that the number of non-increasing sequences is $\binom{n+k-1}{k}$~\cite{star-bar}.
+ \end{proof}
+
+\end{lemma}
+
+\begin{definition} \label{def:pos-def-matrix}
+ A {\it positive definite matrix}, $M$, is an $n \times n$ matrix such that for any nonzero vector $v \in \C^n$, $v^*Mv > 0$. Similarly, a {\it positive semi-definite matrix}, $N$, is an $n \times n$ matrix such that for any nonzero vector $v \in \C^n$, $v^*Nv \geq 0$.
+\end{definition}
+
+\begin{definition} \label{def:gram}
+ Let $V \subset \T^n$ such that $|V| = k$. Then the {\it Gramian matrix}, $\Gram(V) = [g_{ij}]$, is a $k \times k$ matrix where $g_{ij} = \langle v_i,v_j \rangle$.
+\end{definition}
+
+
+\begin{lemma} \label{lem:pos-def-stuff}
+ Let $r \in \R$, $M$ be a positive definite matrix, $N$ be a positive semi-definite matrix and $V$ be a set of unit vectors. Then we have the following.
+
+ \begin{enumerate}[(a)]
+  \item $M+N$ is a positive definite matrix.
+  \item $M$ has an inverse.
+  \item If $r > 0$, then $rM$ is positive definite and $rN$ is positive semi-definite.
+  \item Applying simultaneous elementary row and column operations to M gives a positive definite matrix.
+  \item $\Gram(V)$ is a positive semi-definite matrix.
+ \end{enumerate}
+
+
+ \begin{proof}
+  \begin{enumerate}[(a)]
+   \item Let $v \in \C^n {\setminus \{0\}}$. $$v^*(M+N)v = v^*Mv + v^*Nv > 0 + v^*Nv \geq 0 + 0 = 0$$
+   \item Let $v \in \C^n {\setminus \{0\}}$. Since $v^*Mv > 0$, we have that $Mv \neq 0$, so $0$ cannot be an eigenvalue of $M$, and the result follows.
+   \item Let $v \in \C^n {\setminus \{0\}}$. $$v^*(rM)v = r(v^*Mv) > r\cdot0 = 0$$ and $$v^*(rN)v = r(v^*Nv) \geq r\cdot0 = 0.$$
+   \item Let $v \in \C^n {\setminus \{0\}}$. Let $Q$ represent the elementary row operation you wish to apply. Then $Q^*MQ$ is the matrix after applying the row operations. $$v^*(Q^*MQ)v = (Qv)^*M(Qv) > 0$$ since $Qv \in \C^n$ and $M$ is positive definite.
+   \item Let $V = \left\{v_1,\dots,v_m\right\}$. And let $A$ be the rectangular matrix of $m$ rows where the $i^{th}$ row of $A$ is $v_i$. Then $\Gram(V) = AA^*$. Let $v \in \C^n{\setminus \{0\}}$. Then
+
+$$v^*\Gram(V)v = v^*(AA^*)v=(v^*A)(v^*A)^* \geq 0.$$
+  \end{enumerate}
+
+ \end{proof}
+
+\end{lemma}
+
+\begin{theorem}[\mbox{\cite[Equation 3.7]{calderbank97}}]\label{th:aub_vec_real}
+  Let $V \subset \R^n$ be a set of unit vectors. If $|\langle v,w\rangle| \in \left\{0,\alpha\right\}$ for all $v,w\in V$, $v\neq w$, where $\alpha \in \mathbb{R}$ and $0 < \alpha < 1$, then
+  \begin{equation}\label{eq:aub_vec_real}|V|\leq \binom{n+2}{3}.\end{equation}
+  
+  \begin{proof}
+   Let $A = \{X_v := v \otimes v \otimes v | v \in V\} \subset S^3(\R^n)$. We claim that $A$ is a set of linearly independent vectors in $S^3(\R^n)$, which would immediately give us our result through the use of Lemma~\ref{lem:dim_n-tensor}. To show that $A$ is linearly independent, we will show that the $\Gram(A)$ is non-singular.
+
+   To see this, note that $\langle X_v , X_w \rangle = \langle v , w \rangle^3$, which implies that $\Gram(A) = I+\alpha^3 C$ where $\Gram(V) = I+\alpha C$. We have that $$\Gram(A) = I+\alpha^3C = (1 - \alpha^2)I + \alpha^2(I+\alpha C) = (1 - \alpha^2)I + \alpha^2\Gram(V).$$ From our assumption, we have that $1 - \alpha^2 > 0$ which means that $(1 - \alpha^2)I$ is a positive definite matrix (by Lemma~\ref{lem:pos-def-stuff} (c)). And $\Gram(V)$ is the Gramian matrix of a set of vectors, which implies that $\alpha^2\Gram(V)$ is a positive semi-definite matrix (by Lemma~\ref{lem:pos-def-stuff} (d) and (e)). The sum of a positive definite matrix and a positive semi-definite matrix is a positive definite matrix (by Lemma~\ref{lem:pos-def-stuff} (a)). All positive definite matrices have an inverse (by Lemma~\ref{lem:pos-def-stuff} (b)), so $\Gram(A)$ must be non-singular.
+  \end{proof}
+
+\end{theorem}
+
+\begin{theorem}[\mbox{\cite[Equation 5.9]{calderbank97}}]\label{th:aub_vec_complex}
+ Let $V \subset \C^n$ be a set of unit vectors. If $|\langle v,w\rangle| \in \left\{0,\alpha\right\}$ for all $v,w\in V$, $v\neq w$, where $\alpha \in \R$ and $0 < \alpha < 1$, then
+  \begin{equation}\label{eq:aub_vec_complex}|V|\leq n\binom{n+1}{2}.\end{equation}
+
+ \begin{proof}
+  The proof is nearly identical to Theorem~\ref{th:aub_vec_real} on replacing $A$ with $A' = \{X_v := v \otimes v \otimes v^* | v \in V\} \subset S^2(\C^n) \otimes \C^n$.
+ \end{proof}
+
+\end{theorem}
+
+If we wish to add a restriction on the value of $\alpha$, we can obtain a better bound in certain cases.
+
+\begin{theorem}[\mbox{\cite[Equation 3.9]{calderbank97}}]\label{th:tub_vec_real}
+ Let $V \subset \R^n$ be a set of unit vectors where $|\langle v,w\rangle|~\in~\left\{0,\alpha\right\}$ for all $v,w\in V$, $v\neq w$, where $\alpha \in \mathbb{R}$ and $0 < \alpha < 1$. If $3-(n+2)\alpha^2 > 0$, then \begin{equation}\label{eq:tub_vec_real}|V|\leq \frac{n(n+2)(1-\alpha^2)}{3-(n+2)\alpha^2}.\end{equation}
+
+ \begin{proof}
+  Let $h_v = \frac13\sum_{i=1}^n ((v \otimes e_i \otimes e_i) + (e_i \otimes v \otimes e_i) + (e_i \otimes e_i \otimes v))$ and $A = \{X_v := v \otimes v \otimes v | v \in V\}\subset S^3(\R^n)$.
+
+  We know that $$(n+2)(I+\alpha^3C) -3(I+\alpha C)$$ is positive semi-definite since it may be obtained through simultaneous row and column permutations of $\Gram(\left\{h_a\right\}\cup A)$ (using Lemma~\ref{lem:pos-def-stuff} (d) and (e)). Let $v$ be an eigenvector of $I+\alpha C$ and let $v_0 := v^*v$ for convenience. Since $I+\alpha C$ is positive semi-definite, $(I + \alpha C)v = \lambda v \implies \lambda \geq 0$.
+
+$$v^*([(n+2)(1-\alpha^2)]I - [3-\alpha^2(n+2)](I+\alpha C))v $$ $$= [(n+2)(1-\alpha^2)]v^*v - [3-\alpha^2(n+2)]v^*(I+\alpha C)v$$ $$= [(n+2)(1-\alpha^2)]v^*v - [3-\alpha^2(n+2)]v^*\lambda v$$ $$= [(n+2)(1-\alpha^2)]v_0 - [3-\alpha^2(n+2)]\lambda v_0.$$
+
+Since our original matrix was positive semi-definite, we know that this number must be non-negative, which implies
+
+$$[(n+2)(1-\alpha^2)]v_0 - [3-\alpha^2(n+2)]\lambda v_0 \geq 0 \implies (n+2)(1-\alpha^2) \geq [3-\alpha^2(n+2)]\lambda$$ $$\implies \lambda \leq \frac{(n+2)(1-\alpha^2)}{3-\alpha^2(n+2)}$$ assuming $3-\alpha^2(n+2) > 0$.
+
+Since this must be true for all eigenvalues of $I+\alpha C$, we have the following
+$$|V| = \tr(I+\alpha C) = \sum_{i=1}^{n} \lambda \leq \sum_{i=1}^{n} \frac{(n+2)(1-\alpha^2)}{3-\alpha^2(n+2)} = \frac{n(n+2)(1-\alpha^2)}{3-\alpha^2(n+2)}.$$
+ \end{proof}
+
+\end{theorem}
+
+
+\begin{theorem}[\mbox{\cite[Equation 5.9]{calderbank97}}]\label{th:tub_vec_complex}
+  Let $V \subset \mathbb{C}^n$ be a set of unit vectors. If $|\langle v,w\rangle| \in \left\{0,\alpha\right\}$ for all $v,w\in V$, $v\neq w$, where $\alpha \in \mathbb{R}$ and $0 < \alpha < 1$, then
+
+ \begin{equation}\label{eq:tub_vec_complex}|V|\leq \frac{n(n+1)(1-\alpha^2)}{2-(n+1)\alpha^2}\end{equation} if the denominator is positive.
+
+ \begin{proof}
+  Similar to Theorem~\ref{th:tub_vec_real}.
+ \end{proof}
+
+\end{theorem}
+
+It is important to note that in most cases, the bounds involving a specific $\alpha$ are smaller than the ones without, but not always. For example, if we are looking for real vectors with $n=9$ and $\alpha = \frac12$, the first bound, (\ref{eq:aub_vec_real}), gives us $|V| \leq 165$ whereas the second bound, (\ref{eq:tub_vec_real}), gives us $|V| \leq 297$.
+
+The following are immediate corollaries to the previous few theorems.
+
+\begin{corollary} \label{cor:ub_mat_complex}
+ Let $\mathcal{W}=\{W_1,\dots,W_m\}$ be a set of mutually unbiased unit weighing matrices of order $n$ and weight $w$. Then we have that
+
+  \begin{equation}\label{eq:aub_mat_complex} m \leq \frac{(n-1)(n+2)}{2}.\end{equation}
+  Moreover, if $2w-(n+1) > 0$, then
+  \begin{equation}\label{eq:tub_mat_complex} m \leq \frac{w(n-1)}{2w-(n+1)}.\end{equation}
+  
+  \begin{proof}
+    Define $V$ to be the set of all rows of $\frac{1}{\sqrt{w}}W_1, \dots, \frac{1}{\sqrt{w}}W_m$ (note that $|V| = mn$). Since $\mathcal{W}$ is a set of mutually unbiased weighing matrices, we set $\alpha=\frac{1}{\sqrt{w}}$. Moreover, note that since all vectors in $V$ come from a weighing matrix of weight $w$, we may adjoin the rows of the identity matrix to $V$ without disrupting the bi-angularity (note that now, $|V| = mn + n$). By applying Theorem~\ref{th:aub_vec_complex} and Theorem~\ref{th:tub_vec_complex} to $V$ (with the rows of the identity matrix included), we obtain the desired results.
+   \end{proof}
+\end{corollary}
+
+\begin{corollary} \label{cor:ub_mat_real}
+ Let $\mathcal{W}=\{W_1,\dots,W_m\}$ be a set of real mutually unbiased weighing matrices of order $n$ and weight $w$. Then we have that
+
+  \begin{equation}\label{eq:aub_mat_real} m \leq \frac{(n-1)(n+4)}{6}.\end{equation}
+  Moreover, if $3w-(n+2) > 0$, then
+  \begin{equation}\label{eq:tub_mat_real} m \leq \frac{w(n-1)}{3w-(n+2)}.\end{equation}
+
+  \begin{proof}
+   Similar to Corollary~\ref{cor:ub_mat_complex}.
+  \end{proof}
+
+\end{corollary}
+
+\subsection{The Search For Sets}
+
+When we study mutually unbiased weighing matrices, our main goal is to find as many matrices in a set as possible. From Corollary~\ref{cor:ub_mat_complex} and Corollary~\ref{cor:ub_mat_real}, we have an upper bound for the number of mutually unbiased weighing matrices. We have also given constructions that will provide us with lower bounds, but before we may utilize any of those constructions, we must find examples of small mutually unbiased weighing matrices. This section demonstrates the searches that were involved with finding such sets.
+
+% With unit weighing matrices, an exhaustive computer search is impractical, if not impossible, to perform since each nonzero entry in every matrix has infinitely many choices. To this end, we restricted the entries to small roots of unity in our computer searches. For each type of matrix, we searched for matrices over the $m^{th}$ roots of unity, with $m \leq 24$. Searches with higher $m$ become increasingly impractical due to the algorithmic complexity. As one observes from Table~\ref{table:bounds}, the $12^{th}$ roots of unity seem to be the largest group needed to find some maximal sets. Many of the maximal sets that we found do not match the upper bound given in Corollary~\ref{cor:ub_mat_complex}. For many cases, we prove smaller upper bounds.
+
+With unit weighing matrices, an exhaustive computer search is impractical, if not impossible, to perform since each nonzero entry in every matrix has infinitely many choices. To this end, we restricted the entries to small roots of unity in our computer searches. For each type of matrix, we searched for matrices over the $m^{th}$ roots of unity, with $m \leq 24$. The $12^{th}$ roots of unity seem to be the largest group needed to find some maximal sets. Many of the maximal sets that we found do not match the upper bound given in Corollary~\ref{cor:ub_mat_complex}. However, for many of these cases, we will prove smaller upper bounds than those given in Corollary~\ref{cor:ub_mat_complex}.
+
+Table~\ref{table:bounds} contains a summary of the various bounds that we have for mutually unbiased weighing matrices.
+
+\begin{table}
+\caption[Summary of bounds on mutually unbiased weighing matrices]{A summary of upper bounds and lower bounds on the size of mutually unbiased weighing matrices. For lower bounds, if the upper bound is attained, we will give an explicit example of a set attaining the bound. For upper bounds, we will state the appropriate Theorem, Lemma, etc. Any row that is shaded indicates that there is a gap between the lower and upper bounds.}
+\centering
+\begin{tabular}{@{}c c ccl c cl@{}}
+ \toprule\label{table:bounds}
+ Type & & \multicolumn{3}{@{}c@{}}{Lower Bounds} & & \multicolumn{2}{@{}c@{}}{Upper Bounds} \\
+\cmidrule{3-5} \cmidrule{7-8}
+ && Largest & Root of Unity & Example && Smallest  & \multicolumn{1}{@{}c@{}}{Rationale} \\
+ \midrule
+ UW(2,2)       && 2  &  4 & Theorem~\ref{th:pr-pow}    &&  2 & Corollary~\ref{cor:ub_mat_complex} \\
+ UW(3,2)       && 0  & -- & --                         &&  0 & Theorem~\ref{th:uw-n2}             \\
+ UW(3,3)       && 3  &  3 & Theorem~\ref{th:pr-pow}    &&  3 & Corollary~\ref{cor:ub_mat_complex} \\
+ UW(4,2)       && 2  &  4 & Lemma~\ref{lem:even-2}     &&  2 & Lemma~\ref{lem:even-2}             \\
+ UW(4,3)       && 9  &  6 & Corollary~\ref{cor:cw_n_3} &&  9 & Corollary~\ref{cor:ub_mat_complex} \\
+ UW(4,4)       && 4  &  4 & Theorem~\ref{th:pr-pow}    &&  4 & Corollary~\ref{cor:ub_mat_complex} \\
+ UW(5,2)       && 0  & -- & --                         &&  0 & Theorem~\ref{th:uw-n2}             \\
+ UW(5,3)       && 0  & -- & --                         &&  0 & Corollary~\ref{cor:w-n3}           \\
+ UW(5,4)       && 5  &  6 & Theorem~\ref{th:cw_5_4}    &&  5 & Theorem~\ref{th:cw_5_4}            \\
+ UW(5,5)       && 5  &  5 & Theorem~\ref{th:pr-pow}    &&  5 & Corollary~\ref{cor:ub_mat_complex} \\
+ UW(6,2)       && 2  &  4 & Lemma~\ref{lem:even-2}     &&  2 & Lemma~\ref{lem:even-2}             \\
+ UW(6,3)       && 3  &  3 & Corollary~\ref{cor:cw_n_3} &&  3 & Theorem~\ref{th:cw_n_3}            \\
+ UW(6,4)       && 20 &  6 & Theorem~\ref{th:uw-6-4}    && 20 & Corollary~\ref{cor:ub_mat_complex} \\
+ \rowcolor{Gray}
+ UW(6,5)       && 2  & 12 & --                         &&  8 & Corollary~\ref{cor:ub_mat_complex} \\
+ \rowcolor{Gray}
+ UW(6,6)       && 2  & 12 & --                         &&  6 & Corollary~\ref{cor:ub_mat_complex} \\
+ UW(7,2)       && 0  & -- & --                         &&  0 & Theorem~\ref{th:uw-n2}             \\
+ UW(7,3)       && 3  &  6 & Corollary~\ref{cor:cw_n_3} &&  3 & Theorem~\ref{th:cw_n_3}            \\
+ UW(7,4)       && 8  &  2 & Corollary~\ref{cor:cw_7_4} &&  8 & Theorem~\ref{th:cw_7_4}            \\
+ UW(7,5)       && 0  & -- & --                         &&  0 & Theorem~\ref{th:uw75-exist}        \\
+ \rowcolor{Gray}
+ UW(7,6)       && 0  & -- & --                         &&  9 & Corollary~\ref{cor:ub_mat_complex} \\
+ UW(7,7)       && 7  &  7 & Theorem~\ref{th:pr-pow}    &&  7 & Corollary~\ref{cor:ub_mat_complex} \\
+ \bottomrule
+\end{tabular}
+\end{table}
+
+% \begin{table}
+% \caption[Summary of Mutually Unbiased Weighing Matrices Found]{We compare the theoretic upper bound given in Corollary~\ref{cor:ub_mat_complex} to the results of both our computer searches and any improved (i.e., smaller) upper bounds we have found. The highlighted rows signify cases where the smallest upper bound and largest lower bound do not meet.}
+% \centering
+% \begin{tabular}{@{}ccclclc@{}}
+%  \toprule\label{table:bounds}
+%  Type & & \multicolumn{2}{@{}c@{}}{Upper Bounds} & & \multicolumn{2}{@{}c@{}}{Examples Found} \\
+% \cmidrule{2-4} \cmidrule{6-7}
+%  & & Corollary~\ref{cor:ub_mat_complex} & \multicolumn{1}{@{}c@{}}{Smallest} & & Largest Set & Root of Unity \\
+%  \midrule
+%  UW(2,2)       && 2              & 2                               && 2 (Theorem~\ref{th:pr-pow}) &  4  \\
+%  UW(3,2)       && 5              & 0 (Theorem~\ref{th:uw-n2})      && 0                           & --  \\
+%  UW(3,3)       && 3              & 3                               && 3 (Theorem~\ref{th:pr-pow}) &  3  \\
+%  UW(4,2)       && 9              & 2 (Lemma~\ref{lem:even-2})      && 2  &  4  \\
+%  UW(4,3)       && 9              & 9                               && 9  &  6  \\
+%  UW(4,4)       && 4              & 4                               && 4 (Theorem~\ref{th:pr-pow}) &  4  \\
+%  UW(5,2)       && 14             & 0 (Theorem~\ref{th:uw-n2})      && 0  & -- \\
+%  UW(5,3)       && 14             & 0 (Corollary~\ref{cor:w-n3})    && 0  & -- \\
+%  UW(5,4)       && 8              & 5 (Theorem~\ref{th:cw_5_4})     && 5  &  6  \\
+%  UW(5,5)       && 5              & 5                               && 5 (Theorem~\ref{th:pr-pow}) &  5  \\
+%  UW(6,2)       && 20             & 2 (Lemma~\ref{lem:even-2})      && 2  &  4  \\
+%  UW(6,3)       && 20             & 3 (Theorem~\ref{th:cw_n_3})     && 3  &  3  \\
+%  UW(6,4)       && 20             & 20                              && 20 &  6  \\
+%  \rowcolor{Gray}
+%  UW(6,5)       && $\frac{25}{3}$ & 8                               && 2  & 12  \\
+%  \rowcolor{Gray}
+%  UW(6,6)       && 6              & 6                               && 2  & 12  \\
+%  UW(7,2)       && 27             & 0 (Theorem~\ref{th:uw-n2})      && 0  & -- \\
+%  UW(7,3)       && 27             & 3 (Theorem~\ref{th:cw_n_3})     && 3  &  6  \\
+%  UW(7,4)       && 27             & 8 (Theorem~\ref{th:cw_7_4})     && 8  &  2  \\
+%  UW(7,5)       && 15             & 0 (Theorem~\ref{th:uw75-exist}) && 0  & -- \\
+%  \rowcolor{Gray}
+%  UW(7,6)       && 9              & 9                               && 0  &  --   \\
+%  UW(7,7)       && 7              & 7                               && 7 (Theorem~\ref{th:pr-pow}) &  7  \\
+%  \bottomrule
+% \end{tabular}
+% \end{table}
+
+\subsection[Weight 2]{Mutually Unbiased Weighing Matrices of Weight 2}
+\sectionmark{Mutually Unbiased Weighing Matrices of Weight 2}
+\label{sec:muwm-w2}
+
+In Theorem~\ref{th:uw-n2}, we proved that $UW(n,2)$ do not exist for odd orders. For $n$ even, we have the following.
+
+\begin{lemma} \label{lem:even-2}
+ Let $n$ be even. Then there are at most 2 mutually unbiased weighing matrices of order $n$ and weight 2.
+ \begin{proof}
+  Say we have a set of mutually unbiased weighing matrices of the appropriate order and weight. From Theorem~\ref{th:uw-n2}, we know that one of the matrices may be transformed into $$\left(
+\begin{array}{cc}
+ 1 & 1 \\
+ 1 & - \\
+\end{array}
+\right) \otimes I_{n/_2}
+.$$ Permute the rows of the second matrix so that there is a nonzero in the top-left entry. The second entry in the top row must be nonzero, otherwise the inner product of the top row of the first and second matrices will be neither 0 nor $\sqrt{2}$. Continue this argument so that the block structure is the same between all matrices in the set of unbiased weighing matrices. By applying Corollary~\ref{cor:ub_mat_complex} (for $2 \times 2$ submatrices) and Proposition~\ref{prop:blocks_upper}, we have our result.
+ \end{proof}
+
+\end{lemma}
+
+\subsection[Weight 3]{Mutually Unbiased Weighing Matrices of Weight 3}
+\sectionmark{Mutually Unbiased Weighing Matrices of Weight 3}
+\label{sec:muwm-w3}
+
+\begin{lemma} \label{lem:cw_n_3_blocks}
+ A $UW(n,3)$, $W_1$, is unbiased with $W_2$ if and only if $W_1$ has the same block structure as $W_2$.
+
+ \begin{proof}
+  From Theorem~\ref{th:uw-n3-equiv}, we know that $W_1$ may be transformed into a matrix of the following form:
+
+$$\left(
+\begin{array}{ccc}
+ 1 & 1       &1 \\
+ 1 & \omega       &\overline{\omega} \\
+ 1 & \overline{\omega} &\omega       
+\end{array}
+\right) \oplus \cdots \oplus \left(
+\begin{array}{ccc}
+ 1 & 1       &1 \\
+ 1 & \omega       &\overline{\omega} \\
+ 1 & \overline{\omega} &\omega      
+\end{array}
+\right) \oplus 
+\left(
+\begin{array}{cccc}
+ 1 & 1 &1 &0 \\
+ 1 & - &0 &1 \\
+ 1 & 0 &- &- \\
+ 0 & 1 &- &1
+\end{array}
+\right)
+\oplus \cdots \oplus
+\left(
+\begin{array}{cccc}
+ 1 & 1 &1 &0 \\
+ 1 & - &0 &1 \\
+ 1 & 0 &- &- \\
+ 0 & 1 &- &1
+\end{array}
+\right),
+$$
+where $\omega = e^{{2\pi i}/{3}}$.
+
+We may assume through row and column permutations and normalization by a unimodular number that the first 3 rows of $W_2$ have a 1 in the first column.
+
+Assume that the top left block in $W_1$ is a $UW(3,3)$. In the first row of $W_2$, if the first three entries are $(1,0,0)$, then the inner product of this row and the first row of $W_1$ can obviously not be of the desired form. Moreover, if there are two nonzero entries (i.e., either $(1,a,0)$ or $(1,0,a)$), then there must be a third entry in columns $4$ through $n$. The inner product of this row and three different rows in $W_1$ will simply be a unimodular number (this is true by the structure of $W_1$), and thus, not in the desired form. This means that the first three entries must all be nonzero. This argument can be made for the second and third row of $W_2$, and thus, the topleft corner of $W_2$ is a $UW(3,3)$, as desired.
+
+% Assume that the top left block in $W_1$ is a $UW(3,3)$. If columns 2 and 3 of $W_2$ are both zero in any of the first 3 rows, then the inner product of row 1 in $W_1$ and that row will give us a unimodular number, not having absolute value 0 or $\sqrt3$. If exactly one of the entries in columns 2 and 3 are nonzero, then there must be a third nonzero in one of the last $n-3$ columns. Taking the inner product of this row and an appropriate row in $W_1$, there is another unimodular number, causing the same contradiction as above. Thus,  in these first three rows of $W_2$, each must have exactly 3 nonzero entries in the first three columns (i.e., a $UW(3,3)$).
+
+Now assume that the top left block in $W_1$ is a $UW(4,3)$. If columns 2, 3 and 4 are all zero in any of the first 3 rows, then the inner product of row 1 in $W_1$ and that row will give us a unimodular number. If there is exactly 1 nonzero in columns 2, 3 and 4, then the inner product of that row and the fourth row of $W_1$ will be unimodular. Thus, we know that in the first 3 rows of $W_2$, all 3 nonzero entries must appear in the first four columns.
+
+We will now show that the first zero in these rows will not be in the same column. Assume that one column has at least 2 zeroes. This means that at least one of columns 2,3 and 4 will be complete (i.e., no more nonzero entries may go into that column). Column 1 is already complete, so in our fourth row, there are either 1 or 2 nonzeroes in the first 3 columns. By taking the inner product of the fourth row of $W_2$ by the appropriate row in $W_1$, we will get a unimodular number. Thus, the first zero in the first 4 rows must be in different columns (note that the first zero in row 4 must be in column 1). Furthermore, through appropriate row permutations and negations, the second entry in row 4 must be a 1. The next two entries are clearly nonzero or there is 1-orthogonality within $W_2$. Thus, in the first 4 rows of $W_2$, the three nonzero entries must appear in the first 4 rows, with the first zeroes of the rows in different columns (i.e., a $UW(4,3)$).
+
+Once we know that the top left block of $W_1$ and $W_2$ are the same, if we examine the bottom right $(n-3) \times (n-3)$ or $(n-4) \times (n-4)$ block, we have a $UW(n-3,3)$ or $UW(n-4,3)$, and we can recursively use the same argument to obtain the desired result.
+\end{proof}
+
+\end{lemma}
+
+\begin{theorem} \label{th:cw_n_3}
+ The upper bound on the number of MUWM of the form $UW(n,3)$ is
+  $$\begin{cases}
+   0 & \text{if } n = 5 \\
+   3 & \text{if } n \not\equiv 0 \pmod 4 \text{ and } n \neq 5 \\
+   9 & \text{if } n \equiv 0 \pmod 4
+  \end{cases}$$
+\\ where $n \geq 3$.
+\begin{proof}
+
+Using Lemma~\ref{lem:cw_n_3_blocks} with Proposition~\ref{prop:blocks_upper} and the fact that the upper bound for $UW(3,3)$ is 3 and $UW(4,3)$ is 9 via Corollary~\ref{cor:ub_mat_complex}, we have that if the matrix contains a $UW(3,3)$ in its block structure, then it acts as a limiting factor, causing the upper bound to be 3. Otherwise, it is 9, which can only occur when $n$ is a multiple of 4.
+\end{proof}
+\end{theorem}
+
+\begin{corollary} \label{cor:cw_n_3}
+ The upper bound given in Theorem~\ref{th:cw_n_3} is tight for all $n \geq 3$ and $n \neq 5$.
+\begin{proof}
+ A computer search has shown the bounds to be tight for $UW(4,3)$ (see Appendix~\ref{app:sets}) and the bound for $UW(3,3)$ is attained through Theorem~\ref{th:pr-pow}. We may construct the $UW(n,3)$ by adjoining the appropriate amount of $UW(4,3)$ and $UW(3,3)$ together along the main diagonals. If $n$ is a multiple of 4, use only $UW(4,3)$s along the main diagonal. Otherwise, it does not matter which blocks are used. A simple induction will show that every integer larger than 5 may be written in the form of $3m+4l$.
+\end{proof}
+\end{corollary}
+
+\subsection[Weight 4]{Mutually Unbiased Weighing Matrices of Weight 4}
+\subsectionmark{Mutually Unbiased Weighing Matrices of Weight 4}
+\label{sec:muwm-w4}
+
+\subsubsection{UW(5,4)}
+
+\begin{lemma}\label{lem:cw_5_4}
+ Let $W$ be a unit weighing matrix that is unbiased with 
+$$
+W_5 = \left(
+\begin{array}{ccccc}
+ 1 & 1            &1            &1            &0 \\
+ 1 & \omega            &\overline{\omega} &0            &1 \\
+ 1 & \overline{\omega} &0            &\omega            &\overline{\omega} \\
+ 1 & 0            &\omega            &\overline{\omega} &\omega \\
+ 0 & 1            &\overline{\omega} &\omega            &\omega
+\end{array}
+\right)
+$$
+where $\omega = e^{i\frac{2\pi}{3}}$. Then every nonzero entry in $W$ is a sixth root of unity.
+
+ \begin{proof}
+  The proof of this lemma is given in Appendix~\ref{app:uw54}.
+ \end{proof}
+\end{lemma}
+
+\begin{theorem} \label{th:cw_5_4}
+ The largest number of mutually unbiased weighing matrices of the form $UW(5,4)$ is 5. Moreover, this bound is tight.
+ \begin{proof}
+  By Lemma~\ref{lem:w4-upper}, all weighing matrices of order $5$ and weight $4$ are equivalent to $W_5$ given in Lemma~\ref{lem:cw_5_4}. Thus, given a set of mutually unbiased weighing matrices, we may permute and multiply by a unit number the rows and columns of the matrices in such a way that one of them is $W_5$. By Lemma~\ref{lem:cw_5_4}, we know that any matrix that is unbiased with $W_5$ must only contain 0 and the sixth roots of unity. Moreover, the case analysis in Lemma~\ref{lem:cw_5_4} shows that there are only 60 possible rows in the other matrices in the set that are not in $W_5$. An exhaustive computer search was done over these rows, which revealed that the maximal set using only the sixth root of unity contains 5 elements. One collection of these matrices are included in Appendix~\ref{app:sets}.
+ \end{proof}
+\end{theorem}
+
+Although there are only five matrices, the theoretic upper bound given in (\ref{eq:tub_vec_complex}) is attained by vectors that cannot be partitioned into weighing matrices. See Table~\ref{table:w-5-4-vecs} in Appendix~\ref{app:vec-5-4}.
+
+\subsubsection{UW(6,4)}
+
+This is the first case where the upper bound given in Corollary~\ref{cor:ub_mat_complex} seems too large (20 mutually unbiased weighing matrices). However, relatively quickly, our computer program gave us the following.
+
+\begin{theorem} \label{th:uw-6-4}
+ There are 20 mutually unbiased weighing matrices of order 6 and weight 4.
+ \begin{proof}
+  A set of matrices attaining this bound can be found in Appendix~\ref{app:sets}, Table~\ref{table:UW6_4}.
+ \end{proof}
+\end{theorem}
+
+Each of the matrices in the set of matrices given are over the sixth root of unity. What is even more special about this set of matrices is that it attains the upper bounds given in both (\ref{eq:aub_mat_complex}) and (\ref{eq:tub_mat_complex}).
+
+The first four matrices given in Table~\ref{table:UW6_4} are real, which falls just short of the upper bound given in Corollary~\ref{cor:ub_mat_real}. This turns out to be an optimal set of real weighing matrices.
+
+\begin{theorem}
+ There are no more than 4 mutually unbiased real weighing matrices of order 6 and weight 4.
+ \begin{proof}
+  An exhaustive computer search over real weighing matrices was performed and found that there were no sets of mutually unbiased real weighing matrices of order 6 and weight 4.
+ \end{proof}
+\end{theorem}
+
+\subsubsection{UW(7,4)}
+
+\begin{lemma} \label{lem:cw_7_4}
+ Let $W$ be a unit weighing matrix that is unbiased with
+$$W_7=\left(\begin{array}{c}
+\Zp\Zp\Zp\Zp\Zz\Zz\Zz\\
+\Zp\Zm\Zz\Zz\Zp\Zp\Zz\\
+\Zp\Zz\Zm\Zz\Zm\Zz\Zp\\
+\Zp\Zz\Zz\Zm\Zz\Zm\Zm\\
+\Zz\Zp\Zm\Zz\Zz\Zp\Zm\\
+\Zz\Zp\Zz\Zm\Zp\Zz\Zp\\
+\Zz\Zz\Zp\Zm\Zm\Zp\Zz
+\end{array}\right).$$
+Then every nonzero entry in $W$ is either $1$ or $-1$.
+
+ \begin{proof}
+  The proof of this lemma is included in Appendix~\ref{app:uw74}.
+ \end{proof}
+\end{lemma}
+
+\begin{theorem} \label{th:cw_7_4}
+ The maximum number of mutually unbiased weighing matrices of order 7 and weight 4 is 8.
+ \begin{proof}
+  Similarly to the proof of Theorem~\ref{th:cw_5_4}, one matrix in the set may be transformed into the real weighing matrix $W_7$ given in Lemma~\ref{lem:cw_7_4}. Every $UW(7,4)$ is equivalent to this matrix (see~ Lemma~\ref{lem:w4-upper}). By Lemma~\ref{lem:cw_7_4}, every weighing matrix equivalent to $W_7$ must also be real, so we may use Corollary~\ref{cor:ub_mat_real} to provide us with this bound.
+ \end{proof}
+\end{theorem}
+
+\begin{corollary} \label{cor:cw_7_4}
+ The bound given in Theorem~\ref{th:cw_7_4} is tight.
+ \begin{proof}
+  Using a computer search, we find eight real mutually unbiased weighing matrices $W(7,4)$ given in Appendix~\ref{app:sets}. This achieves the real upper bound given by Corollary~\ref{cor:ub_mat_real}. By Theorem~\ref{th:cw_7_4}, this is also the maximal set of $UW(7,4)$, despite not achieving the upper bound of 24 given by Corollary~\ref{cor:ub_mat_complex}.
+ \end{proof}
+
+\end{corollary}
+
+\subsubsection{UW(8,4)}
+\begin{theorem}\label{th:w_8_4}
+ The maximum number of real mutually unbiased weighing matrices of order 8 and weight 4 is 14.
+ \begin{proof}
+  A set of size 14 $W(8,4)$ has been generated in Appendix~\ref{app:sets}. This meets the upper bound given by Corollary~\ref{cor:ub_mat_real}.
+ \end{proof}
+\end{theorem}
+
+Further investigations into $UW(8,4)$ using large roots of unity have proven fruitless. Odd roots of unity produce maximal sets smaller than that of the real case, and even roots of unity become computationally infeasible after the fourth root of unity, which returns the set of $W(8,4)$ as the maximal set of mutually unbiased unit weighing matrices.
+
+\section{Unbiased Hadamard Matrices}\label{sec:weakly-unbiased}
+
+So far, we have only examined a very special case of unbiasedness. Our selection of the values of $n$ and $\alpha$ in (\ref{eq:tub_vec_real}) and (\ref{eq:tub_vec_complex}), as well as imposing a certain structure to our matrices, make it possible to append the identity to the set of weighing matrices. More precisely, considering each row of all weighing matrices in a set of mutually unbiased weighing matrices of order $n$ and the rows of the identity matrix of order $n$  as vectors in $\mathbb{R}^n$ or $\mathbb{C}^n$, they form a class of bi-angular vectors. We now make a different selection for the value of $\alpha$ in such a way that it is no longer possible to add the identity matrix and preserve the bi-angularity. Below, in Table~\ref{table:H8}, we give an example of a set of eight Hadamard matrices of order 8 that form a bi-angular set of vectors in $\mathbb{R}^8$, but no rows of the identity matrix can be added to the set and preserve bi-angularity. In the following set, $\alpha=\frac12$, but if the identity is added, it would introduce the inner product of $\frac{1}{\sqrt{8}}$ (up to absolute value) and the bi-angularity of the lines would disappear.
+
+
+% So far, we have only examined a very special case of unbiasedness. Our selection of the values of $\alpha$ in (\ref{eq:tub}) and (\ref{eq:tub_real}) make it possible to  append the identity to the set of weighing matrices. More precisely, considering each row of all weighing matrices in a set of mutually unbiased weighing matrices of order $n$ and the rows of the identity matrix of order $n$  as vectors in $\mathbb{R}^n$ or $\mathbb{C}^n$, they form a class of bi-angular vectors. We now make a different selection for the value of $\alpha$ in (\ref{eq:tub_real}) in such a way that it is no longer possible to add the identity matrix and preserve the bi-angularity. Below, we give an example of a set of eight Hadamard matrices of order 8 that form a bi-angular set of vectors in $\mathbb{R}^8$, but no rows of the identity matrix can be added to the set and preserve bi-angularity. In the following set, $\alpha=\frac12$, but if the identity is added, it would introduce the inner product of $\frac{1}{\sqrt{8}}$ (up 
+% to absolute value) and the bi-angularity of the lines disappear.
+
+\renewcommand{\arraystretch}{0.8}
+\begin{table}[H]\centering\caption{8 mutually unbiased Hadamard matrices with $\alpha=\frac12$}
+\begin{tabular}{@{}cc@{}}\toprule\label{table:H8}
+$\left(\begin{array}{c}
+ \Zp\Zp\Zp\Zp\Zp\Zp\Zp\Zp \\
+ \Zp\Zp\Zm\Zp\Zm\Zm\Zp\Zm \\
+ \Zp\Zm\Zm\Zp\Zp\Zm\Zm\Zp \\
+ \Zp\Zm\Zm\Zm\Zm\Zp\Zp\Zp \\
+ \Zp\Zp\Zm\Zm\Zp\Zp\Zm\Zm \\
+ \Zp\Zp\Zp\Zm\Zm\Zm\Zm\Zp \\
+ \Zp\Zm\Zp\Zp\Zm\Zp\Zm\Zm \\
+ \Zp\Zm\Zp\Zm\Zp\Zm\Zp\Zm
+\end{array}\right)$ & $
+\left(\begin{array}{c}
+ \Zp\Zp\Zp\Zm\Zp\Zm\Zp\Zp \\
+ \Zp\Zm\Zp\Zp\Zp\Zp\Zp\Zm \\
+ \Zp\Zm\Zm\Zp\Zm\Zm\Zp\Zp \\
+ \Zp\Zp\Zm\Zp\Zp\Zm\Zm\Zm \\
+ \Zp\Zp\Zm\Zm\Zm\Zp\Zp\Zm \\
+ \Zp\Zm\Zp\Zm\Zm\Zm\Zm\Zm \\
+ \Zp\Zm\Zm\Zm\Zp\Zp\Zm\Zp \\
+ \Zp\Zp\Zp\Zp\Zm\Zp\Zm\Zp
+\end{array}\right)$ \\[2cm] $
+\left(\begin{array}{c}
+ \Zp\Zp\Zm\Zm\Zm\Zp\Zm\Zp \\
+ \Zp\Zm\Zm\Zm\Zp\Zp\Zp\Zm \\
+ \Zp\Zm\Zp\Zm\Zm\Zm\Zp\Zp \\
+ \Zp\Zp\Zp\Zp\Zm\Zp\Zp\Zm \\
+ \Zp\Zp\Zp\Zm\Zp\Zm\Zm\Zm \\
+ \Zp\Zm\Zp\Zp\Zp\Zp\Zm\Zp \\
+ \Zp\Zm\Zm\Zp\Zm\Zm\Zm\Zm \\
+ \Zp\Zp\Zm\Zp\Zp\Zm\Zp\Zp
+\end{array}\right)$ & $
+\left(\begin{array}{c}
+ \Zp\Zm\Zm\Zm\Zm\Zp\Zm\Zm \\
+ \Zp\Zp\Zp\Zm\Zm\Zm\Zp\Zm \\
+ \Zp\Zp\Zm\Zm\Zp\Zp\Zp\Zp \\
+ \Zp\Zm\Zp\Zp\Zm\Zp\Zp\Zp \\
+ \Zp\Zm\Zp\Zm\Zp\Zm\Zm\Zp \\
+ \Zp\Zp\Zp\Zp\Zp\Zp\Zm\Zm \\
+ \Zp\Zp\Zm\Zp\Zm\Zm\Zm\Zp \\
+ \Zp\Zm\Zm\Zp\Zp\Zm\Zp\Zm
+\end{array}\right)$ \\[2cm] $
+\left(\begin{array}{c}
+ \Zp\Zm\Zp\Zm\Zm\Zp\Zm\Zp \\
+ \Zp\Zp\Zp\Zm\Zp\Zp\Zp\Zm \\
+ \Zp\Zp\Zm\Zm\Zm\Zm\Zp\Zp \\
+ \Zp\Zm\Zm\Zp\Zm\Zp\Zp\Zm \\
+ \Zp\Zm\Zm\Zm\Zp\Zm\Zm\Zm \\
+ \Zp\Zp\Zp\Zp\Zm\Zm\Zm\Zm \\
+ \Zp\Zp\Zm\Zp\Zp\Zp\Zm\Zp \\
+ \Zp\Zm\Zp\Zp\Zp\Zm\Zp\Zp
+\end{array}\right)$ & $
+\left(\begin{array}{c}
+ \Zp\Zm\Zm\Zp\Zm\Zp\Zm\Zp \\
+ \Zp\Zm\Zm\Zm\Zp\Zm\Zp\Zp \\
+ \Zp\Zp\Zm\Zp\Zp\Zp\Zp\Zm \\
+ \Zp\Zp\Zp\Zp\Zm\Zm\Zp\Zp \\
+ \Zp\Zm\Zp\Zp\Zp\Zm\Zm\Zm \\
+ \Zp\Zm\Zp\Zm\Zm\Zp\Zp\Zm \\
+ \Zp\Zp\Zp\Zm\Zp\Zp\Zm\Zp \\
+ \Zp\Zp\Zm\Zm\Zm\Zm\Zm\Zm
+\end{array}\right)$ \\[2cm] $
+\left(\begin{array}{c}
+ \Zp\Zp\Zp\Zm\Zm\Zp\Zm\Zm \\
+ \Zp\Zm\Zp\Zm\Zp\Zp\Zp\Zp \\
+ \Zp\Zm\Zm\Zm\Zm\Zm\Zp\Zm \\
+ \Zp\Zp\Zm\Zp\Zm\Zp\Zp\Zp \\
+ \Zp\Zp\Zm\Zm\Zp\Zm\Zm\Zp \\
+ \Zp\Zm\Zm\Zp\Zp\Zp\Zm\Zm \\
+ \Zp\Zm\Zp\Zp\Zm\Zm\Zm\Zp \\
+ \Zp\Zp\Zp\Zp\Zp\Zm\Zp\Zm
+\end{array}\right)$ & $
+\left(\begin{array}{c}
+ \Zp\Zp\Zm\Zm\Zp\Zm\Zp\Zm \\
+ \Zp\Zm\Zp\Zp\Zm\Zm\Zp\Zm \\
+ \Zp\Zm\Zm\Zp\Zp\Zp\Zp\Zp \\
+ \Zp\Zp\Zp\Zp\Zp\Zm\Zm\Zp \\
+ \Zp\Zp\Zp\Zm\Zm\Zp\Zp\Zp \\
+ \Zp\Zm\Zp\Zm\Zp\Zp\Zm\Zm \\
+ \Zp\Zm\Zm\Zm\Zm\Zm\Zm\Zp \\
+ \Zp\Zp\Zm\Zp\Zm\Zp\Zm\Zm
+\end{array}\right)$\\
+\bottomrule
+\end{tabular}
+\end{table}
+\normalarray
+
+The rows of these matrices are generated from the BCH-code \cite{BCH-BC,BCH-H} of length 7 with weight distribution $\left\{(0,1),(2,21),(4,
+35),(6,7)\right\}$ (see \cite{Lint} for more information about BCH-codes). Once the codewords are generated, we append a column of zeroes, then perform the following operation onto each entry of the codewords:
+
+\begin{equation}\label{eq:hada-to-bin}
+f(i) = \begin{cases}
+          1 & \text{ if } i = 0, \\
+         -1 & \text{ if } i = 1.
+         \end{cases}
+\end{equation}
+
+We were also able to generate 32 Hadamard matrices of order 32 which have inner products in $\left\{0,\pm8 \right\}$ through a similar process. The weight distribution of the order 32 matrices is $\left\{(0,1), (12, 310), (16, 527), (20, 186)\right\}$. The partition of the vectors into Hadamard matrices is shown in Tables~\ref{table:H32_1}--\ref{table:H32_4} in Appendix~\ref{app:H32}.
+
+In an attempt to continue this, we have generated the $128^2$ codewords from the BCH-code of order 127, but were not able to partition them into the 128 Hadamard matrices needed due to computer memory restrictions. The inner products between the vectors are all in $\left\{0,\pm16\right\}$. We do believe that this set of vectors contains the needed ingredients to make the Hadamard matrices required. Moreover, we pose the following
+
+\begin{conjecture}\label{conj:real-hada}
+ Let $n = 2^{2k+1}$. Then there exists a set of $n$ real Hadamard matrices, $\left\{H_1, H_2, \dots , H_n\right\}$, so that the entries of $H_iH_j^t$ ($i \neq j$) contain exactly two elements, $0$ and $2^{k+1}$ (up to absolute value).\footnote{Since the time that we have published Conjecture~\ref{conj:real-hada}, Nozaki and Suda have released an article that uses coding theory to affirm that this conjecture is true~\cite[Page 15]{nozaki-suda}. The content of their article, however, is well beyond the scope of this thesis, so we refer the reader to~\cite{nozaki-suda} for the full details.}
+\end{conjecture}
+
+It is important to note that the number of vectors found through Conjecture~\ref{conj:real-hada} is usually less than the bound given in Theorem~\ref{th:tub_vec_real}. We believe that the upper bound is too high in this case because the vectors are {\it flat} (i.e., all contain entries that have the same absolute value). In fact, we think that the upper bounds given in Theorems~\ref{th:tub_vec_real} and \ref{th:tub_vec_complex} are rarely obtained if $V$ is a set of flat vectors.  We feel that there is a different upper bound available for flat vectors that is (generally) smaller than Theorems~\ref{th:tub_vec_real} and \ref{th:tub_vec_complex}.
+
+Using the terminology from~\cite{much10}, these matrices form a set of {\it weakly unbiased Hadamard matrices}. However, it is important to note that the matrices formed here are a very special kind of unbiased Hadamard matrices since the entire set of vectors forms a set of bi-angular lines (whereas the vectors from~\cite{much10} give possibly tri-angular lines). These matrices seem to form very nice combinatorial objects, which are discussed in further detail in the next section.

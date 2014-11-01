@@ -1,0 +1,427 @@
+\chapter[Background]{Background}
+\sectionmark{Background}
+\label{ch:background}
+
+\hfill\begin{tabular}{r}\toprule
+ {\it The shortest path between two truths} \\ {\it in the real domain passes} \\ {\it through the complex domain.} \\
+  -- J. Hadamard\\
+\bottomrule\end{tabular}\vskip25pt
+
+We begin our campaign by giving a definition, which will lay the foundation for the entire thesis.
+
+\begin{definition} \label{def:hadamard}
+ A {\it real Hadamard matrix} (usually referred to as just a {\it Hadamard matrix} or shortened to be an $H$-matrix) is an $n \times n$ matrix consisting of entries in $\left\{ \pm 1 \right\}$ such that $HH^T = nI_n$.
+\end{definition}
+
+\begin{example} \label{ex:hadamard}
+
+Here are three Hadamard matrices of orders 2, 4 and 8.
+
+ $$H_2 = \left(\begin{array}{c}
+               \Zp\Zp \\
+               \Zp\Zm
+              \end{array}\right), ~
+  H_4 = \left(\begin{array}{c}
+               \Zp\Zp\Zp\Zm \\
+               \Zp\Zp\Zm\Zp \\
+               \Zp\Zm\Zp\Zp \\
+               \Zm\Zp\Zp\Zp
+              \end{array}\right) \text{ and }$$
+
+$$H_8 = \left(\begin{array}{c}
+               \Zp\Zp\Zp\Zm\Zm\Zm\Zm\Zp \\
+               \Zp\Zp\Zp\Zm\Zp\Zp\Zp\Zm \\
+               \Zp\Zp\Zm\Zp\Zp\Zp\Zm\Zp \\
+               \Zp\Zm\Zp\Zp\Zp\Zm\Zp\Zp \\
+               \Zp\Zp\Zm\Zp\Zm\Zm\Zp\Zm \\
+               \Zm\Zp\Zp\Zp\Zp\Zm\Zm\Zm \\
+               \Zm\Zp\Zp\Zp\Zm\Zp\Zp\Zp \\
+               \Zp\Zm\Zp\Zp\Zm\Zp\Zm\Zm \\
+              \end{array}\right).$$
+
+\end{example}
+
+For the sake of this thesis, it is important to notice that we can view the rows of a Hadamard matrix as a collection of $n$ vectors in $\left\{\pm1\right\}^n$ that are pairwise orthogonal. This idea of deconstructing matrices into vectors will be revisited throughout the thesis.
+
+\section[Equivalence of Hadamard Matrices]{Equivalence of Hadamard Matrices}
+\sectionmark{Equivalence of Hadamard Matrices}
+\label{sec:equiv}
+
+At first glance, the locations of the positives and negatives in a Hadamard matrix seem quite random. We will soon see that we may alter the way that these matrices look to give us a better sense of the underlying structure of the matrices.
+
+\begin{proposition} \label{prop:equiv-hadamard}
+ If $H$ is a Hadamard matrix, then so are $H^T$ and $PHQ$, where $P$ and $Q$ are signed-permutation matrices.
+ \begin{proof}
+  We will prove both claims directly from the definition of Hadamard matrices. By the definition of a Hadamard matrix, we have that $H^{-1} = \frac{1}{n}H^T$. This implies $$H^T\left(H^T\right)^T = nH^{-1}H = nI.$$ Secondly, $\left(PHQ\right)\left(PHQ\right)^T = PHQQ^TH^TP^T = nI$ since $P$ and $Q$ are orthogonal matrices.
+ \end{proof}
+\end{proposition}
+
+With this in our pocket, we will introduce the following.
+
+\begin{definition} \label{def:equiv-hadamard}
+ Two Hadamard matrices, $H_1$ and $H_2$, are said to be {\it equivalent} if there exist two signed-permutation matrices, say $P$ and $Q$, such that $H_1 = PH_2Q$. Equivalence is denoted by $H_1 \cong H_2$.
+\end{definition}
+In a more direct sense, this means that we may permute or negate the rows and the columns of our matrix without affecting which equivalence class the matrix is in. It is important to note that the transpose of $H$ is not included in Definition~\ref{def:equiv-hadamard}; some authors do include $H^T$ as part of the equivalence, but we do not.
+
+\begin{definition} \label{def:dephased}
+ A Hadamard matrix is {\it dephased} if the first row and first column contain only ones.
+\end{definition}
+
+Which immediately leads us to the following.
+
+\begin{lemma} \label{lem:dephased}
+ Every Hadamard matrix is equivalent to a dephased Hadamard matrix.
+ \begin{proof}
+  For each column, look at the first entry. If it is $-1$, then negate that column. Then repeat the process for the rows. The resulting equivalent matrix will be dephased.
+ \end{proof}
+
+\end{lemma}
+
+Determining the number of inequivalent Hadamard matrices is a very laborious task. The classification of Hadamard matrices has been an ongoing process over the past few decades. In the next section, we will see that Hadamard matrices can only exist if $n \leq 2$ or $n$ is a multiple of 4. A very simple program can be written to determine the number of inequivalent Hadamard matrices of order $n \leq 24$. For $n = 28$, decades were needed to fully classify all 487 Hadamard matrices of order $28$~\cite{classification28}. In 2013, Kharaghani and Tayfeh-Rezaie finished the classification of Hadamard matrices of order 32~\cite{hada32}. The number of inequivalent Hadamard matrices can be found in Table~\ref{table:inequiv-hada}.
+
+\begin{table}[ht]
+\caption{Number of inequivalent Hadamard matrices of order $n$ ($n \leq 32$)}
+\label{table:inequiv-hada}
+\centering
+\begin{tabular}{@{}lcr@{}}
+\hline
+\toprule
+\multicolumn{1}{@{}c@{}}{$n$} && \multicolumn{1}{@{}c@{}}{\# Matrices}\\
+\midrule
+ 1  && 1 \\
+ 2  && 1 \\
+ 4  && 1 \\
+ 8  && 1 \\
+ 12 && 1 \\
+ 16 && 5 \\
+ 20 && 3 \\
+ 24 && 60 \\
+ 28 && 487 \\
+ 32 && 13710027 \\
+\bottomrule
+ \end{tabular}
+\end{table}
+
+\section[Existence of Hadamard Matrices]{Existence of Hadamard Matrices}
+\sectionmark{Existence of Hadamard Matrices}
+\label{sec:existence}
+
+A few observations can be made about Hadamard matrices. It is immediate to note that the order of a Hadamard matrix must be even, but it takes a little closer inspection to note that the order must be small or a multiple of four.
+
+\begin{lemma} \label{lem:mult-4}
+ If $n > 2$ is the order of a Hadamard matrix, then $n$ is a multiple of four.
+ \begin{proof}
+  Let $H$ be a Hadamard matrix of order $n > 2$. By Lemma~\ref{lem:dephased}, we know that $H$ is equivalent to a dephased Hadamard matrix, say $H'$. Let's examine the first three rows of $H'$. We may permute the columns of this submatrix in such a way that we arrive at the following
+
+ \begin{center}
+ \begin{tikzpicture}[decoration=brace]
+    \matrix (m) [matrix of math nodes,left delimiter=(,right delimiter={)}] {
+        \Zp\Zp\cdots\Zp\Zp & \Zp\Zp\cdots\Zp\Zp & \Zp\Zp\cdots\Zp\Zp & \Zp\Zp\cdots\Zp\Zp \\
+        \Zp\Zp\cdots\Zp\Zp & \Zp\Zp\cdots\Zp\Zp & \Zm\Zm\cdots\Zm\Zm & \Zm\Zm\cdots\Zm\Zm \\
+        \Zp\Zp\cdots\Zp\Zp & \Zm\Zm\cdots\Zm\Zm & \Zp\Zp\cdots\Zp\Zp & \Zm\Zm\cdots\Zm\Zm \\
+        \vdots & \vdots & \vdots & \vdots \\
+    };
+    \draw[decorate,transform canvas={yshift=0.5em},thick] (m-1-1.north west) -- node[above=2pt] {$a$ columns} (m-1-1.north east);
+    \draw[decorate,transform canvas={yshift=0.5em},thick] (m-1-2.north west) -- node[above=2pt] {$b$ columns} (m-1-2.north east);
+    \draw[decorate,transform canvas={yshift=0.5em},thick] (m-1-3.north west) -- node[above=2pt] {$c$ columns} (m-1-3.north east);
+    \draw[decorate,transform canvas={yshift=0.5em},thick] (m-1-4.north west) -- node[above=2pt] {$d$ columns} (m-1-4.north east);
+\end{tikzpicture}.
+ \end{center}
+
+\noindent That is, we permute the columns in such a way that the the first $a$ columns have exactly three ones in the first three rows, the next $b$ columns have a one in the first two rows and a $-1$ in the third row, the next $c$ columns' first three rows are $1, -1, 1$, respectively and the last $d$ columns have $1, -1, -1$ in their first three rows.
+  
+   From the orthogonality of each of the three pairs of rows, as well as imposing that the order of the matrix is $n$, we have
+$$\begin{cases}
+  a + b + c + d = n \\
+  a + b - c - d = 0 \\
+  a - b + c - d = 0 \\
+  a - b - c + d = 0
+ \end{cases}$$
+ which has the unique solution of $a = b = c = d = n/4$. Since $a, b, c, d$ and $n$ are all integers, we have that $n$ must be a multiple of 4.
+ \end{proof}
+\end{lemma}
+
+It is a common belief that this is the only obstacle that must be overcome. In fact, we have the following famous conjecture.
+
+\begin{conjecture}[Hadamard Conjecture] \label{conj:hadamard-conjecture}
+ If $n = 4k$ for some $k \geq 1$, then there exists a Hadamard matrix of order $n$.
+\end{conjecture}
+
+Prior to 2004, Conjecture~\ref{conj:hadamard-conjecture} had been verified for all $n < 428$. In 2004, Kharaghani and Tayfeh-Rezaie found a Hadamard matrix of order 428~\cite{hada428}, leaving $n = 668$ as the smallest order for with the Hadamard conjecture has not been verified.
+
+\section[Construction of Hadamard Matrices]{Construction of Hadamard Matrices}
+\sectionmark{Construction of Hadamard Matrices}
+\label{sec:construction}
+
+The study of Hadamard matrices started nearly a century and a half ago when James Sylvester constructed an infinite family of matrices which satisfied the condition laid out in Definition~\ref{def:hadamard} (even though they were not called ``Hadamard matrices'' at the time).
+
+\begin{theorem}[Sylvester,~\cite{sylvester}] \label{th:syl}
+ If $H$ is a Hadamard matrix, then $$\left(\begin{array}{cc}H&H\\H&-H\end{array}\right)$$ is also a Hadamard matrix.
+ \begin{proof}
+  This can easily be verified straight from the definition.
+ \end{proof}
+\end{theorem}
+
+The observation in Theorem~\ref{th:syl} was crucial to the generation of the following infinite class of Hadamard matrices which are today called {\it Sylvester matrices}.
+
+\begin{corollary}[Sylvester,~\cite{sylvester}] \label{cor:syl}
+ There exists a Hadamard matrix of order $2^k$ for any $k \geq 0$.
+ \begin{proof}
+  $H=\left(\begin{array}{c}1\end{array}\right)$ is a Hadamard matrix. Apply Theorem~\ref{th:syl} $k$ times to $H$.
+ \end{proof}
+\end{corollary}
+
+Jacques Hadamard was the next mathematician to examine these matrices in detail. He was looking for examples of matrices whose determinants attained the following upper bound.
+
+\begin{theorem}[Hadamard,~\cite{hadamard}] \label{th:hada-bound}
+ If $\{v_{0},\dots,v_{n-1}\}$ are the rows of a square matrix $A$, then \begin{equation}\label{eq:hadamard-bound-a}|\det(A)| \leq \displaystyle\prod_{i=0}^{n-1}||v_i||.\end{equation} Moreover, if every entry's absolute value is at most $B \in \R$, then \begin{equation}\label{eq:hadamard-bound-b}|\det(A)| \leq B^nn^{n/2}.\end{equation}
+\end{theorem}
+
+It is natural to study the case where $B=1$ in Theorem~\ref{th:hada-bound} since all matrices may be scaled to this value. With this appropriate scaling, Hadamard showed that the bound (\ref{eq:hadamard-bound-b}) is realized in the real case if and only if $A$ is a Hadamard matrix~\cite{hadamard}. In the same article, Hadamard constructed Hadamard matrices of order 12 and 20. These are the smallest order that do not fit into Sylvester's infinite class. Hadamard also gave a more generalized version of Sylvester's construction which can most easily be described through use of the Kronecker product.
+
+\begin{definition} \label{def:kronecker-product}
+ Let $A = [a_{ij}]$ and $B = [b_{ij}]$ be $m \times n$ and $p \times q$ matrices, respectively. The {\it Kronecker product} of $A$ and $B$, denoted $A \otimes B$, is the following $mp \times nq$ matrix
+
+ $$\left(\begin{array}{ccccc}
+          a_{0,0}B & \cdots  & a_{0,n-1}B \\
+           \vdots & \ddots & \vdots \\
+          a_{m-1,1}B & \cdots  & a_{m-1,n-1}B
+         \end{array}\right).$$
+\end{definition}
+
+The following is an immediate way to construct new Hadamard matrices from old ones.
+
+\begin{lemma}[Hadamard,~\cite{hadamard}] \label{lem:kronecker}
+ If $H_1$ and $H_2$ are Hadamard matrices of order $m$ and $n$, respectively, then $H_1 \otimes H_2$ is a Hadamard matrix of order $mn$.
+ \begin{proof}
+  $$(H_1 \otimes H_2)(H_1 \otimes H_2)^T = H_1H_1^T \otimes H_2H_2^T = mI_m \otimes nI_n = mnI_{mn}$$
+ \end{proof}
+\end{lemma}
+
+This new construction method means that when any new Hadamard matrix is formed, we may use the Kronecker product to give us many (possibly new) Hadamard matrices. But unfortunately, this construction comes with an inherent problem. Creating Hadamard matrices of order $4n$ where $n$ is even is quite a bit easier than when $n$ is odd. With the method above, Hadamard matrices of order $4a$ and $4b$ will be able to construct a new Hadamard matrix of order $16ab$. The following construction allows us to create a Hadamard matrix of half of that order.
+
+% Need to \CITE
+\begin{theorem}[\mbox{\cite{8ab}}] \label{thm:8ab-construction}
+ If there exist Hadamard matrices of order $4a$ and $4b$, then there exists a Hadamard matrix of order $8ab$.
+ \begin{proof}
+  Let $H_1$ be a Hadamard matrix of order $4a$ and $H_2$ be a Hadamard matrix of order $4b$. Let $A$ and $B$ be $4a \times 2a$ matrices and let $C$ and $D$ be $2b \times 4b$ matrices such that
+$$ H_1 = \left(\begin{array}{cc}A&0\end{array}\right) + \left(\begin{array}{cc}0&B\end{array}\right) \text{ and } H_2 = \left(\begin{array}{c}C \\ 0\end{array}\right) + \left(\begin{array}{c}0 \\ D\end{array}\right).$$
+We then form
+$$H = \frac12\left(A + B\right) \otimes C + \frac12\left(A-B\right) \otimes D.$$
+
+It is important to note that if we examine corresponding entries in $A+B$ and $A-B$, then exactly one of them is zero and the other is either $2$ or $-2$. Thus, each entry in $H$ is either $1$ or $-1$. Next, let us examine the following product.
+
+\equationarray
+$$\begin{array}{rcl}
+HH^T &=& \left(\frac12\left(A + B\right) \otimes C + \frac12\left(A-B\right) \otimes D\right)\left(\frac12\left(A + B\right) \otimes C + \frac12\left(A-B\right) \otimes D\right)^T \\
+ &=&
+\left(\frac12\left(A + B\right) \otimes C\right)\left(\frac12\left(A + B\right) \otimes C\right)^T +
+\left(\frac12\left(A-B\right) \otimes D\right)\left(\frac12\left(A-B\right) \otimes D\right)^T \\
+ & & +
+\left(\frac12\left(A + B\right) \otimes C\right)\left(\frac12\left(A-B\right) \otimes D\right)^T +
+\left(\frac12\left(A-B\right) \otimes D\right)\left(\frac12\left(A + B\right) \otimes C\right)^T \\
+ &=&
+\left(\frac14\left(A + B\right)\left(A + B\right)^T\right) \otimes CC^T +
+\left(\frac14\left(A - B\right)\left(A - B\right)^T\right) \otimes DD^T \\
+ & & +
+\left(\frac14\left(A + B\right)\left(A - B\right)^T\right) \otimes CD^T +
+\left(\frac14\left(A - B\right)\left(A + B\right)^T\right) \otimes DC^T \\
+
+ &=&
+\left(\frac14\left(A + B\right)\left(A + B\right)^T\right) \otimes 4bI_{2b} +
+\left(\frac14\left(A - B\right)\left(A - B\right)^T\right) \otimes 4bI_{2b} \\
+ & & +
+\left(\frac14\left(A + B\right)\left(A - B\right)^T\right) \otimes 0_{2b} +
+\left(\frac14\left(A - B\right)\left(A + B\right)^T\right) \otimes 0_{2b} \\
+ &=& 
+\left[\left(\frac14\left(A + B\right)\left(A + B\right)^T\right) +
+\left(\frac14\left(A - B\right)\left(A - B\right)^T\right)\right] \otimes 4bI_{2b}\\
+ &=&
+\left[\frac12 \left(AA^T + BB^T\right)\right] \otimes 4bI_{2b} \\
+ &=&
+\frac12 \left(4a I_{4a} \right) \otimes 4bI_{2b} \\
+ &=&8abI_{8ab}
+\end{array}$$
+\normalarray
+which implies, from Definition~\ref{def:hadamard}, that $H$ is a Hadamard matrix.
+ \end{proof}
+\end{theorem}
+
+The first infinite class of Hadamard matrices of order $4n$ which includes many values for which $n$ is odd is attributed to Paley. Before stating the result, we must first take a small detour through some field theory results.
+
+\begin{definition} \label{def:field-stuff}
+ Let $\F_p$ be a finite field of order $p$ and let $a$ be a nonzero element of $\F_p$. $a$ is a {\it quadratic residue mod $p$} if there exists $b \in \F_p$ such that $a \equiv b^2 \pmod p$. The {\it Legendre symbol mod} $p$, $\chi: \F_p \rightarrow \Z$, is defined as
+
+ $$\chi(a) = \begin{cases}
+             0 & \text{if } a = 0, \\
+             1 & \text{if } a \text{ is a quadratic residue mod } p, \\
+             -1 & \text{otherwise.} \\
+            \end{cases}$$
+
+\end{definition}
+
+\begin{lemma} \label{lem:half-quad}
+ If $p$ is an odd prime number, then exactly $(p-1)/2$ elements in $\F_p$ are quadratic residues.
+
+ \begin{proof}
+  First, we note that for all $c \in \F_p$, $c^2 = (-c)^2$, so there are at most $(p-1)/2$ quadratic residues. To avoid these trivial collisions, we will examine $a,b \in \F_p$ such that $1 \leq a, b \leq (p-1)/2$. If we also assume that $a^2 = b^2$, then we have $$(a+b)(a-b) = a^2 - b^2 = 0.$$ Since we are in a field, either $a+b = 0$ or $a-b = 0$. The first equality cannot hold since $a+b \in \left\{2,3,\dots,p-1\right\}$. The second equality is true if and only if $a = b$. So for any pair $(a,b)$ such that $1 \leq a \neq b \leq (p-1)/{2}$, we have that $a^2 \neq b^2$. Thus, there are at least $(p-1)/{2}$ quadratic residues mod $p$, and the result follows.
+ \end{proof}
+
+\end{lemma}
+
+\begin{definition} \label{def:jacobsthal}
+ Let $p$ be an odd prime number. Then we define the {\it Jacobsthal matrix} to be the $p \times p$ matrix, $Q_p = [q_{ij}]$, such that $$q_{ij} = \chi(i-j),$$ where $i-j$ is reduced mod $p$.
+\end{definition}
+
+\begin{theorem} \label{th:qqt}
+ Let $p$ be an odd prime number. Then $Q_pQ_p^T = pI - J$.
+ \begin{proof}
+  Let $v_i$ and $v_j$ be the $i^{th}$ and $j^{th}$ rows of $Q_p$. If $i = j$, then $\langle v_i,v_j\rangle = p-1$ since there are exactly $p-1$ nonzeroes per row (each of which is $\pm 1$). Now, assume that $i \neq j$, then we have that
+
+  $$\langle v_i,v_j \rangle = \sum_{a \in \F_p} \chi(i-a)\chi(j-a) = \sum_{b \in \F_p} \chi(b)\chi(b+(j-i)).$$ From here, we note that when $b=0$, $\chi(b) = 0$, so we have $$\langle v_i,v_j \rangle = \sum_{b \in \F_p \setminus \{0\}} \chi(b)\chi(b+(j-i)).$$
+  Next, we will use the fact that $\chi$ is a multiplicative function to see that 
+  $$\langle v_i,v_j \rangle = \sum_{b \in \F_p \setminus \{0\}} \chi(b)\chi(b)\chi(1+b^{-1}(j-i)) = \sum_{b \in \F_p \setminus \{0\}} \chi(1+b^{-1}(j-i))$$
+  Since $j-i$ is fixed and nonzero, $1+b^{-1}(j-i)$ will run through each element in $\F_p$ except $1$. By using Lemma~\ref{lem:half-quad} and the fact that $\chi(1) = 1$ for all $p$,
+  $$\langle v_i,v_j \rangle = \sum_{c \in \F_p \setminus \{1\}} \chi(c) = \left(\sum_{c \in \F_p} \chi(c)\right) - \chi(1) = 0 - 1 = -1.$$
+  Thus, the inner product of two distinct rows of $Q_p$ are $-1$, and the result follows.
+ \end{proof}
+
+\end{theorem}
+
+
+\begin{theorem}[Paley,~\cite{paley}] \label{thm:paley-3}
+ Let $p \equiv 3\pmod4$ be an odd prime number. Then
+  $$H = \left(\begin{array}{cc}
+     1 & 1_{p} \\
+     1_{p}^T & Q_p-I
+    \end{array}\right)$$
+  is a Hadamard matrix of order $p+1$, where $1_p$ is a row vector of $p$ ones.
+
+ \begin{proof}
+  \equationarray
+  $$\begin{array}{rcll}
+     HH^T &=& \left(\begin{array}{cc}
+     1 & 1_{p} \\
+     1_{p}^T & Q_p-I
+    \end{array}\right)
+    \left(\begin{array}{cc}
+     1 & 1_{p} \\
+     1_{p}^T & Q_p-I
+    \end{array}\right)^T \\
+  & = &
+    \left(\begin{array}{cc}
+     p+1 & 0_p \\
+     0_p^T & J + (Q_p-I)(Q_p-I)^T
+     \end{array}\right)\\
+  & = &
+    \left(\begin{array}{cc}
+     p+1 & 0_p \\
+     0_p^T & J + Q_pQ_p^T-Q_p-Q_p^T+I
+     \end{array}\right)\\
+  & = &
+    \left(\begin{array}{cc}
+     p+1 & 0_p \\
+     0_p^T & J + Q_pQ_p^T+I
+     \end{array}\right) & \left(\text{since } Q_p = -Q_p^T \text{ if } p\equiv 3\hskip-10pt\pmod4\right)\\
+  & = &
+    \left(\begin{array}{cc}
+     p+1 & 0_p \\
+     0_p^T & J + (pI-J)+I
+     \end{array}\right) & \left(\text{by Theorem~\ref{th:qqt}}\right)\\
+  & = &
+    \left(\begin{array}{cc}
+     p+1 & 0_p \\
+     0_p^T & (p+1)I_{p}
+     \end{array}\right)\\
+  & = & (p+1)I_{p+1}
+    \end{array}$$ %End of equation array.
+  \normalarray
+ \end{proof}
+
+\end{theorem}
+
+\begin{theorem}[Paley,~\cite{paley}] \label{thm:paley-1}
+ Let $p \equiv 1 \pmod 4$ be an odd prime number. Then
+  $$H = \left(\begin{array}{cc|cc}
+     1 & 1_{p}     & -1 & 1_{p}\\
+     1_{p}^T & Q_p+I & 1_{p}^T & Q_p-I \\
+     \hline
+     -1 & 1_{p}     & -1 & -1_{p}\\
+     1_{p}^T & Q_p-I & -1_{p}^T & -Q_p-I \\
+    \end{array}\right)$$
+  is a Hadamard matrix of order $2(p+1)$, where $1_p$ is a row vector of $p$ ones.
+
+  \begin{proof}
+  \equationarray
+  $$\begin{array}{rcll}
+     HH^T &=& \left(\begin{array}{cc|cc}
+     1 & 1_{p}     & -1 & 1_{p}\\
+     1_{p}^T & Q_p+I & 1_{p}^T & Q_p-I \\
+     \hline
+     -1 & 1_{p}     & -1 & -1_{p}\\
+     1_{p}^T & Q_p-I & -1_{p}^T & -Q_p-I \\
+    \end{array}\right)
+    \left(\begin{array}{cc|cc}
+     1 & 1_{p}     & -1 & 1_{p}\\
+     1_{p}^T & Q_p+I & 1_{p}^T & Q_p-I \\
+     \hline
+     -1 & 1_{p}     & -1 & -1_{p}\\
+     1_{p}^T & Q_p-I & -1_{p}^T & -Q_p-I \\
+    \end{array}\right)^T \\
+   & = &
+    \left(\begin{array}{cccc}
+     2(p+1) & 0 & 0 & 0\\
+     0 & 2(J + Q_pQ_p^T + I) & 0 & 2(Q_p^T-Q_p) \\
+     0 & 0 & 2(p+1) & 0 \\
+     0 & 2(Q_p-Q_p^T) & 0 & 2(J + Q_pQ_p^T + I) \\
+    \end{array}\right) \\
+   & = &
+    \left(\begin{array}{cccc}
+     2(p+1) & 0 & 0 & 0\\
+     0 & 2(J + (pI-J) + I) & 0 & 0 \\
+     0 & 0 & 2(p+1) & 0 \\
+     0 & 0 & 0 & 2(J + (pI-J) + I) \\
+    \end{array}\right)\\
+   & = &
+    \left(\begin{array}{cccc}
+     2(p+1) & 0 & 0 & 0\\
+     0 & 2(p+1)I & 0 & 0 \\
+     0 & 0 & 2(p+1) & 0 \\
+     0 & 0 & 0 & 2(p+1)I \\
+    \end{array}\right)\\
+   & = & 2(p+1)I_{2(p+1)},
+    \end{array}$$ %End of equation array.
+   \normalarray
+ where the third last equality is true since $Q_p = Q_p^T$ when $p \equiv 1 \pmod 4$.
+ \end{proof}
+\end{theorem}
+
+Later, a similar idea was used to show that $p$ can be any odd prime power in the previous two lemmas through the use of finite fields. In 1944, Williamson introduced a new class of Hadamard matrices which needs the idea of circulant matrices.
+
+\begin{definition} \label{def:circ-matrix}
+ Given a vector of $n$ elements, $(v_0,v_1,\dots,v_{n-1})$,  a {\it circulant matrix}, $A = [a_{ij}]$, is a matrix defined as $a_{ij} = v_{i-j}$ where $i-j$ is reduced modulo $n$. Circulant matrices can be represented by their first row by $A = \text{Circ}(v_0,\dots,v_{n-1})$.
+\end{definition}
+
+From these, Williamson gave the following.
+
+\begin{theorem}[\mbox{\cite{od-quad-forms}}]\label{thm:williamson}
+ Let $A$, $B$, $C$ and $D$ be four symmetric circulant matrices of order $n$ which satisfy $$A^2 + B^2 + C^2 + D^2 = 4nI_n.$$ Then
+$$\left(\begin{array}{rrrr}
+         A & B & C & D \\
+         -B & A & -D & C \\
+         -C & D & A & -B \\
+         -D & -C & B & A
+        \end{array}
+\right)$$
+is a Hadamard matrix of order $4n$.
+ \begin{proof}
+  This can easily be verified by multiplying out the matrix with its transpose and utilizing our assumption.
+ \end{proof}
+
+\end{theorem}
+
+\begin{example}
+ For example, $A = \text{Circ}(1~1~1)$, $B=C=D=\text{Circ}(-~1~1)$ satisfies the conditions laid out in Theorem~\ref{thm:williamson}, and so we may create a $12 \times 12$ Hadamard matrix.
+\end{example}
+
+These constructions account for a large portion of the Hadamard matrices that are currently known, especially for smaller values. There are many other constructions for Hadamard matrices, most of which are out of the scope of this thesis (see~\cite{od-quad-forms} for more constructions).

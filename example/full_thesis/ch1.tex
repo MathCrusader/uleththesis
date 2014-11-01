@@ -1,0 +1,46 @@
+\chapter[Introduction]{Introduction}
+\chaptermark{Introduction}
+\label{ch:introduction}
+
+\hfill\begin{tabular}{r}\toprule
+ {\it `Obvious' is the most dangerous} \\ {\it word in mathematics.} \\
+  -- E. T. Bell\\
+\bottomrule\end{tabular}\vskip25pt
+
+This thesis is a combination of many novel ideas that have been studied in the past few years. The bulk of the study has been centred around the idea of biangular line-sets where we impose certain conditions in order to obtain specific combinatorial objects. The work found within is a combination of published work,~\cite{much10,unit-weigh13}, submitted work,~\cite{muwm13}, and forthcoming publications.
+
+Hadamard matrices have garnered the interest of many mathematicians and physicists over the past century. With their impeccable structure, it is no surprise that these objects appear in many seemingly unrelated areas (see~\cite{hada-app2,hada-app,space-time-block}). At their historical roots, Hadamard matrices were studied by James Sylvester in 1867, who focused on a specialized infinite family of Hadamard matrices~\cite{sylvester}.
+
+Nearly 25 years later, Jacques Hadamard constructed the first two Hadamard matrices that did not fit into Sylvester's specialized case~\cite{hadamard}. Furthermore, Hadamard gave an infinite family of his own. Soon after, a very famous conjecture was formuated: that there is a Hadamard matrix for every order that is a multiple of 4. This hypothesis has come to be known as the {\it Hadamard conjecture}.
+
+It is now more than a century later, and many more examples of Hadamard matrices have been found. There have been many steps towards a resolution of the Hadamard conjecture. However, while we are edging towards a resolution of this conjecture, we are still lacking the key insight that is needed to finally put a pin in it.
+
+Many generalizations of Hadamard matrices have emerged over the years: orthogonal designs, weighing matrices~\cite{od-quad-forms} and unit Hadamard matrices~\cite{Dita_2004} to name a few. In this thesis, we introduce another extension of Hadamard matrices, unit weighing matrices, and classify them for many small orders and weights. These matrices give us most of the structure that is held by Hadamard matrices, as well as the extra flexibility needed to solve certain problems.
+
+We then utilize these matrices by introducing yet another topic: mutually unbiased weighing matrices. These are an extension of the well-known mutually unbiased bases~\cite{durt-muhm}. Once again, we lose a little structure by dealing with weighing matrices instead of Hadamard matrices, but this loss of rigidity allows us to solve some problems that cannot be done with Hadamard matrices.
+% We also pose a modified definition for mutually unbiased Hadamard matrices to allow for the inclusion of a new class of unbiasedness.
+
+Majority of the content in the thesis will be used directly or indirectly to solve problems related to sets of vectors which have {\it nice} pairwise inner products. To be more specific, the inner product of any two vectors in the set must have a particular absolute value. There is a well-known upper bound on the size of these sets~\cite{calderbank97}, which we use as the ground work for our searches. In many small cases, the upper bound can be obtained by vectors which are taken directly from the objects created in the first few chapters.
+
+In the final chapter, we use these {\it nice} sets to generate combinatorial objects. Many of these objects were previously unknown. For the objects which were already known, the methods to provide them are novel.
+
+We will split our time in this thesis between the real and the complex case. The reader is urged to keep this in mind as they progress through this thesis, since many theorems come in two forms: the real case and the complex case. When it is not specified, it is assumed that the theorem is true in the complex case (and thus, the real case as well).
+
+\section[A Note on Notation]{A Note on Notation}
+\sectionmark{Notation}
+\label{sec:notation}
+
+Mathematicians are notorious for generating acronyms for subject matter. In this thesis, we will refrain from utilizing these acronyms as most of them will look too similar and are likely to cause headaches (e.g., MUBs, MUHM, MUCH, MUH, MOLS, MSLS, MUWM, MUCWM, MUUWM, etc.). With that being said, when these objects are introduced, we will specify the acronym for any reader who wishes to read other articles within the field where these acronyms are used heavily.
+
+Any variable which utilizes a capital letter is a matrix. $I_n$ is the identity matrix of order $n$ and $J_n$ is the square all-ones matrix of order $n$. For $I_n$, the $n$ will be dropped when it can be inferred from context. You may also assume, without fault, that any $H$ or $W$ in this thesis represents a Hadamard matrix or a weighing matrix, respectively. For any matrix $X$, its transpose, entry-wise conjugation and Hermitian transpose are denoted by $X^T$, $\overline{X}$ and $X^*$, respectively. When matrices are explicitly written, any blank entries are zeroes. The indices of matrices will be 0-based.
+
+The set of unimodular numbers, i.e., complex numbers with an absolute value of 1, will be denoted $\T$. Furthermore, $\T_0$ will be used to denote $\T \cup \left\{0\right\}$.
+
+When a ``$-1$'' is to appear in a matrix, the shortened ``$-$'' within the matrix will be used. For example, instead of writing
+$$H=\left(\begin{array}{rr}1&1 \\ 1&-1\end{array}\right),$$
+we will instead use
+$$H=\left(\begin{array}{cc}\Zp\Zp \\ \Zp\Zm\end{array}\right).$$
+
+We would also like to warn the reader that $\omega$ is used in this thesis to mean different values at different portions of the thesis. You may assume, however, that it will represent some root of unity.
+
+Finally, we would also like to point out that Jacques Hadamard was a French mathematician, meaning that the `H' at the beginning of his last name is silent. However, for this thesis, we will use the anglicized version of his name by saying `{\it a Hadamard matrix}' in lieu of the correct `{\it an Hadamard matrix}'.

@@ -1,0 +1,322 @@
+\chapter[Detailed Proofs from Chapter 4]{Detailed Proofs from Chapter 4}
+\chaptermark{Detailed Proofs}
+\label{app:ch4-cases}
+
+\section[Sets of \texorpdfstring{$UW(5,4)$}{UW(5,4)}]{Sets of \texorpdfstring{$UW(5,4)$}{UW(5,4)}}
+\sectionmark{Sets of $UW(5,4)$}
+\label{app:uw54}
+
+(This is the proof of Lemma~\ref{lem:cw_5_4}.)
+
+\begin{lemma}\label{lem-proof:cw_5_4}
+ Let $W$ be a unit weighing matrix that is unbiased with 
+$$
+W_5 = \left(
+\begin{array}{ccccc}
+ 1 & 1            &1            &1            &0 \\
+ 1 & \omega            &\overline{\omega} &0            &1 \\
+ 1 & \overline{\omega} &0            &\omega            &\overline{\omega} \\
+ 1 & 0            &\omega            &\overline{\omega} &\omega \\
+ 0 & 1            &\overline{\omega} &\omega            &\omega
+\end{array}
+\right)
+$$
+where $\omega = e^{i\frac{2\pi}{3}}$. Then every nonzero entry in $W$ is a sixth root of unity.
+
+ \begin{proof}
+  Since $W_5W^* = 2L$ for some weighing matrix $L$, we know that each row of $W$ must be orthogonal with exactly one row of $W_5$ and unbiased with the other four. Moreover, we know that the first nonzero entry in each row of $W$ may be a one. To show the stated lemma, we will show that any viable vector (i.e., a vector in $\C^5$ with exactly four nonzero unimodular entries) that is orthogonal with one row of $W_5$ and unbiased with the other four only contains entries that are sixth roots of unity.
+
+  Using the definition of $m$-orthogonality and the results given in Proposition~\ref{prop:m-orth}, we can determine that there are at most 11 {\it different} rows that are orthogonal to each of the rows of $W_5$, each with exactly one free variable. We will break up the analysis into five distinct cases. Each case will represent the full set of vectors which are orthogonal to a specific row in $W_5$. For ease, we will use $R_i$ to be the the $i^{th}$ row of $W_5$. Moreover, the rows of $W$ that we are considering will be labelled $r_i$ for $1 \leq i \leq 55$. The standard brackets around the vector will be dropped for convenience.
+
+  Let $b \in \T$ and $\alpha$ a primitive third root of unity (either $\omega$ or $\bar\omega$). The five main observations that are used throughout the proof are:
+\begin{enumerate}
+ \item[(O1)] $|1-\alpha+b|=2 \implies b\in\left\{\pm\overline{\alpha}\right\}$,
+ \item[(O2)] $|1+\alpha+b|=2 \implies b=-\overline{\alpha}$,
+ \item[(O3)] $|3+b|=2 \implies b=-1$,
+ \item[(O4)] $1+\alpha+\overline{\alpha}=0$.
+ \item[(O5)] $|1+\alpha+\overline\alpha+\alpha b|=2 \implies |\alpha b| = 2$, which is a contradiction since $|\alpha b| = 1$.
+\end{enumerate}
+
+\newcommand{\unb}[2]{|\langle R_{#1},r_{#2}\rangle|=2}
+
+In each of the five cases, we will examine all rows that are orthogonal to the $i^{th}$ row of $W_5$ (it turns out there are 11 candidates each time). Then, we will show that any free variable ($b$) is a sixth root of unity or arrive at a contradiction by using one of the five observations above. Note that we will stop each case as soon as a contradiction is found or all free variables are shown to be a sixth root of unity.
+
+{\bf Case 1:} Consider all rows that are orthogonal with row 1 of $W_5$:
+ $$
+ \begin{array}{rccccc}
+   (r_{1})  & 1 & -       & b       & -b      & 0 \\
+   (r_{2})  & 1 & b       & -       & -b      & 0 \\
+   (r_{3})  & 1 & b       & -b      & -       & 0 \\
+   (r_{4})  & 1 & \omega       & \bar{\omega} & 0       & b \\
+   (r_{5})  & 1 & \bar{\omega} & \omega       & 0       & b \\
+   (r_{6})  & 1 & \omega       & 0       & \bar{\omega} & b \\
+   (r_{7})  & 1 & \bar{\omega} & 0       &\omega       & b \\
+   (r_{8})  & 1 & 0       & \omega       & \bar{\omega} & b \\
+   (r_{9})  & 1 & 0       & \bar{\omega} & \omega       & b \\
+   (r_{10}) & 0 & 1       & \omega       & \bar{\omega} & b \\
+   (r_{11}) & 0 & 1       & \bar{\omega} & \omega       & b \\
+ \end{array}
+ $$
+Then,
+    $$
+     \begin{array}{rcllll}
+      (a) & \unb21 \implies & |1-\omega+\overline{\omega b}|=2 &\implies \bar{\omega b} = \pm\bar{\omega}  &\implies b \in \left\{ \pm1 \right\}.   \\
+      (b) & \unb22 \implies & |1+\omega\bar{b}-\bar{\omega}|=2        &\implies \omega\bar{b} = \pm\omega       &\implies b \in \left\{ \pm1\right\}.        \\
+      (c) & \unb33 \implies & |1+\overline{\omega b}-\omega|=2         &\implies \bar{\omega b} = \pm\bar{\omega}  &\implies b \in \left\{ \pm1\right\}.        \\
+      (d) & \unb24 \implies & |1+1+1+\overline{b}|=2        &\implies \overline{b} = -1      &\implies b = -1.          \\
+      (e) & \unb25 \implies & |1+\bar{\omega}+\omega+\bar{b}|=2       &\implies |\bar{b}| = 2          &\implies |b|=2.     \con \\
+      (f) & \unb36 \implies & |1+\omega+\bar{\omega}+\overline{\omega b}|=2 &\implies |\overline{\omega b}|=2      &\implies |b|=2.     \con \\
+      (g) & \unb37 \implies & |1+1+1+\overline{\omega b}|=2       &\implies \overline{\omega b} = -1     &\implies b = -\bar{\omega}.    \\
+      (h) & \unb48 \implies & |1+1+1+\omega\bar{b}|=2            &\implies \omega\bar{b} = -1          &\implies b = -\omega.          \\
+      (i) & \unb49 \implies & |1+\bar{\omega}+\omega+\omega\bar{b}|=2      &\implies |\omega\bar{b}| = 2         &\implies |b| = 2.   \con \\
+      (j) & \unb5{10} \implies & |1+\omega+\bar{\omega}+\omega\bar{b}|=2      &\implies |\omega\bar{b}| = 2         &\implies |b| = 2.   \con \\
+      (k) & \unb5{11} \implies & |1+1+1+\omega\bar{b}|=2            &\implies \omega\bar{b} = -1          &\implies b = -\omega.
+     \end{array}
+     $$
+
+  {\bf Case 2:} Consider all rows that are orthogonal with row 2 of $W_5$:
+
+     $$
+     \begin{array}{rccccc}
+	(r_{12})  & 1 & 1         & 1         & b       & 0 \\
+	(r_{13})  & 1 & \bar{\omega}   & \omega        & b       & 0 \\
+	(r_{14})  & 1 & -\omega        & -\bar{\omega}b & 0       & b \\
+	(r_{15})  & 1 & -\omega\bar{b} & -\bar{\omega}  & 0       & b \\
+	(r_{16})  & 1 & b         & -b        & 0       & - \\
+	(r_{17})  & 1 & 1         & 0         & b       & \omega  \\
+	(r_{18})  & 1 & \bar{\omega}   & 0         & b       & \bar{\omega} \\
+	(r_{19})  & 1 & 0         & \omega        & b       & \omega  \\
+	(r_{20})  & 1 & 0         & 1         & b       & \bar{\omega} \\
+	(r_{21})  & 0 & 1         & \bar{\omega}   & b       & \omega  \\
+	(r_{22})  & 0 & 1         & 1         & b       & 1 \\
+     \end{array}
+     $$
+Then,
+     $$
+     \begin{array}{rcllll}
+      (a) & \unb1{12} \implies & |1+1+1+\bar{b}|=2             &\implies \bar{b}=-1             &\implies b = -1.          \\
+      (b) & \unb1{13} \implies & |1+\bar{\omega}+\omega+\bar{b}|=2       &\implies |\bar{b}|=2            &\implies |b| = 2.   \con \\
+      (c) & \unb1{14} \implies & |1-\bar{\omega}-\omega\bar{b}|=2        &\implies -\omega\bar{b} = \pm\omega      &\implies b \in \left\{ \pm1\right\}.        \\
+      (d) & \unb1{15} \implies & |1-\bar{\omega}b-\bar{\omega}|=2        &\implies -\bar{\omega}b=\pm\omega        &\implies b \in \left\{ \pm\bar{\omega}\right\}. \\
+      (e) & \unb3{16} \implies & |1+\overline{\omega b}+\bar{\omega}|=2   &\implies \overline{\omega b} = -\omega     &\implies b = -\omega.           \\
+      (f) & \unb3{17} \implies & |1+\bar{\omega}+\omega\bar{b}+\omega|=2      &\implies |\omega\bar{b}|=2           &\implies |b|=2.     \con \\
+      (g) & \unb3{18} \implies & |1+1+\omega\bar{b}+1|=2            &\implies \omega\bar{b} = -1          &\implies b = -\omega.          \\
+      (h) & \unb4{19} \implies & |1+1+\overline{\omega b}+1|=2       &\implies \overline{\omega b} = -1     &\implies b = -\bar{\omega}.    \\
+      (i) & \unb4{20} \implies & |1+\omega+\overline{\omega b}+\bar{\omega}|=2 &\implies |\overline{\omega b}| = 2    &\implies |b| = 2.   \con \\
+      (j) & \unb5{21} \implies & |1+1+\omega\bar{b}+1|=2            &\implies \omega\bar{b} = -1          &\implies b = -\omega.          \\
+      (k) & \unb5{22} \implies & |1+\bar{\omega}+b+\omega|=2             &\implies |b|=2.                 & ~                  \con
+     \end{array}
+     $$
+
+   {\bf Case 3:} Consider all rows that are orthogonal with row 3 of $W_5$:
+
+     $$
+     \begin{array}{rccccc}
+       (r_{23})  & 1 & \omega        & b         & \bar{\omega}   & 0 \\
+       (r_{24})  & 1 & 1         & b         & 1         & 0 \\
+       (r_{25})  & 1 & \omega        & b         & 0         & 1 \\
+       (r_{26})  & 1 & 1         & b         & 0         & \omega  \\
+       (r_{27})  & 1 & -\bar{\omega}  & 0         & -\bar{\omega}b & b \\
+       (r_{28})  & 1 & -b        & 0         & -\omega        & b \\
+       (r_{29})  & 1 & -\omega b       & 0         & b         & -\bar{\omega} \\
+       (r_{30})  & 1 & 0         & b         & 1         & 1 \\
+       (r_{31})  & 1 & 0         & b         & \bar{\omega}   & \omega  \\
+       (r_{32})  & 0 & 1         & b         & \omega        & \omega  \\
+       (r_{33})  & 0 & 1         & b         & 1         & \bar{\omega}
+     \end{array}
+     $$
+Then,
+     $$
+     \begin{array}{rcllll}
+      (a) & \unb1{23} \implies & |1+1+1+\bar{b}|=2             &\implies \bar{b}=-1             &\implies b = -1.          \\
+      (b) & \unb1{24} \implies & |1+\bar{\omega}+\omega+\bar{b}|=2       &\implies |\bar{b}|=2            &\implies |b| = 2.   \con \\
+      (c) & \unb2{25} \implies & |1+1+\overline{\omega b}+1|=2       &\implies \overline{\omega b} = -1     &\implies b = -\bar{\omega}.    \\
+      (d) & \unb2{26} \implies & |1+\omega+\overline{\omega b}+\bar{\omega}|=2 &\implies |\overline{\omega b}|=2      &\implies |b| = 2.   \con \\
+      (e) & \unb1{27} \implies & |1-\omega-\omega\bar{b}|=2              &\implies -\omega\bar{b} = \pm\bar{\omega} &\implies b \in \left\{ \pm\bar{\omega}\right\}.   \\
+      (f) & \unb1{28} \implies & |1-\bar{b}-\bar{\omega}|=2         &\implies -\bar{b}=\pm\omega         &\implies b \in \left\{ \pm\bar{\omega}\right\}.  \\
+      (g) & \unb2{29} \implies & |1-\bar{b}-\omega|=2               &\implies -\bar{b}=\pm\bar{\omega}    &\implies b \in \left\{ \pm\omega\right\}.       \\
+      (h) & \unb4{30} \implies & |1+\omega\bar{b}+\bar{\omega}+\omega|=2      &\implies |\omega\bar{b}| = 2         &\implies |b| = 2.   \con \\
+      (i) & \unb4{31} \implies & |1+\omega\bar{b}+1+1|=2            &\implies \omega\bar{b} = -1          &\implies b = -\omega.          \\
+      (j) & \unb5{32} \implies & |1+\overline{\omega b}+1+1|=2       &\implies \overline{\omega b} = -1     &\implies b = -\bar{\omega}.    \\
+      (k) & \unb5{33} \implies & |1+\overline{\omega b}+\omega+\bar{\omega}|=2 &\implies |\overline{\omega b}|=2      &\implies |b| = 2.   \con
+     \end{array}
+     $$
+
+
+     {\bf Case 4:} Consider all rows that are orthogonal with row 4 of $W_5$:
+
+     $$
+     \begin{array}{rccccc}
+	(r_{34})  & 1 & b         & 1         & 1         & 0 \\
+	(r_{35})  & 1 & b         & \bar{\omega}   & \omega        & 0 \\
+	(r_{36})  & 1 & b         & 1         & 0         & \bar{\omega} \\
+	(r_{37})  & 1 & b         & \bar{\omega}   & 0         & 1 \\
+	(r_{38})  & 1 & b         & 0         & \omega        & \bar{\omega} \\
+	(r_{39})  & 1 & b         & 0         & 1         & 1 \\
+	(r_{40})  & 1 & 0         & -\omega        & -\omega b       & b \\
+	(r_{41})  & 1 & 0         & -b        & -\bar{\omega}  & b \\
+	(r_{42})  & 1 & 0         & -\bar{\omega}b & b         & -\bar{\omega} \\
+	(r_{43})  & 0 & b         & 1         & \bar{\omega}   & 1 \\
+	(r_{44})  & 0 & b         & 1         & 1         & \omega 
+     \end{array}
+     $$
+Then,
+     $$
+     \begin{array}{rc@{\hspace{-0.02cm}}ll@{\hspace{-0.1cm}}l}
+      (a) & \unb1{34} \implies & |1+\bar{b}+1+1|=2             &\implies \bar{b}=-1             &\implies b = -1.          \\
+      (b) & \unb1{35} \implies & |1+\bar{b}+\omega+\bar{\omega}|=2       &\implies |\bar{b}|=2            &\implies |b| = 2.   \con \\
+      (c) & \unb2{36} \implies & |1+\omega\bar{b}+\bar{\omega}+\omega|=2      &\implies |\omega\bar{b}|=2           &\implies |b| = 2.   \con \\
+      (d) & \unb2{37} \implies & |1+\omega\bar{b}+1+1|=2            &\implies \omega\bar{b}=-1            &\implies b = -\omega.          \\
+      (e) & \unb3{38} \implies & |1+\overline{\omega b}+1+1|=2       &\implies \overline{\omega b}=-1       &\implies b = -\bar{\omega}.     \\
+      (f) & \unb3{39} \implies & |1+\overline{\omega b}+\omega+\bar{\omega}|=2 &\implies |\overline{\omega b}|=2      &\implies |b| = 2.   \con \\
+      (g) & \unb1{40} \implies & |1-\bar{\omega}-\overline{\omega b}|=2   &\implies -\overline{\omega b}=\pm\omega   &\implies b \in \left\{ \pm\omega\right\}.       \\
+      (h) & \unb1{41} \implies & |1-\omega-\bar{b}|=2               &\implies -\bar{b} = \pm\bar{\omega}  &\implies b \in \left\{ \pm\omega\right\}.       \\
+      (i) & \unb2{42} \implies & |1-\bar{b}-\omega|=2               &\implies -\bar{b} = \pm\bar{\omega}  &\implies b \in \left\{ \pm\omega\right\}.       \\
+      (j) & \unb5{43} \implies & |\bar{b}+\bar{\omega}+\bar{\omega}+\omega|=2 &\implies |1-\bar{\omega}-\bar{b}|=2   &\implies b \in \left\{ \pm\bar{\omega}\right\}.  \\
+      (k) & \unb5{44} \implies & |\bar{b}+\bar{\omega}+\omega+1|=2       &\implies |\bar{b}|=2            &\implies |b| = 2.   \con
+     \end{array}
+     $$
+
+
+    {\bf Case 5:} Consider all rows that are orthogonal with row 5 of $W_5$:
+
+     $$
+     \begin{array}{rccccc}
+	(r_{45})  & b & 1         & \omega        & \bar{\omega}   & 0 \\
+	(r_{46})  & b & 1         & 1         & 1         & 0 \\
+	(r_{47})  & b & 1         & \omega        & 0         & \bar{\omega} \\
+	(r_{48})  & b & 1         & 1         & 0         & 1 \\
+	(r_{49})  & b & 1         & 0         & 1         & \bar{\omega} \\
+	(r_{50})  & b & 1         & 0         & \bar{\omega}   & 1 \\
+	(r_{51})  & b & 0         & 1         & \omega        & 1 \\
+	(r_{52})  & b & 0         & 1         & 1         & \omega  \\
+	(r_{53})  & 0 & 1         & -\bar{\omega}  & -b        & b \\
+	(r_{54})  & 0 & 1         & -\omega b       & -\omega        & b \\
+	(r_{55})  & 0 & 1         & -\omega b       & b         & -\omega
+     \end{array}
+     $$
+Then,
+     $$
+     \begin{array}{rcll@{\hspace{-0.08cm}}l}
+      (a) & \unb1{45} \implies & |\bar{b}+1+\bar{\omega}+\omega|=2       &\implies |\bar{b}|=2            &\implies |b| = 2.   \con \\
+      (b) & \unb1{46} \implies & |\bar{b}+1+1+1|=2             &\implies \bar{b}=-1             &\implies b = -1.          \\
+      (c) & \unb2{47} \implies & |\bar{b}+\omega+\bar{\omega}+\bar{\omega}|=2 &\implies |1-\bar{\omega}-\bar{b}|=2  &\implies b \in \left\{ \pm \bar{\omega}\right\}. \\
+      (d) & \unb2{48} \implies & |\bar{b}+\omega+\bar{\omega}+1|=2       &\implies |\bar{b}|=2            &\implies |b| = 2.   \con \\
+      (e) & \unb3{49} \implies & |\bar{b}+\bar{\omega}+\omega+1|=2       &\implies |\bar{b}|=2            &\implies |b| = 2.   \con \\
+      (f) & \unb3{50} \implies & |\bar{b}+1+\omega|=2               &\implies \bar{b}=-\bar{\omega}       &\implies b = -\omega.          \\
+      (g) & \unb1{51} \implies & |\bar{b}+1+\bar{\omega}|=2         &\implies \bar{b}=-\omega             &\implies b = -\bar{\omega}.    \\
+      (h) & \unb4{52} \implies & |\bar{b}+\omega+\bar{\omega}+1|=2       &\implies |\bar{b}|=2            &\implies |b| = 2.   \con \\
+      (i) & \unb1{53} \implies & |1-\omega-\bar{b}|=2               &\implies -\bar{b} = \pm\bar{\omega}  &\implies b \in \left\{ \pm\omega\right\}.       \\
+      (j) & \unb5{54} \implies & |1-\overline{\omega b}-\bar{\omega}|=2   &\implies -\overline{\omega b}=\pm\omega   &\implies b \in \left\{ \pm\omega\right\}.       \\
+      (k) & \unb5{55} \implies & |a-\omega\bar{b}-\bar{\omega}|=2        &\implies |1-\bar{b}-\omega|=2        &\implies b \in \left\{ \pm\omega\right\}.
+     \end{array}
+     $$
+
+ \end{proof}
+\end{lemma}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section[Sets of \texorpdfstring{$UW(7,4)$}{UW(7,4)}]{Sets of \texorpdfstring{$UW(7,4)$}{UW(7,4)}}
+\sectionmark{Sets of $UW(7,4)$}
+\label{app:uw74}
+
+(This is the proof of Lemma~\ref{lem:cw_7_4}.)
+
+\begin{lemma} \label{lem-proof:cw_7_4}
+ Let $W$ be a unit weighing matrix that is unbiased with
+$$W_7=\left(\begin{array}{c}
+\Zp\Zp\Zp\Zp\Zz\Zz\Zz\\
+\Zp\Zm\Zz\Zz\Zp\Zp\Zz\\
+\Zp\Zz\Zm\Zz\Zm\Zz\Zp\\
+\Zp\Zz\Zz\Zm\Zz\Zm\Zm\\
+\Zz\Zp\Zm\Zz\Zz\Zp\Zm\\
+\Zz\Zp\Zz\Zm\Zp\Zz\Zp\\
+\Zz\Zz\Zp\Zm\Zm\Zp\Zz
+\end{array}\right).$$
+Then every nonzero entry in $W$ is either $1$ or $-1$.
+
+ \begin{proof}
+  We can easily see that there are only $\binom73=35$ possible zero placements that are valid in a row of $W$. We will break up the proof into two different sections. In the first, we will examine all rows that have the same zero placement as one of the rows in $W_7$. Then, in the second, we will look at the other 28 rows.
+
+  For each possible row in the first portion, we will show that any nonzero entry in each row must be real. We will work through the first example in full detail, then put all seven cases in an encoded form into Table~\ref{table:cw_7_4_1}. Each case follows very similar to the example shown. In all cases, let $a$,$b$ and $c$ be arbitrary unimodular numbers that are independent of the other cases.
+
+  For example, consider the following row:  \vecseven{1}{a}{b}{c}{0}{0}{0}
+     \begin{itemize}
+      \item Taking the complex inner product with row 2 of $W_7$, we have that $|1+a| \in \{0,2\}$ which implies $a \in \{\pm1\}$.
+      \item Taking the complex inner product with row 3 of $W_7$, we have that $|1+b| \in \{0,2\}$ which implies $b \in \{\pm1\}$.
+      \item Taking the complex inner product with row 4 of $W_7$, we have that $|1+c| \in \{0,2\}$ which implies $c \in \{\pm1\}$.
+     \end{itemize}
+
+
+\begin{table}[H]
+\caption{Case analysis part 1 for Lemma~\ref*{lem:cw_7_4}}
+\centering
+\begin{tabular}{@{}ccccc@{}}
+\hline
+\toprule
+\multicolumn{1}{@{}c@{}}{Row} & & \multicolumn{3}{@{}c@{}}{Row in $W_7$ that implies}\\
+ & & $a \in \left\{\pm 1\right\}$ & $b \in \left\{\pm 1\right\}$ & $c \in \left\{\pm 1\right\}$ \\ 
+\cmidrule{1-1} \cmidrule{3-5}
+\vecseven{1}{a}{b}{c}{0}{0}{0} & & 2 & 3 & 4\\
+\vecseven{1}{a}{0}{0}{b}{c}{0} & & 1 & 3 & 4\\
+\vecseven{1}{0}{a}{0}{b}{0}{c} & & 1 & 2 & 4\\
+\vecseven{1}{0}{0}{a}{0}{b}{c} & & 1 & 2 & 3\\
+\vecseven{0}{1}{a}{0}{0}{b}{c} & & 1 & 2 & 6\\
+\vecseven{0}{1}{0}{a}{b}{0}{c} & & 1 & 2 & 5\\
+\vecseven{0}{0}{1}{a}{b}{c}{0} & & 1 & 3 & 5\\
+\bottomrule
+ \end{tabular}
+\label{table:cw_7_4_1}\end{table}
+
+Then, for the second portion of the case analysis, we will create a table of the remaining 28 zero placements. In each case, the inner product of the row and a specific row in $W_7$ gives us a single unimodular value, which cannot equal two.
+
+For example, consider the following row: \vecseven{1}{a}{b}{0}{c}{0}{0}. Taking the complex inner product with row 4 of $W_7$, we have that $|1| \in \{0,2\}$ which is clearly a contradiction. Table~\ref{table:cw_7_4_2} shows which row in $W_7$ does not work with the corresponding case.
+
+\begin{table}
+\caption{Case analysis part 2 for Lemma~\ref*{lem:cw_7_4}}
+\centering
+\begin{tabular}{@{}ccc@{}}
+\hline
+\toprule
+\multicolumn{1}{@{}c@{}}{Row} & & \multicolumn{1}{@{}c@{}}{Row in $W_7$ that gives}\\
+ & & a contradiction \\ 
+\cmidrule{1-1} \cmidrule{3-3}
+\vecseven{1}{a}{b}{0}{c}{0}{0} & & 4 \\
+\vecseven{1}{a}{b}{0}{0}{c}{0} & & 6 \\
+\vecseven{1}{a}{b}{0}{0}{0}{c} & & 7 \\
+\vecseven{1}{a}{0}{b}{c}{0}{0} & & 5 \\
+\vecseven{1}{a}{0}{b}{0}{c}{0} & & 3 \\
+\vecseven{1}{a}{0}{b}{0}{0}{c} & & 7 \\
+\vecseven{1}{a}{0}{0}{b}{0}{c} & & 7 \\
+\vecseven{1}{a}{0}{0}{0}{b}{c} & & 7 \\
+\vecseven{1}{0}{a}{b}{c}{0}{0} & & 5 \\
+\vecseven{1}{0}{a}{b}{0}{c}{0} & & 6 \\
+\vecseven{1}{0}{a}{b}{0}{0}{c} & & 2 \\
+\vecseven{1}{0}{a}{0}{b}{c}{0} & & 6 \\
+\vecseven{1}{0}{a}{0}{0}{b}{c} & & 6 \\
+\vecseven{1}{0}{0}{a}{b}{c}{0} & & 5 \\
+\vecseven{1}{0}{0}{a}{b}{0}{c} & & 5 \\
+\vecseven{1}{0}{0}{0}{a}{b}{c} & & 1 \\
+\vecseven{0}{1}{a}{b}{c}{0}{0} & & 4 \\
+\vecseven{0}{1}{a}{b}{0}{c}{0} & & 3 \\
+\vecseven{0}{1}{a}{b}{0}{0}{c} & & 2 \\
+\vecseven{0}{1}{a}{0}{b}{c}{0} & & 4 \\
+\vecseven{0}{1}{a}{0}{b}{0}{c} & & 4 \\
+\vecseven{0}{1}{0}{a}{b}{c}{0} & & 3 \\
+\vecseven{0}{1}{0}{a}{0}{b}{c} & & 3 \\
+\vecseven{0}{1}{0}{0}{a}{b}{c} & & 1 \\
+\vecseven{0}{0}{1}{a}{b}{c}{0} & & 2 \\
+\vecseven{0}{0}{1}{a}{b}{0}{c} & & 2 \\
+\vecseven{0}{0}{1}{0}{a}{b}{c} & & 1 \\
+\vecseven{0}{0}{0}{1}{a}{b}{c} & & 1 \\
+\bottomrule
+ \end{tabular}
+\label{table:cw_7_4_2}\end{table}
+
+ \end{proof}
+\end{lemma}

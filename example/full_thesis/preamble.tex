@@ -1,0 +1,181 @@
+% This file includes many commands that I use frequently when creating TeX documents.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Packages (alphabetical order)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amstext}
+\usepackage{amsthm}
+\usepackage{booktabs}
+\usepackage[tableposition=top]{caption}
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage{enumerate}
+\usepackage{float}    \floatstyle{plaintop} \restylefloat{table} % Make captions on top of a table (where it should be)
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{latexsym}
+\usepackage{listings}
+\usepackage{marvosym}
+\usepackage{multirow}
+\usepackage{pslatex}
+\usepackage{subfigure}
+\usepackage{tikz} \usetikzlibrary{matrix,decorations.pathreplacing}
+\usepackage{url}
+\usepackage{xspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Useful commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\etal}{\emph{et al.}\xspace}
+\newcommand{\CITE}{{\bf {\color{red} [CITE]}}\xspace}
+\newcommand{\REF}{{\bf {\color{red} [REF]}}\xspace}
+\newcommand{\FIGURE}{{\bf {\color{red} [FIG]}}}
+\newcommand{\NOTE}[1]{\renewcommand{\fboxsep}{1mm}\framebox{\textsf{\em #1}}\marginpar{\bf$\leftarrow$NOTE}}
+\newcommand{\CONTENT}{{\medskip \center{\Huge \ldots} \marginpar{\bf$\leftarrow$MORE} \medskip}}
+\newcommand{\bigO}[1]{\mathcal{O}(#1)\xspace}
+\newcommand{\littleo}[1]{o(#1)\xspace}
+\newcommand{\Gram}{\text{Gram}}
+\newcommand{\tr}{\text{Tr}}
+\newcommand{\aip}[2]{| \langle #1 , #2 \rangle |}
+\newcommand{\BR}{\{e^{\frac{2\pi i}{3}},e^{-\frac{2\pi i}{3}}\}}
+\renewcommand{\bar}[1]{\overline{#1}}    % Overline looks nicer for conjugation...
+\newcommand{\con}{\rightarrow\leftarrow} % Contradiction
+
+% Nicer looking gray
+\definecolor{Gray}{gray}{0.9}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Theorems / Lemmas / Remarks / etc.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{note}[theorem]{Note}
+\newtheorem{summary}[theorem]{Summary}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{construction}[theorem]{Construction}
+
+% I like using arrays to hold equations (lines up the '=' nicely)
+% They need to be vertically spaced different than a normal matrix, though
+% When you make an array for equation, do something like this:
+%   \equationarray
+%   \begin{array}{lcr}
+%     f(x) & = & (x-2)^2 \\
+%          & = & x^2 - 4x + 4
+%   \end{array}
+%   \normalarray
+\newcommand{\equationarray}{\renewcommand{\arraystretch}{1.55}}
+\newcommand{\normalarray}{\renewcommand{\arraystretch}{1.1}}
+\newcommand{\appendixarray}{\renewcommand{\arraystretch}{1}}
+
+\normalarray
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Common mathematical sets.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\A}{\mathbb{A}} % Algebraic Numbers
+\newcommand{\C}{\mathbb{C}} % Complex
+\newcommand{\F}{\mathbb{F}} % Field
+\newcommand{\N}{\mathbb{N}} % Naturals
+\newcommand{\Q}{\mathbb{Q}} % Rationals
+\newcommand{\R}{\mathbb{R}} % Reals
+\newcommand{\T}{\mathbb{T}} % Unimodular
+\newcommand{\Z}{\mathbb{Z}} % Integers
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Fancy letters
+%     (Note that A and S are missing --
+%            \AA and \SS are something else)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\BB}{\mathcal{B}}
+\newcommand{\CE}{\mathcal{C}}
+\newcommand{\DD}{\mathcal{D}}
+\newcommand{\EE}{\mathcal{E}}
+\newcommand{\FF}{\mathcal{F}}
+\newcommand{\GG}{\mathcal{G}}
+\newcommand{\HH}{\mathcal{H}}
+\newcommand{\II}{\mathcal{I}}
+\newcommand{\JJ}{\mathcal{J}}
+\newcommand{\KK}{\mathcal{K}}
+\newcommand{\LL}{\mathcal{L}}
+\newcommand{\MM}{\mathcal{M}}
+\newcommand{\NN}{\mathcal{N}}
+\newcommand{\OO}{\mathcal{O}}
+\newcommand{\PP}{\mathcal{P}}
+\newcommand{\QQ}{\mathcal{Q}}
+\newcommand{\RR}{\mathcal{R}}
+\newcommand{\TT}{\mathcal{T}}
+\newcommand{\UU}{\mathcal{U}}
+\newcommand{\VV}{\mathcal{V}}
+\newcommand{\WW}{\mathcal{W}}
+\newcommand{\XX}{\mathcal{X}}
+\newcommand{\YY}{\mathcal{Y}}
+\newcommand{\ZZ}{\mathcal{Z}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Matrix entries -- Makes each entry uni-spaced.
+%        Use only one column.
+%   Example:
+%   $$
+%    W_7=\left(\begin{array}{c}
+%          \Zp\Zp\Zp\Zp\Zz\Zz\Zz \\
+%          \Zp\Zm\Zz\Zz\Zp\Zp\Zz \\
+%          \Zp\Zz\Zm\Zz\Zm\Zz\Zp \\
+%          \Zp\Zz\Zz\Zm\Zz\Zm\Zm \\
+%          \Zz\Zp\Zm\Zz\Zz\Zp\Zm \\
+%          \Zz\Zp\Zz\Zm\Zp\Zz\Zp \\
+%          \Zz\Zz\Zp\Zm\Zm\Zp\Zz
+%        \end{array}\right)
+%   $$
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\MatEntry[1]{\makebox[1.15em]{#1}}
+\newcommand\Zp{\MatEntry{$1$}}
+\newcommand\Zm{\MatEntry{$-$}}
+\newcommand\Zz{\MatEntry{$0$}}
+\newcommand\Zi{\MatEntry{$i$}}
+\newcommand\Zj{\MatEntry{$j$}}
+\newcommand\Ze{\MatEntry{$~$}} % Empty
+
+\newcommand\Za{\MatEntry{$\omega$}}
+\newcommand\ZA{\MatEntry{$\overline{\omega}$}}
+\newcommand\Zb{\MatEntry{$\underline{\overline{\omega}}$}}
+\newcommand\ZB{\MatEntry{$\underline{\omega}$}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Easy way to make vectors...
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\vecfive}[5]{($#1$ & $#2$ & $#3$ & $#4$ & $#5$)}
+\newcommand{\vecseven}[7]{$\left(\begin{array}{ccccccc}#1 & #2 & #3 & #4 & #5 & #6 & #7\end{array}\right)$}
+\newcommand{\veceight}[8]{$\left(\begin{array}{cccccccc}#1 & #2 & #3 & #4 & #5 & #6 & #7 & #8\end{array}\right)$}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  A different look for \begin{list}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{myind}[1]%
+ {\begin{list}{}%
+    {\setlength{\leftmargin}{#1}}%
+  \item[]%
+ }
+{\end{list}}
+
+% \newcommand{\change}[2]{{\color{red} #1}~{\color{blue} #2}}
+% \newcommand{\add}[1]{\change{}{#1}}
+% \newcommand{\remove}[1]{\change{#1}{}}

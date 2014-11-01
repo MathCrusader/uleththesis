@@ -1,0 +1,68 @@
+\documentclass[math , phd , 12pt , final]{uleththesis}
+
+% This is a file that contains all of your \usepackage's and \newcommands
+\input{preamble}
+
+% Put your information here.
+%  -- If your title is longer than 41 characters, it may be abbreviated.
+\title{University of Lethbridge Thesis Template}
+\author{Student Name}
+
+% This is the year you are getting this degree
+\degreeyear{2013}
+
+% Put all of your previous degrees in this format:
+\prevdegrees{Bachelor of Science, University of British Columbia, 2009\\
+             Master of Science, University of Waterloo, 2011}
+
+% Put everyone on your Thesis Examination Committee
+%  Normally, it will include the following:
+%   - Your supervisor(s)
+%   - Your committee members
+%   - External examiner (maybe)
+%   - A chair for your examination
+\addsignatureline{Dr. A}{Supervisor}
+\addsignatureline{Dr. B}{Committee Member}
+\addsignatureline{Dr. C}{Committee Member}
+\addsignatureline{Dr. D}{Committee Member}
+\addsignatureline{Dr. E}{Chair, Thesis Examination Committee}
+
+\begin{document}
+
+\frontmatter
+ 
+\ulethtitle
+\ulethapproval
+
+\dedication{
+  This is where the dedication goes. It is normally quite short. (This is an optional section)
+} % End of dedication
+
+\begin{abstract}
+ This is the University of Lethbridge thesis template for use in \LaTeX. Feel free to alter any code you wish. However, make sure that doing so does not affect the thesis regulations. This version of the template passed all stylistic criteria for the 2013--2014 academic year.
+\end{abstract}
+
+\acknowledgments{
+ Write something nice here about how much help everyone has given you. (This is an optional section).
+Also note that there are two correct spellings of ``Acknowledgment''. Choose the spelling that you like
+better!
+} % End of acknowledgments
+
+\tableofcontents
+\listoftables
+\listoffigures
+
+\mainmatter
+
+\input{ch1}
+\input{ch2}
+
+\clearpage
+\chaptermarknonum{Bibliography}
+\bibliography{thesis-refs} % References come BEFORE appendices.
+
+\appendix
+
+\input{appA}
+
+\end{document}
