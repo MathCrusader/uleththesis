@@ -1,0 +1,9 @@
+# Mac DS files
+*.DS_Store
+
+# LaTeX temp files
+*.aux
+*.dvi
+*.log
+*.tex.backup
+*.synctex.gz
